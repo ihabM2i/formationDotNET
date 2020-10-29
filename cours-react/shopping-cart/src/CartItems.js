@@ -10,7 +10,7 @@ class CartItems extends Component {
             <div className="col-12">
                 <h1 className="row">Panier</h1>
                 {this.props.carts.map(item=>(
-                    <Item updateQty={this.props.updateQty} deleteFromCart={this.props.deleteFromCart} key={item.product.id} item={item}></Item>
+                    <Item props updateQty={this.props.updateQty} deleteFromCart={this.props.deleteFromCart} key={item.product.id} item={item}></Item>
                 ))}
             </div>
          );

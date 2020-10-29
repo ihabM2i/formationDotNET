@@ -92,8 +92,6 @@ class ShoppingCart extends Component {
                         </div>
                     </div>
                 </div>
-
-
             </div>
         );
     }
