@@ -2,6 +2,7 @@
 //const http = require("http");
 //Après installation de express, on importe le module express dans notre fichier
 const express = require("express");
+let compteur = 3;
 const produits = [
     {
         id : 1,
@@ -17,6 +18,9 @@ const produits = [
 
 //On crée notre application en utilisant express
 const app = express()
+
+//pour indiquer que les données reçues par notre application sont en json
+app.use(express.json())
 
 //On intercepte une requete en get sur la route /
 app.get('/', (req,res) => {
@@ -45,6 +49,16 @@ app.get('/produit/:id', (req,res) => {
 
 })
 
+//Une route pour ajouter des données
+app.post('/produit', (req, res) => {
+    let newPorduit = {...req.body};
+    newPorduit.id = compteur;
+    compteur++;
+    produits.push(newPorduit);
+    res.json({
+        error : false, message : "Product added with id "+ newPorduit.id
+    })
+})
 
 app.post('/produits', (req,res) => {
     res.json(produits)
