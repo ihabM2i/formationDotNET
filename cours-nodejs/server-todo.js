@@ -71,6 +71,13 @@ app.put('/todo/:id', (req, res) => {
     }
 })
 
+//Route pour effectuer une recherche sur le contenu du todo
+app.get('/search/:filtre', (req, res) => {
+    const filtre = req.params.filtre
+    const result = todos.filter(t => t.task.includes(filtre))
+    res.json(result)
+})
+
 const server = http.createServer(app)
 
 server.listen(3010)
