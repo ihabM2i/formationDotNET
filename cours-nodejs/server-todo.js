@@ -8,6 +8,14 @@ const app = express();
 
 app.use(express.json());
 
+//Ajouter un middelware pour les cross origin
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers","Content-Type")
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE")
+    next();
+})
+
 //Route pour récuperer la liste des todos
 app.get('/todos', (req,res) => {
     res.json({
@@ -42,9 +50,22 @@ app.post('/todo', (req, res) => {
     todos.push(tmpTodo)
     res.json({
         error : false,
-        message : "Todo added with id "+ tmpTodo.id
+        id : tmpTodo.id
     })
 })
+
+//Route pour ajouter des todos
+app.post('/todos', (req, res) => {
+    //On récupère les données à partir du body de la request
+    for(let tmpTodo of req.body){
+        tmpTodo.id = ++compteurTodo
+        todos.push(tmpTodo)
+    }
+    res.json({
+        error : false,
+    })
+})
+
 
 //Route pour supprimer un todo
 app.delete('/todo/:id', (req,res) => {
