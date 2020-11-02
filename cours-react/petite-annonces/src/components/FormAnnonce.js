@@ -89,7 +89,7 @@ const FormAnnonce = (props) => {
         titre : '',
         prix : 0,
         description : '',
-        images : []   
+        images : []    
     } )
 
     const changeField = (e) => {
