@@ -116,8 +116,12 @@ const FormAnnonce = (props) => {
     }
     const validForm = (e) => {
         e.preventDefault()
-        ajouterAnnonce(annonce)
-        props.history.push('/')
+        ajouterAnnonce(annonce).then(res => {
+            if(!res.data.error) {
+                props.history.push('/detail/'+res.data.id)
+            }
+        })
+        
     }
     return(
         <form className="container" onSubmit={validForm}>

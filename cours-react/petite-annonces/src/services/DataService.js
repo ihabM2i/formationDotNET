@@ -1,37 +1,43 @@
-
+import axios from "axios"
 export const annonces = []
-
+const urlBase = "http://localhost:3020"
 export const getAnnonces = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(annonces)
-        },3000)
-    })
+    // return new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve(annonces)
+    //     },3000)
+    // })
+    return axios.get(`${urlBase}/annonces`)
+
 }
 let compteurAnnonce = 1
 
 
 
 export const ajouterAnnonce = (annonce) => {
-    const tmpAnnonce = {
-        ...annonce,
-        id : compteurAnnonce
-    }
-    annonces.push(tmpAnnonce)
-    compteurAnnonce++
+    // const tmpAnnonce = {
+    //     ...annonce,
+    //     id : compteurAnnonce
+    // }
+    // annonces.push(tmpAnnonce)
+    // compteurAnnonce++
+    return axios.post(`${urlBase}/annonce`, {...annonce})
 }
 
-export const search = (filtre) => {
-    return new Promise((resolve, reject) => {
-        const tmpAnnonces = annonces.filter(a => a.titre.includes(filtre) || a.description.includes(filtre))
-        setTimeout(() => {
-            resolve(tmpAnnonces)
-        }, 3000)
-    })
+export const search = (filter) => {
+    // return new Promise((resolve, reject) => {
+    //     const tmpAnnonces = annonces.filter(a => a.titre.includes(filtre) || a.description.includes(filtre))
+    //     setTimeout(() => {
+    //         resolve(tmpAnnonces)
+    //     }, 3000)
+    // })
+
+    return axios.get(`${urlBase}/annonces/${filter}`)
 }
 
 export const getAnnonceById = (id) => {
-    return annonces.find(a => a.id == id)
+    //return annonces.find(a => a.id == id)
+    return axios.get(`${urlBase}/annonce/${id}`)
 }
 
 

@@ -15,9 +15,22 @@ class DetailAnnonce extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            annonce: getAnnonceById(props.match.params.id),
+            annonce: undefined,
             isFavoris: dejaFavoris(props.match.params.id)
         }
+    }
+
+    componentDidMount() {
+        getAnnonceById(this.props.match.params.id).then(res => {
+            if(!res.data.error) {
+                this.setState({
+                    annonce : res.data.annonce
+                })
+            }
+            else {
+                alert(res.data.message)
+            }
+        })
     }
     
     ajouterFavoris = () => {
