@@ -1,0 +1,68 @@
+//Docker permet de démarrer des containers => dans un container, on peut executer tout type d'environement
+//Docker démarre des containers à partir des images.
+
+docker images => commande pour lister les images dispo sur notre machine.
+
+docker search => permet de rechercher une images sur docker hub
+
+docker pull nom_images => permet de récuperer l'image à partir de docker hub
+
+docker rmi <id ou le tag de l'image> => permet de supprimer une image
+
+docker run <nom_image> => permet de créer et démarrer un container à partir d'une image
+
+pour lister les container crées :
+
+docker ps -a 
+
+docker ps => uniquement les containers démarrés
+
+pour ajouter un nom à notre container lors de la création 
+
+docker run --name <nom_container> image_container
+
+docker rm <nom_container ou id container> => commande pour supprimer un container
+
+les flags de docker run
+
+--name => donner un nom au container
+
+-d => pour démarrer le container dans son propre process
+-i => pour executer une commande à l'interieur de notre container
+-t => pour executer la commande d'entrée dans un pseudo-terminal
+
+pour executer une action à l'interieur d'un container => on utilise la commande docker exec
+
+
+Pour créer une image à partir d'un container  on utilise la commande docker commit <nom_container> nom_image
+
+pour sauvegarder une image dans un fichier => docker save -o <le nom du fichier avec extension tar> <nom_image>
+
+pour importer une image à partir d'un fichier => docker load -i <nom du fichier>
+
+pour récuperer les informations d'un container comme son adresse ip sur le réseau local docker  => docker inspect <nom_container ou son id>
+
+On utilisant un nom domaine, le navigateur utilise les registres DNS pour trouver l'adresse ip du serveur qui hébérge le nom de domaine.
+
+La requêt est envoyée vers l'adresse ip.
+
+On ne peut redirigé le trafic vers un container docker. car le serveur n'est pas dans le même réseau avec les containers.
+
+On redirige les ports de notre container vers les ports du hôte.
+
+pour mapper des ports on utilise le flag -p au moment de la création du container. => docker run -p 3000:3000 -p 80:3001 --name <nom_container> <nom_image>
+
+
+Exemple :
+
+A partir d'une image ubuntu, on essaye de créer un projet react dans un container.
+
+Il faut dans un premier temps créer un container à partir de ubuntu, ensuite mettre à jour ubuntu, installer node et npm, créer un projet react à l'aide create-react-app à l'interieur de votre container.
+
+Ensuite on crée une image à partir du container avec l'application react.
+
+On crée un container à partir de la nouvelle image avec l'ouverture d'un port sur l'hôte du container.
+
+
+
+
