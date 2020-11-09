@@ -1,0 +1,14 @@
+version: '3'
+services: 
+    server:
+        image: image_server_annonce
+        ports: 
+            - "3020:3020"
+        volumes: 
+            - ./sv:/app/sv
+    react:
+        image: image_react_petite_annonce
+        depends_on: 
+            - server
+        ports:
+            - "1000:3000" 
