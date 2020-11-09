@@ -1,14 +1,24 @@
 const http =require("http");
-
-const annonces = [];
+const fs = require("fs");
+let annonces = [];
 let compteur = 0;
 
 const express = require("express");
 
 const app = express()
 
-app.use(express.json());
+const updateAnnonces = () => {
+    fs.writeFile("sv/data.json", JSON.stringify(annonces))
+}
 
+const getAnnonces = () => {
+    fs.readFile("sv/data.json",(err,data) => {
+        annonces = JSON.parse(data)
+    })
+}
+
+app.use(express.json());
+getAnnonces();
 //Ajouter un middelware pour les cross origin
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -50,7 +60,8 @@ app.get('/annonce/:id', (req,res) => {
 app.post('/annonce', (req,res) => {
     let annonce = {...req.body};
     annonce.id = ++compteur;
-    annonces.push(annonce)
+    annonces.push(annonce);
+    updateAnnonces();
     res.json({
         error:false,
         id : annonce.id
