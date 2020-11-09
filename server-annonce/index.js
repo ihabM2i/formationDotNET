@@ -8,12 +8,14 @@ const express = require("express");
 const app = express()
 
 const updateAnnonces = () => {
-    fs.writeFile("sv/data.json", JSON.stringify(annonces))
+    fs.writeFile("sv/data.json", JSON.stringify(annonces), (err) => {
+        
+    })
 }
 
 const getAnnonces = () => {
-    fs.readFile("sv/data.json",(err,data) => {
-        annonces = JSON.parse(data)
+    fs.readFile("sv/data.json", "utf-8",(err,data) => {
+       annonces = JSON.parse(data)
     })
 }
 
