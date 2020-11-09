@@ -7,6 +7,8 @@ RUN apt-get install npm -q -y
 
 WORKDIR /app
 
-COPY index.js index.js
+COPY . . 
+
+
 
 ENTRYPOINT [ "node", "index.js" ]
