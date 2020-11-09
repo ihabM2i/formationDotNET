@@ -66,6 +66,12 @@ On crée un container à partir de la nouvelle image avec l'ouverture d'un port 
 pour construire une image à partir d'un dockerfile => docker build -t <nom_image> <chemin_docker_file> (si on est au même niveau, alors ça sera ".")
 pour monter un volume dans container on utilise  => docker run -d -it -p 4010:4010 -v ${PWD}/sv:/app/sv --name container_write_file image_write_file (PWD est une variable windows pour localiser le dossier courant)
 
+docker-compose -v
+
+docker-compose up -d
+
+docker-compose down
+
 
 
 
