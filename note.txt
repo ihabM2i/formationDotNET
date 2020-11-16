@@ -1,0 +1,32 @@
+Use Story 1
+
+En tant que client je souhaite pouvoir ajouter un produit dans mon panier afin de pouvoir l'acheter.
+
+
+Use Story A4
+
+En tant que client je souhaite pouvoir ajouter un produit dans mon panier afin de pouvoir l'acheter. (KISS) (Keep it simple & stupid)
+
+Les règles
+
+On ajoute uniquement les produits en stock,
+on ajoute uniquement les produits actifs.
+
+Test Acceptabilité
+
+Si j'essaye d'ajouter le produit n° 10 avec un stock 0, et actif => je dois avoir un message out of stock
+
+
+================ Mouvement DevOps =====================
+===========Développeurs Vs Opérateurs==================
+
+Développeur:
+	- Développer
+	- N'aime pas s'occuper du déploiement
+	- N'aime pas être bloqué par les choix techniques
+
+Opérateur:
+	- Avoir une stablilité de l'application en production.
+	- Ne pas avoir des technologies ingérables.
+
+
