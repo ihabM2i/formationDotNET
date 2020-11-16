@@ -7,7 +7,7 @@ export const getAnnonces = () => {
     //         resolve(annonces)
     //     },3000)
     // })
-    return axios.get(`${urlBase}/annonces`)
+    return axios.get(`${urlBase}/annonces`, {headers : {'Authorization' : 'Bearer a6c6890b-4841-391a-9868-eaee68711678'}})
 
 }
 let compteurAnnonce = 1

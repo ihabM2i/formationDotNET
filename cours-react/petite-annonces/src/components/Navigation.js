@@ -91,7 +91,8 @@ const Navigation = (props) => {
                         <Route path="/favoris" component={Favoris}></Route>
                         <Route path="/detail/:id" component={DetailAnnonce}></Route>
                         <Route path="/login" exact component={Login} ></Route>
-                        <Route path="/login/:url" component={Login} ></Route>
+                        <Route path="/login/:url" exact component={Login} ></Route>
+                       
                     </Switch>
                 </ThemeContext.Provider>
             </div>

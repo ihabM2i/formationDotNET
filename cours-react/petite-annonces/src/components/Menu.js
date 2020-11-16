@@ -38,7 +38,11 @@ const Menu = (props) => {
         <div className="navbar navbar-expand-lg navbar-light bg-light">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item m-2">
-                    <Link to='/'>Home</Link>
+                    <Link to= {
+                        {
+                            pathname : "/" 
+                        }
+                    }>Home</Link>
                 </li>
                 <li className="nav-item m-2">
                     <Link to='/addAnnonce'>Ajouter une annonce</Link>

@@ -8,8 +8,7 @@ const express = require("express");
 const app = express()
 
 const updateAnnonces = () => {
-    fs.writeFile("sv/data.json", JSON.stringify(annonces), (err) => {
-        
+    fs.writeFile("sv/data.json", JSON.stringify(annonces), (err) => {  
     })
 }
 

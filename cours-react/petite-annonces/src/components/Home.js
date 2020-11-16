@@ -12,6 +12,7 @@ class Home extends Component {
             loading : true,
             annonces : []
          }
+         
     }
 
     componentDidMount() {
@@ -20,7 +21,12 @@ class Home extends Component {
                 loading : false,
                 annonces : result.data.annonces
             })
+        }).catch(err => {
+            console.log(err)
+            this.setState({ loading: false });
         })
+
+        this.setState({ loading:false});
     }
 
     

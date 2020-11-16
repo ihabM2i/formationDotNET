@@ -4,8 +4,6 @@ services:
         image: image_server_annonce
         ports: 
             - "3020:3020"
-        volumes: 
-            - ${PWD}/server-annonce/sv:app/sv
     react:
         image: image_react_petite_annonce
         ports:

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import CompletedTodos from './CompletedTodos';
 import FormulaireTodo from './FormulaireTodo';
 import Todos from './Todos';
 import axios from "axios"
 
-class ContainerTodo extends Component {
+class ContainerTodo extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,6 +23,10 @@ class ContainerTodo extends Component {
                 })
             }
         })
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return (nextProps != props || nextState != state)
     }
 
     addTodo = (task) => {
