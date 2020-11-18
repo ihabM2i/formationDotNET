@@ -185,36 +185,68 @@ namespace CoursCSharpPartie1
                 i++;
             }*/
             //Correction exercice 2
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.Write("Merci de saisir votre âge : ");
-            int age = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Merci de saisir le dernier salaire : ");
-            decimal salaire = Convert.ToDecimal(Console.ReadLine());
-            Console.Write("Merci de saisir votre ancienneté : ");
-            int anciennete = Convert.ToInt32(Console.ReadLine());
-            decimal indemnite = 0;
-            if(anciennete  <= 10)
-            {
-                indemnite += anciennete * salaire / 2;
-            }else
-            {
-                indemnite += 10 * salaire / 2;
-                indemnite += (anciennete - 10) * salaire;
-            }
-            if(age > 45)
-            {
-                indemnite += (age < 50) ? 2 * salaire : 5 * salaire;
-            }
-            Console.WriteLine("Votre indemnité est de : " + indemnite + " €");
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.Write("Merci de saisir votre âge : ");
+            //int age = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Merci de saisir le dernier salaire : ");
+            //decimal salaire = Convert.ToDecimal(Console.ReadLine());
+            //Console.Write("Merci de saisir votre ancienneté : ");
+            //int anciennete = Convert.ToInt32(Console.ReadLine());
+            //decimal indemnite = 0;
+            //if (anciennete <= 10)
+            //{
+            //    indemnite += anciennete * salaire / 2;
+            //}
+            //else
+            //{
+            //    indemnite += 10 * salaire / 2;
+            //    indemnite += (anciennete - 10) * salaire;
+            //}
+            //if (age > 45)
+            //{
+            //    indemnite += (age < 50) ? 2 * salaire : 5 * salaire;
+            //}
+            //Console.WriteLine("Votre indemnité est de : " + indemnite + " €");
 
-            switch(anciennete)
-            {
-                case int n when (n < 10):
+            //switch(anciennete)
+            //{
+            //    case int n when (n < 10):
 
-                    break;
-                case int n when n >= 10:
-                    break;
+            //        break;
+            //    case int n when n >= 10:
+
+            //        break;
+            //}
+            //Correction Ex 3
+            Console.Write("Nb enfants: ");
+            int nbChildrens = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Merci indiquer situation familiale 1/Celibataire 2/Marie: ");
+            int situation = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Revenu imposable : ");
+            decimal imposable_salary = Convert.ToDecimal(Console.ReadLine());
+
+            decimal nb_parts = nbChildrens <= 2 ? (0.5M * nbChildrens) : (nbChildrens - 1);
+            nb_parts += situation;
+            decimal result = 0;
+
+            if (imposable_salary / nb_parts > 10064 && imposable_salary / nb_parts <= 27794)
+            {
+                result = imposable_salary * 0.14M - 1408.96M * nb_parts;
             }
+            else if (imposable_salary / nb_parts > 27794 && imposable_salary / nb_parts <= 74517)
+            {
+                result = imposable_salary * 0.30M - 5856M * nb_parts;
+            }
+            else if (imposable_salary / nb_parts > 74517 && imposable_salary / nb_parts <= 157806)
+            {
+                result = imposable_salary * 0.41M - 14052.87M * nb_parts;
+            }
+            else if (imposable_salary / nb_parts > 157806)
+            {
+                result = imposable_salary * 0.45M - 20365.11M * nb_parts;
+            }
+            Console.Write(result);
+
             #endregion
         }
     }
