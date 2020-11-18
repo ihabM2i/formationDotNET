@@ -218,35 +218,56 @@ namespace CoursCSharpPartie1
             //        break;
             //}
             //Correction Ex 3
-            Console.Write("Nb enfants: ");
-            int nbChildrens = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Merci indiquer situation familiale 1/Celibataire 2/Marie: ");
-            int situation = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Revenu imposable : ");
-            decimal imposable_salary = Convert.ToDecimal(Console.ReadLine());
+            //Console.Write("Nb enfants: ");
+            //int nbChildrens = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Merci indiquer situation familiale 1/Celibataire 2/Marie: ");
+            //int situation = Convert.ToInt32(Console.ReadLine());
+            //Console.Write("Revenu imposable : ");
+            //decimal imposable_salary = Convert.ToDecimal(Console.ReadLine());
 
-            decimal nb_parts = nbChildrens <= 2 ? (0.5M * nbChildrens) : (nbChildrens - 1);
-            nb_parts += situation;
-            decimal result = 0;
+            //decimal nb_parts = nbChildrens <= 2 ? (0.5M * nbChildrens) : (nbChildrens - 1);
+            //nb_parts += situation;
+            //decimal result = 0;
 
-            if (imposable_salary / nb_parts > 10064 && imposable_salary / nb_parts <= 27794)
-            {
-                result = imposable_salary * 0.14M - 1408.96M * nb_parts;
-            }
-            else if (imposable_salary / nb_parts > 27794 && imposable_salary / nb_parts <= 74517)
-            {
-                result = imposable_salary * 0.30M - 5856M * nb_parts;
-            }
-            else if (imposable_salary / nb_parts > 74517 && imposable_salary / nb_parts <= 157806)
-            {
-                result = imposable_salary * 0.41M - 14052.87M * nb_parts;
-            }
-            else if (imposable_salary / nb_parts > 157806)
-            {
-                result = imposable_salary * 0.45M - 20365.11M * nb_parts;
-            }
-            Console.Write(result);
+            //if (imposable_salary / nb_parts > 10064 && imposable_salary / nb_parts <= 27794)
+            //{
+            //    result = imposable_salary * 0.14M - 1408.96M * nb_parts;
+            //}
+            //else if (imposable_salary / nb_parts > 27794 && imposable_salary / nb_parts <= 74517)
+            //{
+            //    result = imposable_salary * 0.30M - 5856M * nb_parts;
+            //}
+            //else if (imposable_salary / nb_parts > 74517 && imposable_salary / nb_parts <= 157806)
+            //{
+            //    result = imposable_salary * 0.41M - 14052.87M * nb_parts;
+            //}
+            //else if (imposable_salary / nb_parts > 157806)
+            //{
+            //    result = imposable_salary * 0.45M - 20365.11M * nb_parts;
+            //}
+            //Console.Write(result);
 
+            #endregion
+
+            #region Tableaux
+            //Création d'un tableau entier de 5 éléments 
+            Console.WriteLine("Merci d'indiquer la taille du tableau");
+            int taille = Convert.ToInt32(Console.ReadLine());
+            int[] tabEntier = new int[taille];
+            
+
+            //Ecrire les valeurs d'un tableau
+            for(int i = 0; i < tabEntier.Length; i++)
+            {
+                Console.WriteLine("Merci de saisir l'entier à la case : " + i);
+                tabEntier[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //Afficher les valeurs d'un tableau
+            for (int i = 0; i < tabEntier.Length; i++)
+            {
+                Console.WriteLine(tabEntier[i]);
+            }
             #endregion
         }
     }
