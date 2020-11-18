@@ -88,12 +88,58 @@ namespace CoursCSharpPartie1
             //Console.Write("Tout ");
             //Console.Write("Monde");
             //Pour la lecture à partir d'une console
-            Console.Write("Merci de saisir votre nom : ");
-            string nom = Console.ReadLine();
-            Console.WriteLine(nom);
-            Console.WriteLine("Merci de saisir votre âge : ");
-            int age = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(age);
+            /* Console.Write("Merci de saisir votre nom : ");
+             string nom = Console.ReadLine();
+             Console.WriteLine(nom);
+             Console.WriteLine("Merci de saisir votre âge : ");
+             int age = Convert.ToInt32(Console.ReadLine());
+             Console.WriteLine(age);*/
+            #endregion
+
+            #region Structures itératives
+            //Boucle for
+            //for(int i=1; i <= 10; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine("=========");
+            //for(int i=10; i > 0; i = i - 2)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.WriteLine("==========");
+            //for(char c='A'; c <= 'Z'; c++)
+            //{
+            //    Console.WriteLine(c);
+            //}
+
+            //Boucle while
+            int i = 10;
+            //while (i < 10)
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //    //if (i == 5)
+            //    //{
+            //    //    i = 15;
+            //    //}
+            //}
+            //string chaine = Console.ReadLine();
+            //while(chaine != "0")
+            //{
+            //    Console.WriteLine("Merci de saisir une nouvelle chaine");
+            //    chaine = Console.ReadLine();
+            //}
+            //do
+            //{
+            //    Console.WriteLine(i);
+            //    i++;
+            //} while (i < 10);
+            string chaine;
+            do
+            {
+                chaine = Console.ReadLine();
+            } while (chaine != "0");
             #endregion
         }
     }
