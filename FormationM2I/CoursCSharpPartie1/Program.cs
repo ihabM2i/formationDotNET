@@ -251,23 +251,120 @@ namespace CoursCSharpPartie1
 
             #region Tableaux
             //Création d'un tableau entier de 5 éléments 
-            Console.WriteLine("Merci d'indiquer la taille du tableau");
-            int taille = Convert.ToInt32(Console.ReadLine());
-            int[] tabEntier = new int[taille];
-            
+            //Console.WriteLine("Merci d'indiquer la taille du tableau");
+            //int taille = Convert.ToInt32(Console.ReadLine());
+            //int[] tabEntier = new int[taille];
 
-            //Ecrire les valeurs d'un tableau
-            for(int i = 0; i < tabEntier.Length; i++)
-            {
-                Console.WriteLine("Merci de saisir l'entier à la case : " + i);
-                tabEntier[i] = Convert.ToInt32(Console.ReadLine());
-            }
 
-            //Afficher les valeurs d'un tableau
-            for (int i = 0; i < tabEntier.Length; i++)
+            ////Ecrire les valeurs d'un tableau
+            //for(int i = 0; i < tabEntier.Length; i++)
+            //{
+            //    Console.WriteLine("Merci de saisir l'entier à la case : " + i);
+            //    tabEntier[i] = Convert.ToInt32(Console.ReadLine());
+            //}
+
+            ////Afficher les valeurs d'un tableau
+            //for (int i = 0; i < tabEntier.Length; i++)
+            //{
+            //    Console.WriteLine(tabEntier[i]);
+            //}
+
+            //Création d'un tableau sans indiquer la taille
+            //int[] tab = new int[] { 2, 5, 6 };
+            #endregion
+
+            #region Correction Serie 2
+            int nombreApprenant;
+            int[] notes;
+            string choixMenu;
+            Console.WriteLine("=======Gestion de Notes========");
+            Console.Write("Merci de saisir le nombre d'apprenant : ");
+            nombreApprenant = Convert.ToInt32(Console.ReadLine());
+            notes = new int[nombreApprenant];
+            do
             {
-                Console.WriteLine(tabEntier[i]);
-            }
+                Console.WriteLine("1----Saisir les notes");
+                Console.WriteLine("2----Afficher les notes");
+                Console.WriteLine("3----La plus grande note");
+                Console.WriteLine("4----La plus petite note");
+                Console.WriteLine("5----La moyenne des notes");
+                Console.WriteLine("0----Quitter");
+                choixMenu = Console.ReadLine();
+                Console.Clear();
+                switch(choixMenu)
+                {
+                    case "1":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("------Saisir les notes------");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        for (int i=0; i < notes.Length; i++)
+                        {
+                            Console.Write("La note de l'apprenant N° " + (i + 1) + " : ");
+                            notes[i] = Convert.ToInt32(Console.ReadLine());
+                        }
+                        break;
+                    case "2":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("------Affichage des notes------");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        for (int i = 0; i < notes.Length; i++)
+                        {
+                            Console.WriteLine("La note de l'apprenant N° " + (i + 1) + " : " + notes[i]);                  
+                        }
+                        break;
+                    case "3":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("------La plus grande note------");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        int max;
+                        max = notes[0];
+                        for(int i = 1; i < notes.Length; i++)
+                        {
+                            if(max < notes[i])
+                            {
+                                max = notes[i];
+                            }
+                        }
+                        Console.WriteLine("La note la plus grande est : " + max);
+                        break;
+                    case "4":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("------La plus petite note------");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        int min;
+                        min = notes[0];
+                        for (int i = 1; i < notes.Length; i++)
+                        {
+                            if (min > notes[i])
+                            {
+                                min = notes[i];
+                            }
+                        }
+                        Console.WriteLine("La note la plus petite est : " + min);
+                        break;
+                    case "5":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("------La moyenne------");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        double somme = 0;
+                        for (int i = 0; i < notes.Length; i++)
+                        {
+                            somme += notes[i];
+                        }
+                        double moyenne = somme / notes.Length;
+                        Console.WriteLine("La moyenne est de : " + moyenne);
+                        break;
+                    case "0":
+                        //Fermer une console
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Erreur Menu");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
+                }
+            } while (choixMenu != "0");
             #endregion
         }
     }
