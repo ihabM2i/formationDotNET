@@ -366,6 +366,8 @@ namespace CoursCSharpPartie1
                 }
             } while (choixMenu != "0");
             #endregion
+
+
         }
     }
 }
