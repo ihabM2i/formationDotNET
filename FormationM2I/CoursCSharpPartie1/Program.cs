@@ -114,7 +114,7 @@ namespace CoursCSharpPartie1
             //}
 
             //Boucle while
-            int i = 10;
+            //int i = 10;
             //while (i < 10)
             //{
             //    Console.WriteLine(i);
@@ -135,11 +135,54 @@ namespace CoursCSharpPartie1
             //    Console.WriteLine(i);
             //    i++;
             //} while (i < 10);
-            string chaine;
-            do
+            //string chaine;
+            //do
+            //{
+            //    chaine = Console.ReadLine();
+            //} while (chaine != "0");
+            #endregion
+
+            #region correction serie 1
+            //Correction exercice 1
+            Console.Write("Merci de saisir un nombre : ");
+            int nombre = Convert.ToInt32(Console.ReadLine());
+            //En utilisant boucle for
+            //for(int i=1; i<= nombre/2 + 1; i++)
+            //{
+            //    int somme = i;
+            //    string chaine = nombre + " = " + i;
+            //    for(int j=i+1; j <= nombre / 2 + 1; j++)
+            //    {
+            //        somme = somme + j;
+            //        chaine += "+" + j;
+            //        if (somme == nombre)
+            //        {
+            //            Console.WriteLine(chaine);
+            //            break;
+            //        }
+            //    } 
+            //}
+
+            //En utilisant boucle while
+            int i = 1;
+            while( i <= nombre/2 + 1)
             {
-                chaine = Console.ReadLine();
-            } while (chaine != "0");
+                int somme = i;
+                string chaine = nombre + " = " + i;
+                int j = i + 1;
+                while(j <= nombre / 2 + 1)
+                {
+                    somme = somme + j;
+                    chaine += "+" + j;
+                    if (somme == nombre)
+                    {
+                        Console.WriteLine(chaine);
+                        break;
+                    }
+                    j++;
+                }
+                i++;
+            }
             #endregion
         }
     }
