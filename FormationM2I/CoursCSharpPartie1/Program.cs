@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace CoursCSharpPartie1
 {
@@ -144,7 +145,7 @@ namespace CoursCSharpPartie1
 
             #region correction serie 1
             //Correction exercice 1
-            Console.Write("Merci de saisir un nombre : ");
+            /*Console.Write("Merci de saisir un nombre : ");
             int nombre = Convert.ToInt32(Console.ReadLine());
             //En utilisant boucle for
             //for(int i=1; i<= nombre/2 + 1; i++)
@@ -182,6 +183,37 @@ namespace CoursCSharpPartie1
                     j++;
                 }
                 i++;
+            }*/
+            //Correction exercice 2
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.Write("Merci de saisir votre âge : ");
+            int age = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Merci de saisir le dernier salaire : ");
+            decimal salaire = Convert.ToDecimal(Console.ReadLine());
+            Console.Write("Merci de saisir votre ancienneté : ");
+            int anciennete = Convert.ToInt32(Console.ReadLine());
+            decimal indemnite = 0;
+            if(anciennete  <= 10)
+            {
+                indemnite += anciennete * salaire / 2;
+            }else
+            {
+                indemnite += 10 * salaire / 2;
+                indemnite += (anciennete - 10) * salaire;
+            }
+            if(age > 45)
+            {
+                indemnite += (age < 50) ? 2 * salaire : 5 * salaire;
+            }
+            Console.WriteLine("Votre indemnité est de : " + indemnite + " €");
+
+            switch(anciennete)
+            {
+                case int n when (n < 10):
+
+                    break;
+                case int n when n >= 10:
+                    break;
             }
             #endregion
         }
