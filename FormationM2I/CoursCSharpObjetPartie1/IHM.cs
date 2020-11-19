@@ -112,7 +112,25 @@ namespace CoursCSharpObjetPartie1
 
         private void RechercheEmploye()
         {
-
+            Console.WriteLine("====Rercherche employé par nom=====");
+            Console.Write("Merci de saisir le nom : ");
+            string nom = Console.ReadLine();
+            Salarie s = null;
+            for(int i=0; i < compteurEmployes; i++)
+            {
+                if(employes[i].Nom == nom)
+                {
+                    s = employes[i];
+                    break;
+                }
+            }
+            if(s != null)
+            {
+                s.CalculerSalaire();
+            }else
+            {
+                Console.WriteLine("aucun employé avec ce nom");
+            }
         }
     }
 }
