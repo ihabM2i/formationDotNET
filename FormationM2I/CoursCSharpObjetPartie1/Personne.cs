@@ -6,6 +6,7 @@ namespace CoursCSharpObjetPartie1
 {
     class Personne
     {
+        public static int compteur = 0;
         //Attributs
         private string nom;
         private string prenom;
@@ -13,7 +14,6 @@ namespace CoursCSharpObjetPartie1
         private Adresse adresse;
 
         //Proprietés
-
         public string Nom
         {
             get
@@ -29,23 +29,27 @@ namespace CoursCSharpObjetPartie1
             }
         }
 
+        public string Prenom { get => prenom; set => prenom = value; }
+
         //Constructeurs
         public Personne()
         {
             Console.WriteLine("Construction d'un objet");
+            compteur++;
         }
 
         public Personne(string nom, string prenom, int age)
         {
             this.nom = nom;
-            this.prenom = prenom;
+            this.Prenom = prenom;
             this.age = age;
+            compteur++;
         }
 
         //Méthodes
         public void Afficher()
         {
-            Console.WriteLine(nom + " " + prenom);
+            Console.WriteLine(nom + " " + Prenom);
         }
 
         //public void SetNom(string n)
@@ -61,5 +65,16 @@ namespace CoursCSharpObjetPartie1
         //    return nom;
         //}
 
+        public static Personne CreatePersonne(string nom, string prenom, int age)
+        {
+            Personne p = new Personne(nom, prenom, age);
+            return p;
+        }
+        
+        //Déstructeur
+        ~Personne()
+        {
+            Console.WriteLine("Objet détriut");
+        }
     }
 }
