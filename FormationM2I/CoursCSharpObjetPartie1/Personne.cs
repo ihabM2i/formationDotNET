@@ -48,7 +48,7 @@ namespace CoursCSharpObjetPartie1
         }
 
         //Méthodes
-        public void Afficher()
+        public virtual void Afficher()
         {
             Console.WriteLine(nom + " " + Prenom);
         }

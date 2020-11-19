@@ -20,6 +20,14 @@ namespace CoursCSharpObjetPartie1
             Niveau = niveau;
         }
 
+        //réeciture de la méthode afficher
+
+        public override void Afficher()
+        {
+            base.Afficher();
+            AfficherEtudiant();
+        }
+
         public void AfficherEtudiant()
         {
             Console.WriteLine("Etudiant : "+ nom + "Niveau : "+ Niveau);

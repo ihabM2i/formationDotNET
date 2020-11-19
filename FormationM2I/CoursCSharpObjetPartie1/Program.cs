@@ -68,7 +68,7 @@ namespace CoursCSharpObjetPartie1
             e.Age = 20;
             e.Niveau = 3;
             e.Afficher();
-            e.AfficherEtudiant();
+            //e.AfficherEtudiant();
             Personne e2 = new Etudiant("nom e2", "prenom e2", 21, 4);
             e2.Afficher();
             Personne s1 = new Salarie();
