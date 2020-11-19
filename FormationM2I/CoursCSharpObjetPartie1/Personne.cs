@@ -50,7 +50,7 @@ namespace CoursCSharpObjetPartie1
         //Méthodes
         public virtual void Afficher()
         {
-            Console.WriteLine(nom + " " + Prenom);
+            Console.WriteLine(nom + " " + Prenom); 
         }
 
         //public void SetNom(string n)
