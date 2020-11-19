@@ -38,7 +38,8 @@ namespace CoursCSharpObjetPartie1
             s1.Matricule = "m1";
             s1.Service = "sv1";
             s1.Salaire = 2000;
-            
+
+            Salarie s1bis = new Salarie("tttt");
 
             Salarie s2 = new Salarie("m2", "c2", "sv2", "s2" , 3000);
            
