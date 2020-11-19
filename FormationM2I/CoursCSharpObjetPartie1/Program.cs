@@ -62,7 +62,7 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region coursPOO héritage
-            Etudiant e = new Etudiant();
+            /*Etudiant e = new Etudiant();
             e.Nom = "nom e1";
             e.Prenom = "prenom e1";
             e.Age = 20;
@@ -79,7 +79,12 @@ namespace CoursCSharpObjetPartie1
                 Console.WriteLine(p.GetType());
             }
             //Console.WriteLine(e2.GetType());
-            //e2.AfficherEtudiant();
+            //e2.AfficherEtudiant();*/
+            #endregion
+
+            #region Correction tp 1 héritage
+            IHM ihm = new IHM();
+            ihm.Start();
             #endregion
         }
     }

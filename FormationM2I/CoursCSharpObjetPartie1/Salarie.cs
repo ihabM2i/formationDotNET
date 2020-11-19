@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursCSharpObjetPartie1
 {
-    class Salarie : Personne
+    class Salarie
     {
         #region attributs
         string matricule;
@@ -30,7 +30,7 @@ namespace CoursCSharpObjetPartie1
         #region constructeur
         public Salarie()
         {
-            Console.WriteLine("Constructeur par défaut");
+           // Console.WriteLine("Constructeur par défaut");
             compteur++;
         }
 
@@ -49,16 +49,16 @@ namespace CoursCSharpObjetPartie1
             Service = service;
             //Nom = nom;
             Salaire = salaire;
-            Console.WriteLine("Constructeur 2");
+            //Console.WriteLine("Constructeur 2");
             //compteur++;
         }
         #endregion
 
 
         #region méthodes
-        public void CalculerSalaire()
+        public virtual void CalculerSalaire()
         {
-            Console.WriteLine("Le salaire de " + Nom + " est de " + Salaire + " euros");
+            Console.WriteLine("Le salaire fixe de " + Nom + " est de " + Salaire + " euros");
         }
 
         public static void ResetCompteur()
