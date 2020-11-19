@@ -33,12 +33,17 @@ namespace CoursCSharpObjetPartie1
             Console.WriteLine("Constructeur par défaut");
             compteur++;
         }
+
+        // En utilisant ce constructeur, on appelle le constructeur Salarie par défaut avant
         public Salarie(string nom) : this()
         {
             Nom = nom;
         }
+
+
+        // En utilisant ce constructeur, on appelle le constructeur Salarie avec un parametre (nom) avant
         public Salarie(string matricule, string categorie, string service, string nom, decimal salaire) : this(nom)
-        {
+        {         
             Matricule = matricule;
             Categorie = categorie;
             Service = service;

@@ -6,6 +6,7 @@ namespace CoursCSharpObjetPartie1
     {
         static void Main(string[] args)
         {
+            #region cours POO
             //Personne p1 = new Personne();
             ////p1.nom = "abadi";
             ////p1.prenom = "ihab";
@@ -27,12 +28,16 @@ namespace CoursCSharpObjetPartie1
             //GC.Collect();
             //p2.Afficher();
 
+
+
             //Personne p3 = new Personne("titi", "minet", 50);
             //p3.Afficher();
             //Personne p4 = Personne.CreatePersonne("tata", "toto", 20);
             //Console.WriteLine(Personne.compteur);
 
-            Salarie s1 = new Salarie();
+            #endregion
+            #region Correction exercice 1 poo
+            /*Salarie s1 = new Salarie();
             s1.Nom = "s1";
             s1.Categorie = "c1";
             s1.Matricule = "m1";
@@ -53,8 +58,19 @@ namespace CoursCSharpObjetPartie1
                 tabSalarie[i].CalculerSalaire();
             }
             Console.WriteLine("Le nombre de salariés : " + Salarie.Compteur);
-            GC.Collect();
+            GC.Collect();*/
+            #endregion
 
+            #region coursPOO héritage
+            Etudiant e = new Etudiant();
+            e.Nom = "nom e1";
+            e.Prenom = "prenom e1";
+            e.Age = 20;
+            e.Niveau = 3;
+            e.Afficher();
+
+            Etudiant e2 = new Etudiant("nom e2", "prenom e2", 21, 4);
+            #endregion
         }
     }
 }

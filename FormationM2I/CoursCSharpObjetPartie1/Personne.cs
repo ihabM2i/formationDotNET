@@ -30,6 +30,7 @@ namespace CoursCSharpObjetPartie1
         }
 
         public string Prenom { get => prenom; set => prenom = value; }
+        public int Age { get => age; set => age = value; }
 
         //Constructeurs
         public Personne()
@@ -42,7 +43,7 @@ namespace CoursCSharpObjetPartie1
         {
             this.nom = nom;
             this.Prenom = prenom;
-            this.age = age;
+            this.Age = age;
             compteur++;
         }
 
