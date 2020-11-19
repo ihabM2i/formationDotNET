@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursCSharpObjetPartie1
 {
-    class Salarie
+    class Salarie : Personne
     {
         #region attributs
         string matricule;

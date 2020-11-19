@@ -68,8 +68,18 @@ namespace CoursCSharpObjetPartie1
             e.Age = 20;
             e.Niveau = 3;
             e.Afficher();
+            e.AfficherEtudiant();
+            Personne e2 = new Etudiant("nom e2", "prenom e2", 21, 4);
+            e2.Afficher();
+            Personne s1 = new Salarie();
+            Personne[] personnes = new Personne[] { e2, s1 };
 
-            Etudiant e2 = new Etudiant("nom e2", "prenom e2", 21, 4);
+            foreach(Personne p in personnes)
+            {
+                Console.WriteLine(p.GetType());
+            }
+            //Console.WriteLine(e2.GetType());
+            //e2.AfficherEtudiant();
             #endregion
         }
     }

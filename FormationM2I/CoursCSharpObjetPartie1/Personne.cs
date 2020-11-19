@@ -8,7 +8,7 @@ namespace CoursCSharpObjetPartie1
     {
         public static int compteur = 0;
         //Attributs
-        private string nom;
+        protected string nom;
         private string prenom;
         private int age;
         private Adresse adresse;
