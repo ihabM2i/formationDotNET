@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursCSharpObjetPartie1
 {
-    class Personne
+    abstract class Personne
     {
         public static int compteur = 0;
         //Attributs
@@ -39,6 +39,8 @@ namespace CoursCSharpObjetPartie1
             compteur++;
         }
 
+       
+
         public Personne(string nom, string prenom, int age)
         {
             this.nom = nom;
@@ -48,10 +50,12 @@ namespace CoursCSharpObjetPartie1
         }
 
         //Méthodes
-        public virtual void Afficher()
-        {
-            Console.WriteLine(nom + " " + Prenom); 
-        }
+        //public virtual void Afficher()
+        //{
+        //    Console.WriteLine(nom + " " + Prenom); 
+        //}
+
+        public abstract void Afficher();
 
         //public void SetNom(string n)
         //{
@@ -66,11 +70,19 @@ namespace CoursCSharpObjetPartie1
         //    return nom;
         //}
 
-        public static Personne CreatePersonne(string nom, string prenom, int age)
+        public override string ToString()
         {
-            Personne p = new Personne(nom, prenom, age);
-            return p;
+            return "Nom : " + Nom + " " +
+                "Prénom : " + Prenom + "" +
+                " Age : " + Age;
         }
+
+
+        //public static Personne CreatePersonne(string nom, string prenom, int age)
+        //{
+        //    Personne p = new Personne(nom, prenom, age);
+        //    return p;
+        //}
         
         //Déstructeur
         ~Personne()

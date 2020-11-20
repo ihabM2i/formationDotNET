@@ -83,8 +83,14 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region Correction tp 1 héritage
-            IHM ihm = new IHM();
-            ihm.Start();
+            //IHM ihm = new IHM();
+            //ihm.Start();
+            #endregion
+
+            #region suite coursPOO héritage
+            //object c = new object();
+            Personne p = new Etudiant("abadi", "ihab", 33, 4);
+            Console.WriteLine(p.ToString());
             #endregion
         }
     }

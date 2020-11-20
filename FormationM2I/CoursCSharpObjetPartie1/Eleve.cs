@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursCSharpObjetPartie1
 {
-    class Eleve : Etudiant
+    sealed class Eleve : Etudiant
     {
     }
 }

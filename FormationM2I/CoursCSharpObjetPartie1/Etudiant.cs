@@ -24,7 +24,7 @@ namespace CoursCSharpObjetPartie1
 
         public override void Afficher()
         {
-            base.Afficher();
+            //base.Afficher();
             AfficherEtudiant();
         }
 
