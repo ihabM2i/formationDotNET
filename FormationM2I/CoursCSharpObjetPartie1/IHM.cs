@@ -105,6 +105,27 @@ namespace CoursCSharpObjetPartie1
             Console.WriteLine("====Salaire des employés=====");
             for(int i=0; i < compteurEmployes; i++)
             {
+                Console.WriteLine("---------");
+                Console.WriteLine(employes[i].GetType());
+                //Convertion entre types
+                //1er solution => boxing
+                //Avant d'effectuer la convertion, on peut vérifier le type d'objet
+                //if (employes[i].GetType() == typeof(Commerciale))
+                //{
+                //    Commerciale c = (Commerciale)employes[i];
+                //    c.AfficherCommerciale();
+                //}
+                //2eme solution => en utilisant le mot clé as pour effectuer une convertion
+                //Commerciale c = employes[i] as Commerciale;
+                //if(c != null)
+                //{
+                //    c.AfficherCommerciale();
+                //}
+                //3eme solution => en utilisant le mot clé is pour effectuer la vérification du type et la convertion
+                if(employes[i] is Commerciale c)
+                {
+                    c.AfficherCommerciale();
+                }
                 employes[i].CalculerSalaire();
                 Console.WriteLine("----------");
             }

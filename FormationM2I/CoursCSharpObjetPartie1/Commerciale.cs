@@ -28,5 +28,10 @@ namespace CoursCSharpObjetPartie1
             decimal salaireReel = Salaire + chiffreAffaire * commission / 100;
             Console.WriteLine("Le salaire avec commission de " + Nom + " est " + salaireReel + " euros");
         }
+
+        public void AfficherCommerciale()
+        {
+            Console.WriteLine("Je suis un commerciale");
+        }
     }
 }
