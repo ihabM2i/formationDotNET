@@ -1,5 +1,5 @@
 ﻿using System;
-
+using CoursCSharpObjetPartie1.Classes;
 namespace CoursCSharpObjetPartie1
 {
     class Program
@@ -88,9 +88,14 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region suite coursPOO héritage
-            //object c = new object();
-            Personne p = new Etudiant("abadi", "ihab", 33, 4);
-            Console.WriteLine(p.ToString());
+            ////object c = new object();
+            //Personne p = new Etudiant("abadi", "ihab", 33, 4);
+            //Console.WriteLine(p.ToString());
+            Voiture v = new Voiture("Renault", "Laguna", 30);
+            Console.WriteLine(v);
+            v.Rouler(25);
+            Console.WriteLine(v);
+            v.Rouler(10);
             #endregion
         }
     }
