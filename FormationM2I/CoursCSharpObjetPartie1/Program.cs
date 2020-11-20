@@ -100,8 +100,22 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region cours Générique
-            Maison<Personne> maisonPersonne = new Maison<Personne>(5);
-            Maison<Voiture> maisonVoiture = new Maison<Voiture>(10);
+            //Maison<Personne> maisonPersonne = new Maison<Personne>(5);
+            //Maison<Voiture> maisonVoiture = new Maison<Voiture>(10);
+            //Pile<int> pileEntier = new Pile<int>(3);
+            //pileEntier.Empiler(1);
+            //pileEntier.Empiler(25);
+            //Console.WriteLine(pileEntier.Get(1));
+            //pileEntier.Depiler();
+            //Console.WriteLine(pileEntier.Get(1));
+
+            Pile<Voiture> pileVoitures = new Pile<Voiture>(3);
+            pileVoitures.Empiler(new Voiture("kia", "ceed", 30));
+            pileVoitures.Empiler(new Voiture("Ford", "kuga", 30));
+            Console.WriteLine(pileVoitures.Get(0));
+            Console.WriteLine(pileVoitures.Get(1));
+            pileVoitures.Depiler();
+            Console.WriteLine((pileVoitures.Get(1) != null) ? pileVoitures.Get(1).ToString() : "null");
             #endregion
         }
     }

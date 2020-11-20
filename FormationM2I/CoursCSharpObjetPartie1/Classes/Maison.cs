@@ -13,7 +13,7 @@ namespace CoursCSharpObjetPartie1.Classes
             habitants = new T[nombre];
         }
 
-        public  T Recuperer(int index)
+        public T Recuperer(int index)
         {
             return habitants[index];
         }
