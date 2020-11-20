@@ -91,11 +91,17 @@ namespace CoursCSharpObjetPartie1
             ////object c = new object();
             //Personne p = new Etudiant("abadi", "ihab", 33, 4);
             //Console.WriteLine(p.ToString());
-            Voiture v = new Voiture("Renault", "Laguna", 30);
+            //Solution exercice hértiage voiture
+            /*Voiture v = new Voiture("Renault", "Laguna", 30);
             Console.WriteLine(v);
             v.Rouler(25);
             Console.WriteLine(v);
-            v.Rouler(10);
+            v.Rouler(10);*/
+            #endregion
+
+            #region cours Générique
+            Maison<Personne> maisonPersonne = new Maison<Personne>(5);
+            Maison<Voiture> maisonVoiture = new Maison<Voiture>(10);
             #endregion
         }
     }
