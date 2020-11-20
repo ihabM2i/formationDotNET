@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using CoursCSharpObjetPartie1.Classes;
 namespace CoursCSharpObjetPartie1
 {
@@ -109,13 +111,41 @@ namespace CoursCSharpObjetPartie1
             //pileEntier.Depiler();
             //Console.WriteLine(pileEntier.Get(1));
 
-            Pile<Voiture> pileVoitures = new Pile<Voiture>(3);
-            pileVoitures.Empiler(new Voiture("kia", "ceed", 30));
-            pileVoitures.Empiler(new Voiture("Ford", "kuga", 30));
-            Console.WriteLine(pileVoitures.Get(0));
-            Console.WriteLine(pileVoitures.Get(1));
-            pileVoitures.Depiler();
-            Console.WriteLine((pileVoitures.Get(1) != null) ? pileVoitures.Get(1).ToString() : "null");
+            //Pile<Voiture> pileVoitures = new Pile<Voiture>(3);
+            //pileVoitures.Empiler(new Voiture("kia", "ceed", 30));
+            //pileVoitures.Empiler(new Voiture("Ford", "kuga", 30));
+            //Console.WriteLine(pileVoitures.Get(0));
+            //Console.WriteLine(pileVoitures.Get(1));
+            //pileVoitures.Depiler();
+            //Console.WriteLine((pileVoitures.Get(1) != null) ? pileVoitures.Get(1).ToString() : "null");
+
+            //List
+            List<int> listeEntiers = new List<int>();
+            listeEntiers.Add(10);
+            listeEntiers.Add(20);
+            listeEntiers.Add(30);
+            Console.WriteLine(listeEntiers.Count);
+            Console.WriteLine("==================");
+            foreach(int e in listeEntiers)
+            {
+                Console.WriteLine(e);
+            }
+            Console.WriteLine("==================");
+            listeEntiers.Remove(10);
+            Console.WriteLine(listeEntiers.Count);
+            Console.WriteLine("==================");
+            foreach (int e in listeEntiers)
+            {
+                Console.WriteLine(e);
+            }
+            Console.WriteLine("==================");
+            List<Voiture> listeVoitures = new List<Voiture>();
+            listeVoitures.Add(new Voiture("kia", "ceed", 30));
+            listeVoitures.Add(new Voiture("ford", "Kuga", 30));
+            foreach(Voiture v in listeVoitures)
+            {
+                Console.WriteLine(v);
+            }
             #endregion
         }
     }
