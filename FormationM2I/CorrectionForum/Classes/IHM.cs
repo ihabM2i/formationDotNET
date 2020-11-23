@@ -253,7 +253,7 @@ namespace CorrectionForum.Classes
             Console.Write("Email : ");
             string email = Console.ReadLine();
             return forum.Moderateur.Email == email;
-        }
+        } 
 
         private Abonne CheckAbonne()
         {
