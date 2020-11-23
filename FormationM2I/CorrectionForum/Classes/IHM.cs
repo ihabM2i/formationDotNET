@@ -89,7 +89,15 @@ namespace CorrectionForum.Classes
                         }
                         break;
                     case "2":
-                        ActionAbonne();
+                        Abonne abonne = CheckAbonne();
+                        if (abonne != null)
+                        {
+                            ActionAbonne(abonne);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Erreur Abonné");
+                        }
                         break;
                     case "0":
                         Environment.Exit(0);
@@ -108,12 +116,115 @@ namespace CorrectionForum.Classes
                 choix = Console.ReadLine();
                 switch(choix)
                 {
-
+                    case "1":
+                        ActionAjouterNouvelle(forum.Moderateur);
+                        break;
+                    case "2":
+                        ActionRepondreNouvelle(forum.Moderateur);
+                        break;
+                    case "3":
+                        ActionListerNouvelle();
+                        break;
+                    case "4":
+                        ActionAjouterAbonne();
+                        break;
+                    case "5":
+                        ActionBannirAbonne();
+                        break;
+                    case "6":
+                        ActionListerAbonne();
+                        break;
+                    case "7":
+                        ActionSupprimerNouvelle();
+                        break;
                 }
             } while (choix != "0");
         }
 
-        private void ActionAbonne()
+        private void ActionAjouterNouvelle(Abonne abonne)
+        {
+            Console.Write("Sujet nouvelle : ");
+            string sujet = Console.ReadLine();
+            Console.Write("Description nouvelle : ");
+            string description = Console.ReadLine();
+            abonne.AjouterNouvelle(sujet, description);
+            Console.WriteLine("*******Nouvelle ajoutée********");
+        }
+
+        private void ActionRepondreNouvelle(Abonne abonne)
+        {
+            ActionListerNouvelle();
+            Console.Write("Id de la nouvelle : ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            Nouvelle nouvelle = forum.GetNouvelleById(id);
+            if(nouvelle == null)
+            {
+                Console.WriteLine("aucune nouvelle avec cet id");
+            }
+            else
+            {
+                Console.Write("Description nouvelle : ");
+                string description = Console.ReadLine();
+                abonne.RepondreNouvelle(nouvelle, description);
+            }
+        }
+
+        private void ActionListerNouvelle()
+        {
+            Console.WriteLine("----Liste des nouvelles------");
+            foreach(Nouvelle n in forum.Nouvelles)
+            {
+                Console.WriteLine(n);
+            }
+        }
+
+        private void ActionAjouterAbonne()
+        {
+            Console.WriteLine("----Ajouter un abonné");
+            Abonne a = CreationAbonne();
+            forum.Moderateur.AjouterAbonne(a);
+            Console.WriteLine("*******Abonné ajouté********");
+        }
+
+        private void ActionBannirAbonne()
+        {
+            Console.WriteLine("-----Bannir un abonné-------");
+            Abonne ab = CheckAbonne();
+            if(ab != null)
+            {
+                forum.Moderateur.BannirAbonne(ab.Email);
+                Console.WriteLine("*****Abonné supprimé******");
+            }else
+            {
+                Console.WriteLine("----Aucun abonné avec cet email");
+            }
+        }
+
+        private void ActionListerAbonne()
+        {
+            Console.WriteLine("-----Liste des abonnés-------");
+            foreach(Abonne a in forum.Abonnes)
+            {
+                Console.WriteLine(a);
+            }
+        }
+
+        private void ActionSupprimerNouvelle()
+        {
+            ActionListerNouvelle();
+            Console.Write("Id nouvelle à supprimer : ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            if (forum.Moderateur.SupprimerNouvelle(id))
+            {
+                Console.WriteLine("*******Nouvelle supprimée");
+            }else
+            {
+                Console.WriteLine("----Aucune nouvelle avec cet id");
+            }
+
+        }
+
+        private void ActionAbonne(Abonne abonne)
         {
             Console.WriteLine("=====Menu Abonné=====");
             string choix;
@@ -123,16 +234,33 @@ namespace CorrectionForum.Classes
                 choix = Console.ReadLine();
                 switch (choix)
                 {
-
+                    case "1":
+                        ActionAjouterNouvelle(abonne);
+                        break;
+                    case "2":
+                        ActionRepondreNouvelle(abonne);
+                        break;
+                    case "3":
+                        ActionListerNouvelle();
+                        break;
                 }
             } while (choix != "0");
         }
+
 
         private bool CheckModerateur()
         {
             Console.Write("Email : ");
             string email = Console.ReadLine();
             return forum.Moderateur.Email == email;
+        }
+
+        private Abonne CheckAbonne()
+        {
+            Console.Write("Email : ");
+            string email = Console.ReadLine();
+            Abonne ab = forum.GetAbonneByEmail(email);
+            return ab;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace CorrectionForum.Classes
             Prenom = n;
             Age = a;
             Email = e;
+            Forum = f;
         }
 
         public Nouvelle CreationNouvelle(string sujet, string description)
