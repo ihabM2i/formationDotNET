@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursCSharpObjetPartie1", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionForum", "CorrectionForum\CorrectionForum.csproj", "{C7CD7B3E-EE23-4959-BD65-3276466F03DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionCompteBancaire", "CorrectionCompteBancaire\CorrectionCompteBancaire.csproj", "{026FF135-5A9E-427F-8D13-2863AE3B233F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C7CD7B3E-EE23-4959-BD65-3276466F03DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7CD7B3E-EE23-4959-BD65-3276466F03DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7CD7B3E-EE23-4959-BD65-3276466F03DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
