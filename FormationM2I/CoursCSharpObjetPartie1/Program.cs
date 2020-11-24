@@ -120,7 +120,7 @@ namespace CoursCSharpObjetPartie1
             //Console.WriteLine((pileVoitures.Get(1) != null) ? pileVoitures.Get(1).ToString() : "null");
 
             //List
-            List<int> listeEntiers = new List<int>();
+            /*List<int> listeEntiers = new List<int>();
             listeEntiers.Add(10);
             listeEntiers.Add(20);
             listeEntiers.Add(30);
@@ -145,6 +145,28 @@ namespace CoursCSharpObjetPartie1
             foreach(Voiture v in listeVoitures)
             {
                 Console.WriteLine(v);
+            }*/
+            #endregion
+
+            #region cours interface
+            //List<IVolant> volants = new List<IVolant>();
+            //volants.Add(new Oiseau());
+            //volants.Add(new Avion());
+            //foreach(IVolant v in volants)
+            //{
+            //    v.Voler();
+            //}
+            //IVolant avion = new Avion();
+            //IVolant drone = new Drone();
+            //TransportColis t = new TransportColis(avion);
+            //t.Transporter();
+            List<IAnimal> animaux = new List<IAnimal>();
+            animaux.Add(new Chien());
+            animaux.Add(new Chat());
+            animaux.Add(new Lapin());
+            foreach(IAnimal a in animaux)
+            {
+                a.Crier();
             }
             #endregion
         }
