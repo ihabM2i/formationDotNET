@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using CoursCSharpObjetPartie1.Classes;
 namespace CoursCSharpObjetPartie1
 {
@@ -160,15 +161,78 @@ namespace CoursCSharpObjetPartie1
             //IVolant drone = new Drone();
             //TransportColis t = new TransportColis(avion);
             //t.Transporter();
-            List<IAnimal> animaux = new List<IAnimal>();
+            /*List<IAnimal> animaux = new List<IAnimal>();
             animaux.Add(new Chien());
             animaux.Add(new Chat());
             animaux.Add(new Lapin());
             foreach(IAnimal a in animaux)
             {
                 a.Crier();
-            }
+            }*/
             #endregion
+
+            #region gestion des exceptions
+            //Avion a = null;
+            //a.Voler();
+            //Console.Write("Merci de saisir un entier : ");
+            //int a = Convert.ToInt32(Console.ReadLine());
+
+
+            //try
+            //{
+            //    Console.Write("Merci de saisir un entier : ");
+            //    int nombre = Convert.ToInt32(Console.ReadLine());
+            //    //Avion a = null;
+            //    //a.Voler();
+            //}
+            //catch (FormatException ex)
+            //{
+            //    Console.WriteLine("Vous n'avez pas saisi un entier " + ex.Message + " " + ex.GetType().ToString());
+            //}
+            //catch(NullReferenceException ex)
+            //{
+            //    Console.WriteLine("L'objet n'a pas été correctement instancié");
+            //}
+            //finally
+            //{
+            //    Console.WriteLine("finally instruction");
+            //}
+
+            //bool error = false;
+            //int nombre = 0;
+            //do
+            //{
+            //    try
+            //    {
+            //        Console.Write("Merci de saisir un entier : ");
+            //        nombre = Convert.ToInt32(Console.ReadLine());
+            //        error = false;
+            //    }catch(Exception e)
+            //    {
+            //        error = true;
+            //        Console.WriteLine("Erreur de format");
+            //    }
+            //} while (error);
+            //Console.WriteLine("Le nombre est de " + nombre);
+            //Etudiant e = new Etudiant();
+            //e.Age = -10;
+            //Cours regex
+            //Commencer par un caractère  => ^
+            //finir par un caractère  => $
+            //pour indiquer plusieurs possibilité => []
+            //pour indiquer le nombre de caractère => {}
+            // pour indiquer un min et un max de nombre => {min,max}
+            //pour un nombre 0 et plus => *
+            //pour un nombre 1 et plus => +
+            //pour 0 ou 1 => ?
+            string pattern = @"^[a-zA-Z0-9_\.-]+@([a-z_-]+(\.)?[a-z_-])+\.[a-z]{2,7}$";
+            // [a-zA-Z0-9_] => \w
+            //[0-9] => \d
+            string patternTelephone = @"^0[1-9]{1}([\s\.-]?\d{2}){4}$"; 
+            string chaine = "06 06-06.06.060";
+            Console.WriteLine(Regex.IsMatch(chaine, patternTelephone));
+            #endregion
+            
         }
     }
 }

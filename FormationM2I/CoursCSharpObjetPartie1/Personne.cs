@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoursCSharpObjetPartie1.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -30,7 +31,17 @@ namespace CoursCSharpObjetPartie1
         }
 
         public string Prenom { get => prenom; set => prenom = value; }
-        public int Age { get => age; set => age = value; }
+        public int Age
+        {
+            get => age;
+            set
+            {
+                if(value > 0 && value < 110)
+                    age = value;
+                else
+                    throw new AgeException();
+            }
+        }
 
         //Constructeurs
         public Personne()
@@ -39,7 +50,7 @@ namespace CoursCSharpObjetPartie1
             compteur++;
         }
 
-       
+
 
         public Personne(string nom, string prenom, int age)
         {
@@ -83,7 +94,7 @@ namespace CoursCSharpObjetPartie1
         //    Personne p = new Personne(nom, prenom, age);
         //    return p;
         //}
-        
+
         //Déstructeur
         ~Personne()
         {
