@@ -25,7 +25,7 @@ namespace CorrectionCompteBancaire.Classes
             this.solde = solde;
         }
 
-        public bool Depot(decimal montant)
+        public virtual bool Depot(decimal montant)
         {
             Operation o = new Operation(montant);
             Operations.Add(o);
@@ -33,7 +33,7 @@ namespace CorrectionCompteBancaire.Classes
             return true;
         }
 
-        public bool Retrait(decimal montant)
+        public virtual bool Retrait(decimal montant)
         {
             if(Solde >= montant)
             {

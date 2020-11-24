@@ -20,6 +20,7 @@ namespace CorrectionCompteBancaire.Classes
             Console.WriteLine("2----Effectuer un dépôt");
             Console.WriteLine("3----Effectuer un retrait");
             Console.WriteLine("4----Afficher opération et solde");
+            Console.WriteLine("5----Calcule Interet");
         }
 
         private void MenuCreationCompte()
@@ -51,6 +52,9 @@ namespace CorrectionCompteBancaire.Classes
                     case "4":
                         ActionAffichage();
                         break;
+                    case "5":
+                        ActionCalculeInteret();
+                        break;
                 }
             } while (choix != "0");
         }
@@ -71,11 +75,12 @@ namespace CorrectionCompteBancaire.Classes
             string choix = Console.ReadLine();
             Compte compte = null;
             Client client = ActionCreationClient();
-            switch(choix)
+            string response = "";
+            switch (choix)
             {
                 case "1":
                     Console.Write("Dépôt initial : ((o)ui/ (n)on)");
-                    string response = Console.ReadLine();
+                    response = Console.ReadLine();
                     if(response == "o")
                     {
                         Console.Write("Solde : ");
@@ -88,8 +93,36 @@ namespace CorrectionCompteBancaire.Classes
                     }
                     break;
                 case "2":
+                    Console.Write("Taux Interet : ");
+                    decimal taux = Convert.ToDecimal(Console.ReadLine());
+                    Console.Write("Dépôt initial : ((o)ui/ (n)on)");
+                    response = Console.ReadLine();
+                    if (response == "o")
+                    {
+                        Console.Write("Solde : ");
+                        decimal soldeInitial = Convert.ToDecimal(Console.ReadLine());
+                        compte = new CompteEpargne(client, taux, soldeInitial);
+                    }
+                    else
+                    {
+                        compte = new CompteEpargne(client, taux);
+                    }
                     break;
                 case "3":
+                    Console.Write("Cout opération : ");
+                    decimal cout = Convert.ToDecimal(Console.ReadLine());
+                    Console.Write("Dépôt initial : ((o)ui/ (n)on)");
+                    response = Console.ReadLine();
+                    if (response == "o")
+                    {
+                        Console.Write("Solde : ");
+                        decimal soldeInitial = Convert.ToDecimal(Console.ReadLine());
+                        compte = new ComptePayant(client, cout, soldeInitial);
+                    }
+                    else
+                    {
+                        compte = new ComptePayant(client, cout);
+                    }
                     break;
             }
             if(compte != null)
@@ -160,6 +193,26 @@ namespace CorrectionCompteBancaire.Classes
             int numero = Convert.ToInt32(Console.ReadLine());
             Compte compte = banque.GetCompteById(numero);
             return compte;
+        }
+
+        private void ActionCalculeInteret()
+        {
+            Compte compte = ActionChercherCompte();
+            if (compte == null)
+            {
+                Console.WriteLine("Aucun compte avec ce numéro");
+            }
+            else
+            {
+                if(compte is CompteEpargne compteEpargne)
+                {
+                    compteEpargne.CalculeInteret();
+                }
+                else
+                {
+                    Console.WriteLine("Ce n'est pas un compte epargne");
+                }
+            }
         }
     }
 }
