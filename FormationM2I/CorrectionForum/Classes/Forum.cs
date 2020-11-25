@@ -28,30 +28,32 @@ namespace CorrectionForum.Classes
 
         public Nouvelle GetNouvelleById(int id)
         {
-            Nouvelle nouvelle = null;
-            foreach(Nouvelle n in Nouvelles)
-            {
-                if(n.Id == id)
-                {
-                    nouvelle = n;
-                    break;
-                }
-            }
-            return nouvelle;
+            //Nouvelle nouvelle = null;
+            //foreach(Nouvelle n in Nouvelles)
+            //{
+            //    if(n.Id == id)
+            //    {
+            //        nouvelle = n;
+            //        break;
+            //    }
+            //}
+            //return nouvelle;
+            return Nouvelles.Find(n => n.Id == id);
         }
 
         public Abonne GetAbonneByEmail(string email)
         {
-            Abonne ab = null;
-            foreach (Abonne a in Abonnes)
-            {
-                if (a.Email == email)
-                {
-                    ab = a;
-                    break;
-                }
-            }
-            return ab;
+            //Abonne ab = null;
+            //foreach (Abonne a in Abonnes)
+            //{
+            //    if (a.Email == email)
+            //    {
+            //        ab = a;
+            //        break;
+            //    }
+            //}
+            //return ab;
+            return Abonnes.Find(a => a.Email == email);
         }
 
         public override string ToString()

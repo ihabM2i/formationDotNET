@@ -27,7 +27,7 @@ namespace CorrectionCompteBancaire.Classes
             //}
             //Compte compte = Comptes.FirstOrDefault(c => c.Numero == id);
             //return compte;
-            return Comptes.FirstOrDefault(c => c.Numero == id);
+            return Comptes.Find(c => c.Numero == id);
         }
     }
 }
