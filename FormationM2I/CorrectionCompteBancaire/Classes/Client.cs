@@ -10,9 +10,36 @@ namespace CorrectionCompteBancaire.Classes
         private string prenom;
         private string telephone;
 
-        public string Nom { get => nom; set => nom = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
-        public string Telephone { get => telephone; set => telephone = value; }
+        public string Nom
+        {
+            get => nom; set
+            {
+                if (Tools.CheckName(value))
+                    nom = value;
+                else
+                    throw new Exception("Erreur nom");
+            }
+        }
+        public string Prenom
+        {
+            get => prenom; set
+            {
+                if (Tools.CheckName(value))
+                    prenom = value;
+                else
+                    throw new Exception("Erreur prénom");
+            }
+        }
+        public string Telephone
+        {
+            get => telephone; set
+            {
+                if (Tools.CheckPhone(value))
+                    telephone = value;
+                else
+                    throw new Exception("Erreur téléphone");
+            }
+        }
 
         public Client()
         {

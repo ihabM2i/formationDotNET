@@ -60,13 +60,56 @@ namespace CorrectionCompteBancaire.Classes
         }
         private Client ActionCreationClient()
         {
-            Console.Write("Nom : ");
-            string nom = Console.ReadLine();
-            Console.Write("Prénom : ");
-            string prenom = Console.ReadLine();
-            Console.Write("Téléphone : ");
-            string telephone = Console.ReadLine();
-            return new Client(nom, prenom, telephone);
+            Client client = new Client();
+            //bool error = false;
+            //do
+            //{
+            //    Console.Write("Nom : ");
+            //    try
+            //    {
+            //        client.Nom = Console.ReadLine();
+            //        error = false;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //        error = true;
+            //    }
+            //} while (error);
+
+            //do
+            //{
+            //    Console.Write("Prénom : ");
+            //    try
+            //    {
+            //        client.Prenom = Console.ReadLine();
+            //        error = false;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //        error = true;
+            //    }
+            //} while (error);
+
+            //do
+            //{
+            //    Console.Write("Téléphone : ");
+            //    try
+            //    {
+            //        client.Telephone = Console.ReadLine();
+            //        error = false;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Console.WriteLine(ex.Message);
+            //        error = true;
+            //    }
+            //} while (error);    
+            Tools.TryParseProperty("Nom : ", client, "Nom");
+            Tools.TryParseProperty("Prénom : ", client, "Prenom");
+            Tools.TryParseProperty("Téléphone : ", client, "Telephone");
+            return client;
         }
         private void ActionCreationCompte()
         {
