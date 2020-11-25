@@ -233,7 +233,7 @@ namespace CoursCSharpObjetPartie1
             //Console.WriteLine(Regex.IsMatch(chaine, patternTelephone));
             #endregion
 
-            #region passage de paramètres dans une méthode
+            #region passage de paramètres dans une méthode et délegate
             //passage par valeur;
             //int a = 10;
             //Afficher(a);
@@ -284,17 +284,51 @@ namespace CoursCSharpObjetPartie1
             //    Console.WriteLine("Merci de saisir votre age : ");
             //    error = !Int32.TryParse(Console.ReadLine(), out age);
             //} while (error);
-            Calculatrice c = new Calculatrice();
-            //c.Calcule(10, 20, c.Addition);
-            c.Calcule(10, 20, (a, b) => a + b);
-            c.Calcule(10, 20, c.Soustraction);
-            c.Calcule(10, 30, Multiplication);
-            //c.Calcule(10, 30, Division);
-            c.Calcule(10, 30, delegate(int a, int b) { return a / b; });
-            c.Calcule(10, 30, (a,b) => a / b );
+            //Calculatrice c = new Calculatrice();
+            ////c.Calcule(10, 20, c.Addition);
+            //c.Calcule(10, 20, (a, b) => a + b);
+            //c.Calcule(10, 20, c.Soustraction);
+            //c.Calcule(10, 30, Multiplication);
+            ////c.Calcule(10, 30, Division);
+            //c.Calcule(10, 30, delegate(int a, int b) { return a / b; });
+            //c.Calcule(10, 30, (a,b) => a / b );
             ////c.StartAll();
             //c.SecondStart(10, 20);
             #endregion
+
+            #region cours event
+            Voiture v = new Voiture("ford", "kuga", 30, 35000);
+            v.Promotion += NotificationReductionEmail;
+            v.Promotion += NotificationReductionSMS;
+            int countPromotion = 0;
+            string choix;
+            do
+            {
+                Console.Write("Redution ? (o/n)");
+                choix = Console.ReadLine();
+                if(choix == "o")
+                {
+                    Console.Write("Montant de la réduction : ");
+                    decimal reduction;
+                    Decimal.TryParse(Console.ReadLine(), out reduction);
+                    v.Reduction(reduction);
+                    countPromotion++;
+                    if(countPromotion == 3)
+                    {
+                        v.Promotion -= NotificationReductionSMS;
+                    } 
+                }
+            } while (choix != "0");
+            #endregion
+        }
+
+        static void NotificationReductionEmail(decimal p, string m)
+        {
+            Console.WriteLine($"Envoie email avec reduction sur la voiture {m} le nouveau prix est de: {p} euros");
+        }
+        static void NotificationReductionSMS(decimal p, string m)
+        {
+            Console.WriteLine($"Envoie sms avec reduction sur la voiture {m} le nouveau prix est de: {p} euros");
         }
 
         //static void Afficher(ref int nombre)
