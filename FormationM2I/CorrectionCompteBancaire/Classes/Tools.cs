@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -49,7 +50,14 @@ namespace CorrectionCompteBancaire.Classes
                 try
                 {
                     //Pour modifier une propriété d'un objet d'une manière dynamique en fonction du nom de la propriété
-                    objet.GetType().GetProperty(propertyName).SetValue(objet, Console.ReadLine());
+                    try
+                    {
+                        objet.GetType().GetProperty(propertyName).SetValue(objet, Console.ReadLine());
+                    }
+                    catch (TargetInvocationException ex)
+                    {
+                        throw ex.InnerException;
+                    }                    
                     error = false;
                 }
                 catch (Exception ex)

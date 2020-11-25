@@ -277,13 +277,23 @@ namespace CoursCSharpObjetPartie1
             //Console.WriteLine(solde);
             //CalculeReduction(ref solde, 20);
             //Console.WriteLine(solde);
-            int age;
-            bool error = false;
-            do
-            {
-                Console.WriteLine("Merci de saisir votre age : ");
-                error = !Int32.TryParse(Console.ReadLine(), out age);
-            } while (error);
+            //int age;
+            //bool error = false;
+            //do
+            //{
+            //    Console.WriteLine("Merci de saisir votre age : ");
+            //    error = !Int32.TryParse(Console.ReadLine(), out age);
+            //} while (error);
+            Calculatrice c = new Calculatrice();
+            //c.Calcule(10, 20, c.Addition);
+            c.Calcule(10, 20, (a, b) => a + b);
+            c.Calcule(10, 20, c.Soustraction);
+            c.Calcule(10, 30, Multiplication);
+            //c.Calcule(10, 30, Division);
+            c.Calcule(10, 30, delegate(int a, int b) { return a / b; });
+            c.Calcule(10, 30, (a,b) => a / b );
+            ////c.StartAll();
+            //c.SecondStart(10, 20);
             #endregion
         }
 
@@ -313,6 +323,15 @@ namespace CoursCSharpObjetPartie1
         static void CalculeReduction(ref decimal solde, decimal reduction)
         {
             solde -= reduction;
+        }
+
+        static int Multiplication(int a, int b)
+        {
+            return a * b;
+        }
+        static int Division(int a, int b)
+        {
+            return a / b;
         }
     }
 }
