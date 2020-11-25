@@ -10,6 +10,8 @@ namespace CoursCSharpObjetPartie1.Classes
         int taille;
         int compteur = 0;
 
+        public event Action PilePleine;
+
         public Pile(int t)
         {
             taille = t;
@@ -22,6 +24,13 @@ namespace CoursCSharpObjetPartie1.Classes
             {
                 elements[compteur] = element;
                 compteur++;
+            }
+            else
+            {
+                if(PilePleine != null)
+                {
+                    PilePleine();
+                }
             }
         }
 

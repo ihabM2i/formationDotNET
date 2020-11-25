@@ -297,26 +297,48 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region cours event
-            Voiture v = new Voiture("ford", "kuga", 30, 35000);
-            v.Promotion += NotificationReductionEmail;
-            v.Promotion += NotificationReductionSMS;
-            int countPromotion = 0;
+            //Voiture v = new Voiture("ford", "kuga", 30, 35000);
+            //v.Promotion += NotificationReductionEmail;
+            //v.Promotion += NotificationReductionSMS;
+            //int countPromotion = 0;
+            //string choix;
+            //do
+            //{
+            //    Console.Write("Redution ? (o/n)");
+            //    choix = Console.ReadLine();
+            //    if(choix == "o")
+            //    {
+            //        Console.Write("Montant de la réduction : ");
+            //        decimal reduction;
+            //        Decimal.TryParse(Console.ReadLine(), out reduction);
+            //        v.Reduction(reduction);
+            //        countPromotion++;
+            //        if(countPromotion == 3)
+            //        {
+            //            v.Promotion -= NotificationReductionSMS;
+            //        } 
+            //    }
+            //} while (choix != "0");
+
+            Pile<int> pile = new Pile<int>(3);
+            pile.PilePleine += NotificationPilePleine;
+            pile.PilePleine += () => { Console.WriteLine("Notification sms pile pleine"); };
             string choix;
             do
             {
-                Console.Write("Redution ? (o/n)");
+                Console.WriteLine("1--Empiler un élément");
+                Console.WriteLine("2--Depiler");
                 choix = Console.ReadLine();
-                if(choix == "o")
+                if(choix == "1")
                 {
-                    Console.Write("Montant de la réduction : ");
-                    decimal reduction;
-                    Decimal.TryParse(Console.ReadLine(), out reduction);
-                    v.Reduction(reduction);
-                    countPromotion++;
-                    if(countPromotion == 3)
-                    {
-                        v.Promotion -= NotificationReductionSMS;
-                    } 
+                    Console.Write("Element à empiler : ");
+                    int element;
+                    Int32.TryParse(Console.ReadLine(), out element);
+                    pile.Empiler(element);
+                }
+                else if(choix == "2")
+                {
+                    pile.Depiler();
                 }
             } while (choix != "0");
             #endregion
@@ -329,6 +351,11 @@ namespace CoursCSharpObjetPartie1
         static void NotificationReductionSMS(decimal p, string m)
         {
             Console.WriteLine($"Envoie sms avec reduction sur la voiture {m} le nouveau prix est de: {p} euros");
+        }
+
+        static void NotificationPilePleine()
+        {
+            Console.WriteLine("La pile est pleine");
         }
 
         //static void Afficher(ref int nombre)
