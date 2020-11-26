@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursCSharpPartie1", "Cours
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursCSharpObjetPartie1", "CoursCSharpObjetPartie1\CoursCSharpObjetPartie1.csproj", "{89D8A22F-6D7D-4715-B8F4-F6D2CB744C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionForum", "CorrectionForum\CorrectionForum.csproj", "{C7CD7B3E-EE23-4959-BD65-3276466F03DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionForum", "CorrectionForum\CorrectionForum.csproj", "{C7CD7B3E-EE23-4959-BD65-3276466F03DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionCompteBancaire", "CorrectionCompteBancaire\CorrectionCompteBancaire.csproj", "{026FF135-5A9E-427F-8D13-2863AE3B233F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionCompteBancaire", "CorrectionCompteBancaire\CorrectionCompteBancaire.csproj", "{026FF135-5A9E-427F-8D13-2863AE3B233F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annuaire", "Annuaire\Annuaire.csproj", "{698AAB98-E146-436B-AEFB-84032031CB25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{026FF135-5A9E-427F-8D13-2863AE3B233F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{698AAB98-E146-436B-AEFB-84032031CB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{698AAB98-E146-436B-AEFB-84032031CB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{698AAB98-E146-436B-AEFB-84032031CB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{698AAB98-E146-436B-AEFB-84032031CB25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

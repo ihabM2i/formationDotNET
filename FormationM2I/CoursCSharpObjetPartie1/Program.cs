@@ -445,6 +445,7 @@ namespace CoursCSharpObjetPartie1
                     etudiants.Add(new Etudiant(content[0], content[1], Convert.ToInt32(content[2]), Convert.ToInt32(content[3])));
                 }
             }
+
             reader.Close();
             #endregion
         }
