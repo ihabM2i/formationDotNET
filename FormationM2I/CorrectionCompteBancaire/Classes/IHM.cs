@@ -145,6 +145,7 @@ namespace CorrectionCompteBancaire.Classes
                         Console.Write("Solde : ");
                         decimal soldeInitial = Convert.ToDecimal(Console.ReadLine());
                         compte = new CompteEpargne(client, taux, soldeInitial);
+                        (compte as CompteEpargne).DoubleEpargne += NotificationDoubleCompteEpargne;
                     }
                     else
                     {
@@ -170,6 +171,7 @@ namespace CorrectionCompteBancaire.Classes
             }
             if(compte != null)
             {
+                compte.ADecouvert += NotificationCompteADecouvert;
                 banque.Comptes.Add(compte);
                 Console.WriteLine("Compte bancaire crée avec le numéro " + compte.Numero);
             }
@@ -235,6 +237,10 @@ namespace CorrectionCompteBancaire.Classes
             Console.Write("Numéro de compte : ");
             int numero = Convert.ToInt32(Console.ReadLine());
             Compte compte = banque.GetCompteById(numero);
+            //if(compte!= null)
+            //{
+            //    compte.ADecouvert += NotificationCompteADecouvert;
+            //}
             return compte;
         }
 
@@ -256,6 +262,17 @@ namespace CorrectionCompteBancaire.Classes
                     Console.WriteLine("Ce n'est pas un compte epargne");
                 }
             }
+        }
+
+
+        private void NotificationCompteADecouvert(decimal solde, int numero)
+        {
+            Console.WriteLine($"Le compte N° {numero} est dans le rouge, le solde est de : {solde} euros");
+        }
+
+        private void NotificationDoubleCompteEpargne(decimal solde, int nbre)
+        {
+            Console.WriteLine($"Bravo votre epargne a doublé, votre nouveau solde est de {solde} euros en {nbre} années");
         }
     }
 }

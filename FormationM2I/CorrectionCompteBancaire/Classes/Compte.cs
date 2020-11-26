@@ -12,6 +12,8 @@ namespace CorrectionCompteBancaire.Classes
         private decimal solde;
         private Client client;
         private List<Operation> operations;
+
+        public event Action<decimal, int> ADecouvert;
         public int Numero { get => numero; }
         public decimal Solde { get => solde; }
         public Client Client { get => client; set => client = value; }
@@ -35,14 +37,26 @@ namespace CorrectionCompteBancaire.Classes
 
         public virtual bool Retrait(decimal montant)
         {
-            if(Solde >= montant)
+            //if(Solde >= montant)
+            //{
+            //    Operation o = new Operation(montant * -1);
+            //    Operations.Add(o);
+            //    solde -= montant;
+            //    return true;
+            //}
+            //return false;
+            Operation o = new Operation(montant * -1);
+            Operations.Add(o);
+            solde -= montant;
+            if(solde < 0)
             {
-                Operation o = new Operation(montant * -1);
-                Operations.Add(o);
-                solde -= montant;
-                return true;
+                if(ADecouvert != null)
+                {
+                    ADecouvert(solde, Numero);
+                }
             }
-            return false;
+            return true;
+
         }
 
         public override string ToString()
