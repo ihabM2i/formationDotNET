@@ -375,7 +375,7 @@ namespace CoursCSharpObjetPartie1
             //On demande le contenu du fichier ligne par ligne 
             //Si l'utilisateur saisi 0, on sauvegarde le fichier(si le fichier existe, on ajoute le contenu, sinon on le crée)
             //Correction Exercice
-            Console.Write("Merci de saisir le nom du fichier : ");
+            /*Console.Write("Merci de saisir le nom du fichier : ");
             string nomFichier = Console.ReadLine();
             string contenuFichier = "";
             //Lecture si fichier existe
@@ -400,7 +400,7 @@ namespace CoursCSharpObjetPartie1
                     writer.WriteLine(ligne);
                 }
             } while (ligne != "0");
-            writer.Close();
+            writer.Close();*/
             //2ème possibilité
             //string ligne;
             //do
@@ -415,6 +415,37 @@ namespace CoursCSharpObjetPartie1
             //StreamWriter writer = new StreamWriter(nomFichier);
             //writer.WriteLine(contenuFichier);
             //writer.Close();
+
+            //Ecriture des objets dans un csv
+            //List<Etudiant> etudiants = new List<Etudiant>();
+            //etudiants.Add(new Etudiant("toto", "tata", 10, 1));
+            //etudiants.Add(new Etudiant("titi", "minet", 20, 1));
+            //StreamWriter writer = new StreamWriter("etudiants.csv");
+            //writer.WriteLine("nom;prenom;age;niveau");
+            //foreach(Etudiant e in etudiants)
+            //{
+            //    writer.WriteLine($"{e.Nom};{e.Prenom};{e.Age};{e.Niveau}");
+            //}
+            //writer.Close();
+            //Lecture à partir d'un csv
+            List<Etudiant> etudiants = new List<Etudiant>();
+            StreamReader reader = new StreamReader("etudiants.csv");
+            string ligne = reader.ReadLine();
+            //do
+            //{
+            //    ligne = reader.ReadLine();
+            //} while (ligne != null);
+            while(ligne != null)
+            {
+                ligne =reader.ReadLine();
+                if (ligne != null)
+                {
+                    string[] content = ligne.Split(';');
+                    Console.WriteLine(ligne);
+                    etudiants.Add(new Etudiant(content[0], content[1], Convert.ToInt32(content[2]), Convert.ToInt32(content[3])));
+                }
+            }
+            reader.Close();
             #endregion
         }
 
