@@ -352,8 +352,8 @@ namespace CoursCSharpObjetPartie1
             //writer.Close();
             //Lecture d'un fichier txt par exemple
             //verifier qu'un fichier existe
-            string path = @"C:\Users\ihab\Desktop\FormationM2INET\test.csv";
-            string folderPath = @"C:\Users\ihab\Desktop\FormationM2INET";
+            //string path = @"C:\Users\ihab\Desktop\FormationM2INET\test.csv";
+            //string folderPath = @"C:\Users\ihab\Desktop\FormationM2INET";
             //if (File.Exists(path))
             //{
             //    StreamReader reader = new StreamReader(path);
@@ -367,10 +367,54 @@ namespace CoursCSharpObjetPartie1
             //pour gérer les fichiers (Fichier exists, supprimer un fichier, ouvrir un fichier) => on utilise les méthodes statiques de la classe File
             //pour agir sur les dossiers (Directory)
             //Directory.CreateDirectory(folderPath + @"\fichiers");
-            foreach(string f in Directory.GetFiles(folderPath, "*.txt"))
+            //foreach(string f in Directory.GetFiles(folderPath, "*.txt"))
+            //{
+            //    Console.WriteLine(f);
+            //}
+            //On commence par demander le nom du fichier (.txt)
+            //On demande le contenu du fichier ligne par ligne 
+            //Si l'utilisateur saisi 0, on sauvegarde le fichier(si le fichier existe, on ajoute le contenu, sinon on le crée)
+            //Correction Exercice
+            Console.Write("Merci de saisir le nom du fichier : ");
+            string nomFichier = Console.ReadLine();
+            string contenuFichier = "";
+            //Lecture si fichier existe
+            if(File.Exists(nomFichier))
             {
-                Console.WriteLine(f);
+                StreamReader reader = new StreamReader(nomFichier);
+                contenuFichier += reader.ReadToEnd();
+                reader.Close();
             }
+            //Ecriture du fichier
+            StreamWriter writer = new StreamWriter(nomFichier);
+            if(contenuFichier != "")
+            {
+                writer.WriteLine(contenuFichier);
+            }
+            string ligne;
+            do
+            {
+                ligne = Console.ReadLine();
+                if(ligne != "0")
+                {
+                    writer.WriteLine(ligne);
+                }
+            } while (ligne != "0");
+            writer.Close();
+            //2ème possibilité
+            //string ligne;
+            //do
+            //{
+            //    ligne = Console.ReadLine();
+            //    if (ligne != "0")
+            //    {
+            //        contenuFichier += "\n" + ligne;
+            //    }
+            //} while (ligne != "0");
+
+            //StreamWriter writer = new StreamWriter(nomFichier);
+            //writer.WriteLine(contenuFichier);
+            //writer.Close();
             #endregion
         }
 
