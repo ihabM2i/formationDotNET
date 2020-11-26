@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CoursCSharpObjetPartie1.Classes;
@@ -39,6 +40,7 @@ namespace CoursCSharpObjetPartie1
             //Console.WriteLine(Personne.compteur);
 
             #endregion
+
             #region Correction exercice 1 poo
             /*Salarie s1 = new Salarie();
             s1.Nom = "s1";
@@ -320,27 +322,55 @@ namespace CoursCSharpObjetPartie1
             //    }
             //} while (choix != "0");
 
-            Pile<int> pile = new Pile<int>(3);
-            pile.PilePleine += NotificationPilePleine;
-            pile.PilePleine += () => { Console.WriteLine("Notification sms pile pleine"); };
-            string choix;
-            do
+            //Pile<int> pile = new Pile<int>(3);
+            //pile.PilePleine += NotificationPilePleine;
+            //pile.PilePleine += () => { Console.WriteLine("Notification sms pile pleine"); };
+            //string choix;
+            //do
+            //{
+            //    Console.WriteLine("1--Empiler un élément");
+            //    Console.WriteLine("2--Depiler");
+            //    choix = Console.ReadLine();
+            //    if(choix == "1")
+            //    {
+            //        Console.Write("Element à empiler : ");
+            //        int element;
+            //        Int32.TryParse(Console.ReadLine(), out element);
+            //        pile.Empiler(element);
+            //    }
+            //    else if(choix == "2")
+            //    {
+            //        pile.Depiler();
+            //    }
+            //} while (choix != "0");
+            #endregion
+
+            #region Gestion de fichiers
+            //Ecrire dans un fichier txt par exemple
+            //StreamWriter writer = new StreamWriter(@"C:\Users\ihab\Desktop\FormationM2INET\test.html");
+            //writer.WriteLine("<h1>Bonjour tout le monde</h1>");
+            //writer.Close();
+            //Lecture d'un fichier txt par exemple
+            //verifier qu'un fichier existe
+            string path = @"C:\Users\ihab\Desktop\FormationM2INET\test.csv";
+            string folderPath = @"C:\Users\ihab\Desktop\FormationM2INET";
+            //if (File.Exists(path))
+            //{
+            //    StreamReader reader = new StreamReader(path);
+            //    Console.WriteLine(reader.ReadToEnd());
+            //    reader.Close();
+            //}else
+            //{
+            //    Console.WriteLine("Aucun fichier trouvé");
+            //}
+
+            //pour gérer les fichiers (Fichier exists, supprimer un fichier, ouvrir un fichier) => on utilise les méthodes statiques de la classe File
+            //pour agir sur les dossiers (Directory)
+            //Directory.CreateDirectory(folderPath + @"\fichiers");
+            foreach(string f in Directory.GetFiles(folderPath, "*.txt"))
             {
-                Console.WriteLine("1--Empiler un élément");
-                Console.WriteLine("2--Depiler");
-                choix = Console.ReadLine();
-                if(choix == "1")
-                {
-                    Console.Write("Element à empiler : ");
-                    int element;
-                    Int32.TryParse(Console.ReadLine(), out element);
-                    pile.Empiler(element);
-                }
-                else if(choix == "2")
-                {
-                    pile.Depiler();
-                }
-            } while (choix != "0");
+                Console.WriteLine(f);
+            }
             #endregion
         }
 
