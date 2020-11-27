@@ -23,6 +23,12 @@ namespace CorrectionCompteBancaire.Classes
 
         }
 
+        public Operation(int numero, DateTime date, decimal montant) : this(montant)
+        {
+            id = numero;
+            dateOperation = date;
+        }
+
         public override string ToString()
         {
             return $"Numéro : {Id}, Date Opération : {DateOperation}, Montant : {Montant}";

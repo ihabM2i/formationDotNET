@@ -42,6 +42,8 @@ namespace Annuaire
                             Console.WriteLine("Aucun contact avec ce nom");
                         }
                         break;
+                    case "0":
+                        break;
                 }
             } while (choix != "0");
         }

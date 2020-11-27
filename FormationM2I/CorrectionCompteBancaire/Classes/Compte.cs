@@ -26,7 +26,10 @@ namespace CorrectionCompteBancaire.Classes
             Operations = new List<Operation>();
             this.solde = solde;
         }
-
+        public Compte(int numero,Client client, decimal solde = 0) : this(client, solde)
+        {
+            this.numero = numero;
+        }
         public virtual bool Depot(decimal montant)
         {
             Operation o = new Operation(montant);

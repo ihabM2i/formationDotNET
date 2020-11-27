@@ -55,6 +55,9 @@ namespace CorrectionCompteBancaire.Classes
                     case "5":
                         ActionCalculeInteret();
                         break;
+                    case "0":
+                        banque.Sauvegarde();
+                        break;
                 }
             } while (choix != "0");
         }
@@ -128,11 +131,11 @@ namespace CorrectionCompteBancaire.Classes
                     {
                         Console.Write("Solde : ");
                         decimal soldeInitial = Convert.ToDecimal(Console.ReadLine());
-                        compte = new Compte(client, soldeInitial);
+                        compte = new Compte(banque.LastCompteNumber()+1,client, soldeInitial);
                     }
                     else
                     {
-                        compte = new Compte(client);
+                        compte = new Compte(banque.LastCompteNumber() + 1,client);
                     }
                     break;
                 case "2":

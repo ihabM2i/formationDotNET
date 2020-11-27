@@ -9,10 +9,13 @@ namespace CorrectionCompteBancaire.Classes
     {
         List<Compte> comptes;
         public List<Compte> Comptes { get => comptes; set => comptes = value; }
+        
 
+        private Sauvegarde sv;
         public Banque()
         {
-            Comptes = new List<Compte>();
+            sv = new Sauvegarde();
+            Comptes = sv.GetComptes();
         }
         public Compte GetCompteById(int id)
         {
@@ -29,5 +32,17 @@ namespace CorrectionCompteBancaire.Classes
             //return compte;
             return Comptes.Find(c => c.Numero == id);
         }
+
+        public void Sauvegarde()
+        {
+            sv.Save(Comptes);
+        }
+
+        public int LastCompteNumber()
+        {
+            return Comptes.Count;
+        }
+
+        
     }
 }
