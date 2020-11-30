@@ -51,5 +51,40 @@ namespace CoursTestUnitaire
             //Assert
             Assert.AreEqual(1,forum.Nouvelles.Count);
         }
+
+        [TestMethod]
+        public void TestAjouterAbonne()
+        {
+            //Arrange
+            forum.Moderateur = new Moderateur("test", "test", 30, "ihab@utopios.net", forum);
+            Abonne a = new Abonne("tt", "ttt", 30, "ttt@ttt.fr", forum);
+            //Act
+            forum.Moderateur.AjouterAbonne(a);
+
+            //Assert
+            Assert.AreEqual(1, forum.Abonnes.Count);
+        }
+
+        [TestMethod]
+        public void TestBannirAbonne_TRUE()
+        {
+            //Arrange
+            forum.Moderateur = new Moderateur("test", "test", 30, "ihab@utopios.net", forum);
+            Abonne a = new Abonne("tt", "ttt", 30, "ttt@ttt.fr", forum);
+            forum.Moderateur.AjouterAbonne(a);
+            //Act
+            bool result = forum.Moderateur.BannirAbonne("ttt@ttt.fr");
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void TestBannirAbonne_FALSE()
+        {
+            //Arrange
+            forum.Moderateur = new Moderateur("test", "test", 30, "ihab@utopios.net", forum);
+            //Act
+            bool result = forum.Moderateur.BannirAbonne("ttt@ttt.fr");
+            Assert.IsFalse(result);
+        }
     }
 }
