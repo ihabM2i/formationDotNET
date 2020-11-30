@@ -21,5 +21,31 @@ namespace CoursTestUnitaire
             //Assert
             Assert.AreEqual(30, result);
         }
+
+        [TestMethod]
+        public void SoustractionTest()
+        {
+            //Arrange
+            Calculatrice c = new Calculatrice();
+
+            //Act
+            double result = c.Soustraction(10, 20);
+
+            //Assert
+            Assert.AreEqual(-10, result);
+        }
+
+        [TestMethod]
+        public void CalculeTest()
+        {
+            //Assert
+            Assert.ThrowsException<Exception>(ActCalcule);
+        }
+
+        private void ActCalcule()
+        {
+            Calculatrice c = new Calculatrice();
+            c.Calcule(10, 20, c.Addition);
+        }
     }
 }

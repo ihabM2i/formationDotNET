@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionForum.Classes
 {
-    class Nouvelle
+    public class Nouvelle
     {
         int id;
         string sujet;

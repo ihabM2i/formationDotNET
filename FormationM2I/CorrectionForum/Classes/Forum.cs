@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionForum.Classes
 {
-    class Forum
+    public class Forum
     {
         string nom;
         DateTime dateCreation;

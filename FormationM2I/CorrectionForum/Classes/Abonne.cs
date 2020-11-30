@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionForum.Classes
 {
-    class Abonne
+    public class Abonne
     {
         string nom;
         string prenom;

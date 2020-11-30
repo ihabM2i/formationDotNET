@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CorrectionForum.Classes
 {
-    class Moderateur : Abonne
+    public class Moderateur : Abonne
     {
         public Moderateur(string n, string p, int a, string e, Forum f) : base(n,p, a,e, f)
         {
