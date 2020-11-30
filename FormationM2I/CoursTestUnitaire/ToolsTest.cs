@@ -51,5 +51,77 @@ namespace CoursTestUnitaire
             //Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void WordCountTest_1()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            //Act
+
+            int nb = tools.WordWount("Bonjour");
+
+            Assert.AreEqual(1, nb);
+        }
+
+        [TestMethod]
+        public void WordCountTest_1_Bis()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            //Act
+
+            int nb = tools.WordWount("Bonjour !");
+
+            Assert.AreEqual(1, nb);
+        }
+        [TestMethod]
+        public void WordCountTest_1_Ter()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            //Act
+
+            int nb = tools.WordWount("Rendez-vous");
+
+            Assert.AreEqual(1, nb);
+        }
+
+        [TestMethod]
+        public void WordCountTest_Miltiple()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            int nb = tools.WordWount("Bonjour tout le monde");
+
+            Assert.AreEqual(4, nb);
+        }
+
+        
+        [TestMethod]
+        public void WordCountTest_Miltiple_2()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            int nb = tools.WordWount("Bonjour tout le monde ");
+
+            Assert.AreEqual(4, nb);
+        }
+        
+        [TestMethod]
+        public void WordCountTest_Empty()
+        {
+            //Arrange
+            Tools tools = new Tools();
+
+            int nb = tools.WordWount("");
+
+            Assert.AreEqual(0, nb);
+        }
     }
 }
