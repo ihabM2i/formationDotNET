@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionForum", "Correcti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionCompteBancaire", "CorrectionCompteBancaire\CorrectionCompteBancaire.csproj", "{026FF135-5A9E-427F-8D13-2863AE3B233F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annuaire", "Annuaire\Annuaire.csproj", "{698AAB98-E146-436B-AEFB-84032031CB25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Annuaire", "Annuaire\Annuaire.csproj", "{698AAB98-E146-436B-AEFB-84032031CB25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionHotel", "GestionHotel\GestionHotel.csproj", "{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{698AAB98-E146-436B-AEFB-84032031CB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{698AAB98-E146-436B-AEFB-84032031CB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{698AAB98-E146-436B-AEFB-84032031CB25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

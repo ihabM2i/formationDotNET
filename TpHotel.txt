@@ -1,0 +1,13 @@
+On désire informatiser la gestion des réservations et des séjours pour un l’hôtel :
+
+
+Réaliser une application console de gestion des réservations.
+1) Gestion des Clients 
+a.    Affichage de la liste des clients, et détail de chaque client (Réservations, annulations).
+b.    Ajout d’un nouveau client 
+c.    Suppression de clients. 
+2) Gestion des réservations 
+a.    Possibilité d’ajouter une réservation
+b.    Possibilité de changer le statut de réservation 
+c.    Afficher la liste des réservations 
+On sauvegardera les données dans des fichiers csv
