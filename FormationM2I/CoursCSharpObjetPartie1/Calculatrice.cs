@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoursCSharpObjetPartie1
 {
-    class Calculatrice
+    public class Calculatrice
     {
         public delegate void delegateCalcule(int a, int b);
         public delegate void delgateMultiCalcule(int a, int b, Func<int, int, int> methodeCalcule);

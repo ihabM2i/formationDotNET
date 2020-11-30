@@ -428,7 +428,7 @@ namespace CoursCSharpObjetPartie1
             //}
             //writer.Close();
             //Lecture à partir d'un csv
-            List<Etudiant> etudiants = new List<Etudiant>();
+            /*List<Etudiant> etudiants = new List<Etudiant>();
             StreamReader reader = new StreamReader("etudiants.csv");
             string ligne = reader.ReadLine();
             //do
@@ -446,7 +446,10 @@ namespace CoursCSharpObjetPartie1
                 }
             }
 
-            reader.Close();
+            reader.Close();*/
+            #endregion
+
+            #region test unitaire
             #endregion
         }
 
