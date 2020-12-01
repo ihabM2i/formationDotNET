@@ -17,22 +17,55 @@ namespace CoursCSharpObjetPartie1.Classes
             nbreEssai = 10;
         }
 
+        public JeuPendu(IGenerateur g, int n) : this(g)
+        {
+            nbreEssai = n;
+        }
+
         public int NbreEssai { get => nbreEssai; }
         public string Masque { get => masque; }
 
         public bool TestChar(char c)
         {
-            throw new Exception("en cours de dev");
+            bool found = false;
+            string tmpMasque = "";
+            for(int i=0; i < motATrouve.Length; i++)
+            {
+                if(motATrouve[i] == c)
+                {
+                    found = true;
+                    tmpMasque += c;
+                }
+                else
+                {
+                    tmpMasque += masque[i];
+                }
+            }
+            masque = tmpMasque;
+            if(found == false)
+            {
+                nbreEssai--;
+            }
+            return found;
         }
 
         public bool TestWin()
         {
-            throw new Exception("en cours de dev");
+            //if(motATrouve == masque && nbreEssai > 0)
+            //{
+            //    return true;
+            //}
+            //return false;
+            return (motATrouve == masque && nbreEssai > 0);
         }
 
         public void GenererMasque()
         {
-            throw new Exception("en cours de dev");
+            masque = "";
+            for(int i=0; i < motATrouve.Length; i++)
+            {
+                masque += "*";
+            }
         }
     }
 }

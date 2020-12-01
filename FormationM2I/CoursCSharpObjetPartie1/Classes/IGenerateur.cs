@@ -7,5 +7,6 @@ namespace CoursCSharpObjetPartie1.Classes
     public interface IGenerateur
     {
         string Generer();
+        
     }
 }
