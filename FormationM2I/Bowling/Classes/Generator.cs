@@ -8,7 +8,8 @@ namespace Bowling.Classes
     {
         public int GetRandomPins(int max)
         {
-            throw new NotImplementedException();
+            Random r = new Random();
+            return r.Next(0, max + 1);
         }
     }
 }
