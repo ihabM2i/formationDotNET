@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionCompteBancaire", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Annuaire", "Annuaire\Annuaire.csproj", "{698AAB98-E146-436B-AEFB-84032031CB25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionHotel", "GestionHotel\GestionHotel.csproj", "{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionHotel", "GestionHotel\GestionHotel.csproj", "{54AF0697-188B-4F5E-BA0C-59B2E9B15FB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursTestUnitaire", "CoursTestUnitaire\CoursTestUnitaire.csproj", "{F8EBA35C-C380-4038-808D-FBF1C38334D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursTestUnitaire", "CoursTestUnitaire\CoursTestUnitaire.csproj", "{F8EBA35C-C380-4038-808D-FBF1C38334D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bowling", "Bowling\Bowling.csproj", "{75110E2E-23FC-4B17-8EDB-8BDA52584DE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingTest", "BowlingTest\BowlingTest.csproj", "{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{F8EBA35C-C380-4038-808D-FBF1C38334D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EBA35C-C380-4038-808D-FBF1C38334D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EBA35C-C380-4038-808D-FBF1C38334D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75110E2E-23FC-4B17-8EDB-8BDA52584DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75110E2E-23FC-4B17-8EDB-8BDA52584DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75110E2E-23FC-4B17-8EDB-8BDA52584DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75110E2E-23FC-4B17-8EDB-8BDA52584DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
