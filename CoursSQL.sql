@@ -25,4 +25,21 @@ INSERT INTO personne (nom, prenom, telephone) values ('toto', 'tata', '060606060
 --DELETE FROM personne WHERE id = 4;
 --DELETE FROM personne WHERE nom = 'abadi';
 --DELETE FROM personne WHERE nom = 'abadi' AND prenom='ihab';
-DELETE FROM personne WHERE nom = 'abadi' OR nom='toto';
+--DELETE FROM personne WHERE nom = 'abadi' OR nom='toto';
+
+--Pour modifier des données dans une table
+
+--UPDATE personne set nom = 'coucou', prenom = 'ttttt';
+UPDATE personne set telephone='0707070707' where id=8;
+
+--SELECTION
+SELECT * FROM personne;
+SELECT id, nom, prenom, telephone from personne;
+
+-- AS permet d'ajouter un alias à une colonne uniquement à la réponse de la requete
+--SELECT id as personneId, nom, prenom, telephone from personne;
+--SELECT * FROM personne where id <> 8 AND id<>10;
+--SELECT * FROM personne where nom = 'abadi'
+--SELECT * FROM personne where nom like 'aba%'
+--SELECT * FROM personne where nom like '%aba'
+--SELECT * FROM personne where nom like '%t%'
