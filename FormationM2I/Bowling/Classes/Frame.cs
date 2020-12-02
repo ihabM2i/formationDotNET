@@ -30,7 +30,8 @@ namespace Bowling.Classes
             if(nbRolls == 0)
             {
                 randomPin = Generator.GetRandomPins(10);
-            }else if(nbRolls == 1)
+            }
+            else if(nbRolls == 1)
             {
                 Roll r1 = Rolls[0];
                 if(r1.Pin == 10 && !LastFrame)
@@ -47,7 +48,8 @@ namespace Bowling.Classes
                     randomPin = Generator.GetRandomPins(10 - r1.Pin);
                     r = new Roll(randomPin);            
                 }            
-            } else if(nbRolls == 2) { 
+            } 
+            else if(nbRolls == 2) { 
                 if(LastFrame)
                 {
                     Roll r1 = Rolls[0];
