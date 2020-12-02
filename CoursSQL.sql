@@ -43,3 +43,25 @@ SELECT id, nom, prenom, telephone from personne;
 --SELECT * FROM personne where nom like 'aba%'
 --SELECT * FROM personne where nom like '%aba'
 --SELECT * FROM personne where nom like '%t%'
+
+--Les relations entre tables
+
+--Creer une table adresse (id, adresse, ville, codePostal, personne_id)
+CREATE TABLE adresse (
+id int PRIMARY KEY IDENTITY(1,1),
+adresse VARCHAR(2000) NOT NULL,
+ville varchar(200) NOT NULL,
+code_postal varchar(5) NOT NULL,
+personne_id int NOT NULL
+)
+
+--INSERT INTO adresse (adresse, ville, code_postal, personne_id) 
+--values ('lille', 'lille', '59000', 10)
+--INSERT INTO adresse (adresse, ville, code_postal, personne_id) 
+--values ('lille', 'paris', '75000', 10)
+
+--Jointure
+--inner join
+SELECT * FROM personne inner join adresse on personne.id = adresse.personne_id
+SELECT p.id, p.nom, p.prenom, p.telephone, a.adresse, a.ville, a.code_postal FROM personne as p inner join adresse as a on p.id = a.personne_id where p.id = 10
+
