@@ -64,4 +64,8 @@ personne_id int NOT NULL
 --inner join
 SELECT * FROM personne inner join adresse on personne.id = adresse.personne_id
 SELECT p.id, p.nom, p.prenom, p.telephone, a.adresse, a.ville, a.code_postal FROM personne as p inner join adresse as a on p.id = a.personne_id where p.id = 10
+--LEFT OR RIGHT JOIN
 
+SELECT * FROM adresse right join personne on personne.id = adresse.personne_id
+---<=>
+SELECT * FROM personne left join adresse on personne.id = adresse.personne_id
