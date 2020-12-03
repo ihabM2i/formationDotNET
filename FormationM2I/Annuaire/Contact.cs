@@ -38,6 +38,8 @@ namespace Annuaire
         public bool Save()
         {
             string request = "INSERT INTO contact (nom, prenom, telephone) OUTPUT INSERTED.id values (@nom, @prenom, @telephone)";
+            //pour mysql
+            //string request = "INSERT INTO contact (nom, prenom, telephone) values (@nom, @prenom, @telephone); SELECT LAST_INSERT_ID()";
             command = new SqlCommand(request, connection);
             command.Parameters.Add(new SqlParameter("@nom", Nom));
             command.Parameters.Add(new SqlParameter("@prenom", Prenom));
