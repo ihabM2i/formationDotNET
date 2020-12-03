@@ -69,3 +69,75 @@ SELECT p.id, p.nom, p.prenom, p.telephone, a.adresse, a.ville, a.code_postal FRO
 SELECT * FROM adresse right join personne on personne.id = adresse.personne_id
 ---<=>
 SELECT * FROM personne left join adresse on personne.id = adresse.personne_id
+
+--Correction exercice 1
+
+CREATE TABLE  Chambre (
+num_chambre int PRIMARY key IDENTITY (10,1),
+prix decimal,
+nbre_lit int,
+nbre_pers int,
+confort varchar(50),
+equi varchar(50)
+)
+
+CREATE TABLE Client(
+num_client int PRIMARY key IDENTITY(1000,1),
+nom varchar(50),
+prenom varchar(50),
+adresse varchar(50)
+)
+
+CREATE TABLE reservation(
+id int PRIMARY KEY IDENTITY(1,1),
+idChambre int,
+idClient int,
+date_arr datetime,
+date_dep datetime
+)
+
+insert into Chambre (prix, nbre_lit, nbre_pers, confort, equi) values 
+(80,1,2,'wc', 'non'), 
+(100,2,2,'douche', 'non'), 
+(180,3,3,'bain', 'tv');
+insert into reservation (idClient, idChambre, date_arr, date_dep) values 
+(1,2, '2004-02-09', '2004-02-21'), 
+(2,1,'2005-06-30', null);
+insert into Client (nom, prenom, adresse) values 
+('Denez','Desmond','Marseille'), 
+('Noua','Ghislaine','Paris');
+
+--Q1
+SELECT num_chambre from Chambre where equi = 'TV' OR confort = 'TV';
+
+--Q2
+SELECT num_chambre, nbre_pers from Chambre;
+SELECT num_chambre, nbre_pers from Chambre order by prix ASC;
+SELECT TOP 2 num_chambre, nbre_pers from Chambre order by prix ASC;
+--Q3
+SELECT SUM(nbre_pers) as capacite from Chambre;
+
+--Q4
+SELECT prix/nbre_pers as prix_personne, num_chambre FROM Chambre where equi = 'TV';
+
+--Q5
+SELECT idClient, idChambre FROM reservation where 
+date_arr <= '2004-02-09' and (date_dep > '2004-02-09' OR date_dep is null);
+
+--Q6
+SELECT num_chambre FROM Chambre where prix <= 80 OR (prix <= 120 AND confort = 'bain')
+
+--Q7
+SELECT nom, prenom, adresse FROM client where nom like 'd%'
+
+--Q8
+SELECT COUNT(num_chambre) as nombreChambres FROM Chambre WHERE prix >= 85 and prix <= 120;
+
+--Q9
+SELECT  c.nom, r.date_arr FROM client as c 
+inner join reservation as r on c.num_client = r.idClient 
+where r.date_dep is NULL;
+
+--Requetes imbriquées
+
+SELECT num_chambre from Chambre where prix >= (SELECT AVG(prix) from Chambre)
