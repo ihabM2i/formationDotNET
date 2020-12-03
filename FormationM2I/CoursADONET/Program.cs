@@ -9,7 +9,7 @@ namespace CoursADONET
         {
             #region cours ADO.NET
             //Connexion à la base de donnée
-            string connectionString = @"Data Source=(LocalDb)\coursM2I;Integrated Security=True;";
+            string connectionString = @"Data Source=(LocalDb)\coursM2I;Integrated Security=True;dbname=";
             SqlConnection connection = new SqlConnection(connectionString);
 
 
