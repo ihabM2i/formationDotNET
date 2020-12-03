@@ -141,3 +141,49 @@ where r.date_dep is NULL;
 --Requetes imbriquées
 
 SELECT num_chambre from Chambre where prix >= (SELECT AVG(prix) from Chambre)
+
+--Correction EX2
+
+--Q1
+SELECT TOP 10 * FROM villes_france_free order by ville_population_2012 desc
+
+--Q2
+SELECT TOP 50 * FROM villes_france_free order by ville_surface ASC
+
+--Q3
+SELECT * from departement where departement_code like '97%'
+
+--Q4
+SELECT TOP 10 v.ville_nom, d.departement_nom from villes_france_free as v 
+left join departement as d on v.ville_departement = d.departement_code 
+order by v.ville_population_2012 desc;
+
+--Q5
+SELECT v.ville_departement, d.departement_nom, COUNT(*) as nombre_ville
+FROM villes_france_free as v left join departement as d on v.ville_departement = d.departement_code
+GROUP BY v.ville_departement, d.departement_nom ORDER BY nombre_ville DESC;
+
+--Q6
+SELECT TOP 10 d.departement_nom, v.ville_departement, SUM(v.ville_surface) as surface
+FROM villes_france_free as v left join departement as d on v.ville_departement = d.departement_code
+GROUP BY v.ville_departement, d.departement_nom ORDER BY surface DESC;
+
+--Q7
+SELECT COUNT(*) FROM villes_france_free where ville_nom like 'SAINT%';
+
+--Q8
+SELECT ville_nom, COUNT(*) as nombre_fois from villes_france_free 
+group by ville_nom order by nombre_fois desc;
+
+--Q9
+SELECT * FROM villes_france_free 
+where ville_surface > (SELECT AVG(ville_surface) FROM villes_france_free);
+
+--Q10
+SELECT ville_departement, SUM(ville_population_2012) as population_2012 from villes_france_free
+group by ville_departement HAVING SUM(ville_population_2012) > 2000000
+
+--Q11
+UPDATE villes_france_free set ville_nom = REPLACE(ville_nom,'-', ' ')
+where ville_nom like 'SAINT-%';
+
