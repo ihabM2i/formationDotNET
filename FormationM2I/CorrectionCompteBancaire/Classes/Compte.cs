@@ -22,6 +22,11 @@ namespace CorrectionCompteBancaire.Classes
         public Client Client { get => client; set => client = value; }
         public List<Operation> Operations { get => operations; set => operations = value; }
 
+        protected Compte(int numero, decimal solde)
+        {
+            this.numero = numero;
+            this.solde = solde;
+        }
         public Compte(Client client, decimal solde = 0)
         {
             Client = client;
@@ -53,20 +58,52 @@ namespace CorrectionCompteBancaire.Classes
 
         public static Compte GetCompteById(int id)
         {
-            return null;
+            Compte compte = null;
+            int clientId = 0;
+            string request = "SELECT solde, client_id from compte where id =@id";
+            command = new SqlCommand(request, Tools.Connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            Tools.Connection.Open();
+            reader = command.ExecuteReader();
+            if(reader.Read())
+            {
+                compte = new Compte(id, reader.GetDecimal(0));
+                clientId = reader.GetInt32(1);
+            }
+            reader.Close();
+            command.Dispose();
+            Tools.Connection.Close();
+            if(compte != null)
+            {
+                compte.Client = Client.GetClientById(clientId);
+                compte.Operations = Operation.GetOperations(id);
+            }
+            return compte;
         }
 
         public bool Update()
         {
-            return false;
+            string request = "UPDATE Compte set solde=@solde where id=@id";
+            command = new SqlCommand(request, Tools.Connection);
+            command.Parameters.Add(new SqlParameter("@solde", Solde));
+            command.Parameters.Add(new SqlParameter("@id", Numero));
+            Tools.Connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            Tools.Connection.Close();
+            return nbRow == 1;
         }
         public virtual bool Depot(decimal montant)
         {
-            Operation o = new Operation(montant);
-            Operations.Add(o);
-            o.Save();
-            solde += montant;
-            return true;
+            Operation o = new Operation(montant, Numero);
+            if(o.Save())
+            {
+                Operations.Add(o);
+                solde += montant;
+                return Update();
+            }
+            
+            return false;
         }
 
         public virtual bool Retrait(decimal montant)
@@ -79,18 +116,21 @@ namespace CorrectionCompteBancaire.Classes
             //    return true;
             //}
             //return false;
-            Operation o = new Operation(montant * -1);
-            Operations.Add(o);
-            solde -= montant;
-            if(solde < 0)
+            Operation o = new Operation(montant * -1, Numero);
+            if (o.Save())
             {
-                if(ADecouvert != null)
+                Operations.Add(o);
+                solde -= montant;
+                if (solde < 0)
                 {
-                    ADecouvert(solde, Numero);
+                    if (ADecouvert != null)
+                    {
+                        ADecouvert(solde, Numero);
+                    }
                 }
-            }
-            return true;
-
+                return Update();
+            }  
+            return false;
         }
 
         public override string ToString()

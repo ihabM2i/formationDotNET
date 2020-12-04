@@ -246,7 +246,8 @@ namespace CorrectionCompteBancaire.Classes
         {
             Console.Write("Numéro de compte : ");
             int numero = Convert.ToInt32(Console.ReadLine());
-            Compte compte = banque.GetCompteById(numero);
+            //Compte compte = banque.GetCompteById(numero);
+            Compte compte = Compte.GetCompteById(numero);
             //if(compte!= null)
             //{
             //    compte.ADecouvert += NotificationCompteADecouvert;

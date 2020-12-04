@@ -59,6 +59,11 @@ namespace CorrectionCompteBancaire.Classes
             Telephone = telephone;
         }
 
+        public Client(int id, string nom, string prenom, string telephone) : this(nom, prenom, telephone)
+        {
+            this.id = id;
+        }
+
         public bool Save()
         {
             string request = "INSERT INTO Client (nom, prenom, telephone) OUTPUT INSERTED.Id values (@nom, @prenom, @telephone)";
@@ -71,12 +76,24 @@ namespace CorrectionCompteBancaire.Classes
             command.Dispose();
             Tools.Connection.Close();
             return Id > 0;
-
         }
 
-        public Client GetClientById(int id)
+        public static Client GetClientById(int id)
         {
-            return null;
+            Client client = null;
+            string request = "SELECT nom, prenom, telephone FROM Client where id = @id";
+            command = new SqlCommand(request, Tools.Connection);
+            command.Parameters.Add(new SqlParameter("@id", id));
+            Tools.Connection.Open();
+            reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                client = new Client(id, reader.GetString(0), reader.GetString(1), reader.GetString(2));
+            }
+            reader.Close();
+            command.Dispose();
+            Tools.Connection.Close();
+            return client;
         }
 
         public override string ToString()

@@ -11,6 +11,7 @@ namespace CorrectionCompteBancaire.Classes
         private int id;
         private DateTime dateOperation;
         private decimal montant;
+        private int compteId;
         private static SqlCommand command;
 
         private static SqlDataReader reader;
@@ -27,7 +28,12 @@ namespace CorrectionCompteBancaire.Classes
 
         }
 
-        public Operation(int numero, DateTime date, decimal montant) : this(montant)
+        public Operation(decimal montant, int compteId) : this(montant)
+        {
+            this.compteId = compteId;
+        }
+
+        public Operation(int numero, DateTime date, decimal montant, int compteId) : this(montant, compteId)
         {
             id = numero;
             dateOperation = date;
@@ -35,12 +41,38 @@ namespace CorrectionCompteBancaire.Classes
 
         public bool Save()
         {
-            return false;
+            string request = "INSERT INTO Operation (compte_id,date_operation, montant) OUTPUT INSERTED.ID " +
+                "values(@compte_id,@date_operation,@montant)";
+            command = new SqlCommand(request, Tools.Connection);
+            command.Parameters.Add(new SqlParameter("@compte_id", compteId));
+            command.Parameters.Add(new SqlParameter("@date_operation", dateOperation));
+            command.Parameters.Add(new SqlParameter("@montant", montant));
+            Tools.Connection.Open();
+            id = (int)command.ExecuteScalar();
+            command.Dispose();
+            Tools.Connection.Close();
+            return id > 0;
         }
 
         public static List<Operation> GetOperations(int compteId)
         {
-            return null;
+            List<Operation> operations = new List<Operation>();
+            string request = "SELECT id, date_operation, montant from Operation " +
+                "where compte_id = @compteId";
+
+            command = new SqlCommand(request, Tools.Connection);
+            command.Parameters.Add(new SqlParameter("@compteId", compteId));
+            Tools.Connection.Open();
+            reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                Operation o = new Operation(reader.GetInt32(0),reader.GetDateTime(1), reader.GetDecimal(2), compteId);
+                operations.Add(o);
+            }
+            reader.Close();
+            command.Dispose();
+            Tools.Connection.Close();
+            return operations;
         }
         public override string ToString()
         {
