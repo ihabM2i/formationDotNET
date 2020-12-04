@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace CorrectionCompteBancaire.Classes
@@ -12,6 +13,8 @@ namespace CorrectionCompteBancaire.Classes
         private decimal solde;
         private Client client;
         private List<Operation> operations;
+        private static SqlCommand command;
+        private static SqlDataReader reader;
 
         public event Action<decimal, int> ADecouvert;
         public int Numero { get => numero; }
@@ -22,7 +25,7 @@ namespace CorrectionCompteBancaire.Classes
         public Compte(Client client, decimal solde = 0)
         {
             Client = client;
-            numero = compteur++;
+            //numero = compteur++;
             Operations = new List<Operation>();
             this.solde = solde;
         }
@@ -30,10 +33,38 @@ namespace CorrectionCompteBancaire.Classes
         {
             this.numero = numero;
         }
+
+        public bool Save()
+        {
+            if(Client.Save())
+            {
+                string request = "INSERT INTO Compte (solde, client_id) OUTPUT INSERTED.ID values (@solde,@client_id)";
+                command = new SqlCommand(request, Tools.Connection);
+                command.Parameters.Add(new SqlParameter("@solde", Solde));
+                command.Parameters.Add(new SqlParameter("@client_id", Client.Id));
+                Tools.Connection.Open();
+                numero = (int)command.ExecuteScalar();
+                command.Dispose();
+                Tools.Connection.Close();
+                return numero > 0;
+            }
+            return false;
+        }
+
+        public static Compte GetCompteById(int id)
+        {
+            return null;
+        }
+
+        public bool Update()
+        {
+            return false;
+        }
         public virtual bool Depot(decimal montant)
         {
             Operation o = new Operation(montant);
             Operations.Add(o);
+            o.Save();
             solde += montant;
             return true;
         }

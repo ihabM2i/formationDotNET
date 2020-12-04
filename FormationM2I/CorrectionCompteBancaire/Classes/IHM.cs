@@ -175,8 +175,15 @@ namespace CorrectionCompteBancaire.Classes
             if(compte != null)
             {
                 compte.ADecouvert += NotificationCompteADecouvert;
-                banque.Comptes.Add(compte);
-                Console.WriteLine("Compte bancaire crée avec le numéro " + compte.Numero);
+                //banque.Comptes.Add(compte);
+                if (compte.Save())
+                {
+                    Console.WriteLine("Compte bancaire crée avec le numéro " + compte.Numero);
+                }
+                else
+                {
+                    Console.WriteLine("Erreur base de données");
+                }
             }
         }
 

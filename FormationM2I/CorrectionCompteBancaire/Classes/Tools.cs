@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,6 +9,7 @@ namespace CorrectionCompteBancaire.Classes
 {
     class Tools
     {
+        public static SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDb)\coursM2I;Integrated Security=True");
         public static bool CheckName(string name)
         {
             string pattern = @"[a-zA-Z\s-]+";
