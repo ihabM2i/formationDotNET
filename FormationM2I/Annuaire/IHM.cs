@@ -89,13 +89,25 @@ namespace Annuaire
             Contact contact = ActionRechercherContact();
             if(contact != null)
             {
+                Console.Write("Merci de saisir le nouveau nom : ");
+                contact.Nom = Console.ReadLine();
+                Console.Write("Merci de saisir le nouveau prénom : ");
+                contact.Prenom= Console.ReadLine();
                 Console.Write("Merci de saisir le nouveau numéro de téléphone : ");
                 contact.Telephone = Console.ReadLine();
-                annuaire.SaveContactsFile();
+                if(contact.Update())
+                {
+                    Console.WriteLine("Modification effectuée");
+                }
+                else
+                {
+                    Console.WriteLine("Erreur base de données");
+                }
+                //annuaire.SaveContactsFile();
             }
             else
             {
-                Console.WriteLine("Aucun contact avec ce nom");
+                Console.WriteLine("Aucun contact avec cet id");
             }
         }
 
@@ -104,12 +116,20 @@ namespace Annuaire
             Contact contact = ActionRechercherContact();
             if (contact != null)
             {
-                annuaire.Contacts.Remove(contact);
-                annuaire.SaveContactsFile();
+                if (contact.Delete())
+                {
+                    Console.WriteLine("Suppression effectuée");
+                }
+                else
+                {
+                    Console.WriteLine("Erreur base de données");
+                }
+                //annuaire.Contacts.Remove(contact);
+                //annuaire.SaveContactsFile();
             }
             else
             {
-                Console.WriteLine("Aucun contact avec ce nom");
+                Console.WriteLine("Aucun contact avec cet id");
             }
         }
 

@@ -55,12 +55,29 @@ namespace Annuaire
 
         public bool Delete()
         {
-            return false;
+            string request = "DELETE FROM contact where id=@id";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
         }
 
         public bool Update()
         {
-            return false;
+            string request = "UPDATE contact set nom=@nom, prenom=@prenom, telephone=@telephone where id=@id";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@nom", Nom));
+            command.Parameters.Add(new SqlParameter("@prenom", Prenom));
+            command.Parameters.Add(new SqlParameter("@telephone", Telephone));
+            command.Parameters.Add(new SqlParameter("@id", Id));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
         }
 
         public static Contact GetContactById(int id)
