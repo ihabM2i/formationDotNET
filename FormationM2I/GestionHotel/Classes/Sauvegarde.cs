@@ -223,10 +223,24 @@ namespace GestionHotel.Classes
                 {
                     c.Statut = ChambreStatut.Occupe;
                     UpdateStatutChambre(c);
+                    CreateReservationChambre(c.Id, reservation.Id);
                 });
                 return true;
             }
             return false;
+        }
+
+        public bool CreateReservationChambre(int chambreId, int reservationId)
+        {
+            string request = "INSERT INTO reservation_chambre (reservation_id, chambre_id) values (@reservation_id, @chambre_id)";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@reservation_id", reservationId));
+            command.Parameters.Add(new SqlParameter("@chambre_id", chambreId));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
         }
 
         public bool UpdateStatutChambre(Chambre chambre)
