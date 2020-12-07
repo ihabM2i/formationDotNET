@@ -4,9 +4,10 @@ using System.Text;
 
 namespace GestionHotel.Classes
 {
-    class Reservation
+    public class Reservation
     {
         private int id;
+        private int numero;
         private List<Chambre> chambres;
         private ReservationStatut statut;
         private Client client;
@@ -17,9 +18,21 @@ namespace GestionHotel.Classes
         public ReservationStatut Statut { get => statut; set => statut = value; }
         public Client Client { get => client; set => client = value; }
         public decimal Total { get => total; set => total = value; }
+        public int Numero { get => numero; set => numero = value; }
+
+        public Reservation(int id, string statut, int clientId, decimal total, int numero)
+        {
+            Id = id;
+            Chambres = chambres;
+            Enum.TryParse(statut, out this.statut);
+            Client = new Client();
+            Client.Id = clientId;
+            Total = total;
+            Numero = numero;
+        }
     }
 
-    enum ReservationStatut
+    public enum ReservationStatut
     {
         Valide,
         Annule
