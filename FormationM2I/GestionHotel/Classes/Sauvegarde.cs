@@ -241,6 +241,7 @@ namespace GestionHotel.Classes
             connection.Close();
             return nbRow == 1;
         }
+
         public bool UpdateSatutReservation(Reservation reservation)
         {
             string request = "UPDATE reservation set statut = @statut where id = @id";
