@@ -149,7 +149,6 @@ namespace GestionHotel.Classes
             return chambres;
         }
 
-
         public Reservation GetReservation(int id)
         {
             Reservation reservation = null;
@@ -169,6 +168,98 @@ namespace GestionHotel.Classes
             command.Dispose();
             connection.Close();
             return null;
+        }
+
+        public bool CreationChambre(int numero, int capacite, decimal tarif, int hotelId)
+        {
+            string request = "INSERT INTO chambre (numero, hotel_id, capacite, statut, tarif) " +
+                "values (@numero, @hotel_id, @capacite, @statut, @tarif)";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@numero", numero));
+            command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
+            command.Parameters.Add(new SqlParameter("@capacite", capacite));
+            command.Parameters.Add(new SqlParameter("@tarif", tarif));
+            command.Parameters.Add(new SqlParameter("@statut", ChambreStatut.Libre.ToString()));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
+        }
+
+        public bool CreationClient(string nom, string prenom, string telephone, int hotelId)
+        {
+            string request = "INSERT INTO client (nom, prenom, telephone, hotel_id) " +
+                 "values (@nom, @prenom, @telephone, @hotel_id)";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@nom", nom));
+            command.Parameters.Add(new SqlParameter("@hotel_id", hotelId));
+            command.Parameters.Add(new SqlParameter("@prenom", prenom));
+            command.Parameters.Add(new SqlParameter("@telephone", telephone));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
+        }
+
+        public bool CreationReservation(Reservation reservation, int hotelId)
+        {
+            string request = "INSERT INTO reservation (numero, client_id, hotel_id, total, statut) " +
+                "values (@numero, @client_id, @hotel_id, @total, @statut)";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("@numero", Guid.NewGuid().ToString()));
+            command.Parameters.Add(new SqlParameter("@client_id",reservation.Client.Id));
+            command.Parameters.Add(new SqlParameter("@hotel_id",hotelId));
+            command.Parameters.Add(new SqlParameter("@total",reservation.Total));
+            command.Parameters.Add(new SqlParameter("@total",ReservationStatut.Valide.ToString()));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            if(nbRow == 1)
+            {
+                reservation.Chambres.ForEach((c) =>
+                {
+                    c.Statut = ChambreStatut.Occupe;
+                    UpdateStatutChambre(c);
+                });
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateStatutChambre(Chambre chambre)
+        {
+            string request = "UPDATE chambre set statut = @statut where id = @id";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("statut", chambre.Statut.ToString()));
+            command.Parameters.Add(new SqlParameter("id", chambre.Id));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            return nbRow == 1;
+        }
+        public bool UpdateSatutReservation(Reservation reservation)
+        {
+            string request = "UPDATE reservation set statut = @statut where id = @id";
+            command = new SqlCommand(request, connection);
+            command.Parameters.Add(new SqlParameter("statut", reservation.Statut.ToString()));
+            command.Parameters.Add(new SqlParameter("id", reservation.Id));
+            connection.Open();
+            int nbRow = command.ExecuteNonQuery();
+            command.Dispose();
+            connection.Close();
+            if(reservation.Statut == ReservationStatut.Annule && nbRow == 1)
+            {
+                reservation.Chambres.ForEach((c) =>
+                {
+                    c.Statut = ChambreStatut.Libre;
+                    UpdateStatutChambre(c);
+                });
+            }
+            return nbRow == 1;
         }
 
     }

@@ -17,7 +17,14 @@ namespace GestionHotel.Classes
         public List<Chambre> Chambres { get => chambres; set => chambres = value; }
         public ReservationStatut Statut { get => statut; set => statut = value; }
         public Client Client { get => client; set => client = value; }
-        public decimal Total { get => total; set => total = value; }
+        public decimal Total
+        {
+            get
+            {
+                return total;
+            }
+            set => total = value;
+        }
         public int Numero { get => numero; set => numero = value; }
 
         public Reservation(int id, string statut, int clientId, decimal total, int numero)
@@ -29,6 +36,16 @@ namespace GestionHotel.Classes
             Client.Id = clientId;
             Total = total;
             Numero = numero;
+        }
+
+        public void UpdateTotal()
+        {
+            decimal t = 0;
+            Chambres.ForEach((c) =>
+            {
+                t += c.Tarif;
+            });
+            total = t;
         }
     }
 
