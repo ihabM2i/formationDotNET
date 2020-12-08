@@ -80,6 +80,7 @@ namespace coursWPF
                         {
                             Content = tab[k]
                         };
+                        b.Click += ClickButton;
                         grid.Children.Add(b);
                         Grid.SetRow(b, i);
                         Grid.SetColumn(b, j);
@@ -104,6 +105,16 @@ namespace coursWPF
             grid.Children.Clear();
             MakeShuffleButton();
             MakeGrid();
+        }
+
+        private void ClickButton(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button b)
+            {
+                MessageBox.Show("x: " + Grid.GetRow(b) + " y : " + Grid.GetColumn(b));
+                Grid.SetColumn(b, 3);
+                Grid.SetRow(b, 3);
+            }
         }
         #endregion
     }
