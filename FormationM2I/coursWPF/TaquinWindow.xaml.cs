@@ -111,10 +111,32 @@ namespace coursWPF
         {
             if(sender is Button b)
             {
-                MessageBox.Show("x: " + Grid.GetRow(b) + " y : " + Grid.GetColumn(b));
-                Grid.SetColumn(b, 3);
-                Grid.SetRow(b, 3);
+                int x = Grid.GetRow(b);
+                int y = Grid.GetColumn(b);
+                if(y < taille - 1 && TestMove(x, y + 1))
+                {
+                    Grid.SetColumn(b, y + 1);
+                }
+                else if(y > 0 && TestMove(x, y - 1))
+                {
+                    Grid.SetColumn(b, y - 1);
+                }
+                else if(x < taille && TestMove(x + 1, y))
+                {
+                    Grid.SetRow(b, x + 1);
+                }
+                else if(x > 1 && TestMove(x - 1, y))
+                {
+                    Grid.SetRow(b, x - 1);
+                }
             }
+        }
+
+        private bool TestMove(int x, int y)
+        {
+            UIElement element = grid.Children.Cast<UIElement>()
+                .FirstOrDefault(e => Grid.GetColumn(e) == y && Grid.GetRow(e) == x);
+            return element == null;
         }
         #endregion
     }
