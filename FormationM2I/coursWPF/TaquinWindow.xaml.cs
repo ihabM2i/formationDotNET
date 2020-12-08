@@ -20,43 +20,91 @@ namespace coursWPF
     /// </summary>
     public partial class TaquinWindow : Window
     {
-        private int taille = 4;
+        private int taille = 3;
+
+        private char[] tab;
         public TaquinWindow()
         {
             InitializeComponent();
+            GenerateCharTab();
+            MakeRowsAndCols();
+            MakeShuffleButton();
             MakeGrid();
 
         }
 
+        private void GenerateCharTab()
+        {
+            tab = new char[taille*taille - 1];
+            char c = 'A';
+            for(int i=0; i < tab.Length; i++)
+            {
+                tab[i] = c;
+                c++;
+            }
+        }
 
-        private void MakeGrid()
+        #region methode rendu
+        private void MakeShuffleButton()
+        {
+            Button b = new Button()
+            {
+                Content = "Melanger"
+            };
+            b.Click += ShuffleClick;
+            grid.Children.Add(b);
+            Grid.SetColumn(b,0);
+            Grid.SetRow(b,0);
+            Grid.SetColumnSpan(b, 4);
+        }
+        private void MakeRowsAndCols()
         {
             //Création des lignes et des colonnes
-            for(int i=1; i <= taille;i++)
+            for (int i = 1; i <= taille; i++)
             {
                 grid.RowDefinitions.Add(new RowDefinition());
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
-            char c = 'A';
-            for(int i=0; i< taille; i++)
+            grid.RowDefinitions.Add(new RowDefinition());
+        }
+        private void MakeGrid()
+        {
+            int k = 0;
+            for(int i=1; i< taille+1; i++)
             {
                 for(int j= 0; j < taille; j++)
                 {
-                    if(!(j == taille-1 && i == taille -1))
+                    if(!(j == taille-1 && i == taille))
                     {
                         Button b = new Button()
                         {
-                            Content = c
+                            Content = tab[k]
                         };
                         grid.Children.Add(b);
                         Grid.SetRow(b, i);
                         Grid.SetColumn(b, j);
-                        c++;
+                        k++;
                     }
                 }
             }
         }
-       
+        #endregion
+
+        #region methode event
+        private void ShuffleClick(object sender, RoutedEventArgs e)
+        {
+            Random r = new Random();
+            for(int i=0; i < tab.Length; i++)
+            {
+                int tmpIndex = r.Next(0, tab.Length);
+                char tmpChar = tab[i];
+                tab[i] = tab[tmpIndex];
+                tab[tmpIndex] = tmpChar;
+            }
+            grid.Children.Clear();
+            MakeShuffleButton();
+            MakeGrid();
+        }
+        #endregion
     }
 }
