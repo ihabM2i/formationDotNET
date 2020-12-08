@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursADONET", "CoursADONET\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caisse", "Caisse\Caisse.csproj", "{B9CFC111-6755-4D62-97BB-A734696C574A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coursWPF", "coursWPF\coursWPF.csproj", "{48EF9127-0DE7-4F65-9AC6-9783F9C3C100}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{B9CFC111-6755-4D62-97BB-A734696C574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9CFC111-6755-4D62-97BB-A734696C574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9CFC111-6755-4D62-97BB-A734696C574A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48EF9127-0DE7-4F65-9AC6-9783F9C3C100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48EF9127-0DE7-4F65-9AC6-9783F9C3C100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48EF9127-0DE7-4F65-9AC6-9783F9C3C100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48EF9127-0DE7-4F65-9AC6-9783F9C3C100}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
