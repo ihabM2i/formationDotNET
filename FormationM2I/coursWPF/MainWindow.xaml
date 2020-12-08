@@ -19,9 +19,11 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <!--<Button Content="b1" Grid.Column="0" Grid.Row="0"></Button>
-        <Button Content="b2" Grid.Column="1" Grid.Row="1"></Button>
-        <Button Content="b3" Grid.Column="2" Grid.Row="2"></Button>
-        <Button Content="b4" Grid.Column="3" Grid.Row="3"></Button>-->
+        <Button Content="b1" Grid.Column="0" Grid.Row="0" Click="Click_b1"></Button>
+        <Button Content="b2" Grid.Column="1" Grid.Row="1" Click="Click_b1"></Button>
+        <Button Content="b3" Grid.Column="2" Grid.Row="2" Click="Click_b1" Background="#FFE83E3E" Foreground="White"></Button>
+        <Button Content="b4" Grid.Column="3" Grid.Row="3" Click="Click_b1"></Button>
+        <Label Content="bonjour tout le monde" Grid.Row="0" Grid.Column="2"></Label>
+        <TextBox x:Name="monTexte" Grid.Row="0" Grid.Column="3"></TextBox>
     </Grid>
 </Window>

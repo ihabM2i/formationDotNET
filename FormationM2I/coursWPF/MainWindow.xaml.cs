@@ -24,34 +24,52 @@ namespace coursWPF
         public MainWindow()
         {
             InitializeComponent();
-            CreateGrid();
+            //CreateGrid();
         }
 
         private void CreateGrid()
         {
             //Création de la grille
-            //Grid grid = new Grid();
-            //for(int i=1; i<=4; i++)
-            //{
-            //    //On ajoute 4 Lignes
-            //    grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(i, GridUnitType.Star)});
+            Grid grid = new Grid();
+            for (int i = 1; i <= 4; i++)
+            {
+                //On ajoute 4 Lignes
+                grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(i, GridUnitType.Star) });
 
-            //    //on ajoute 4 Colonnes
-            //    grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i, GridUnitType.Star) });
-            //}
+                //on ajoute 4 Colonnes
+                grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(i, GridUnitType.Star) });
+            }
 
-            for(int i=0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Button b = new Button()
                 {
-                    Content = i
+                    Content = i,
+                    Background = new SolidColorBrush(Color.FromRgb(0, 0, 0)),
                 };
-                maGrille.Children.Add(b);
+                //b.Click += Click_b1;
+                b.MouseDoubleClick += Click_b1;
+                grid.Children.Add(b);
                 Grid.SetRow(b, i);
                 Grid.SetColumn(b, i);
             }
+            Content = grid;
+        }
 
-            //Content = grid;
+        private void Click_b1(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button b)
+            {
+                //if(e.RoutedEvent.Name == "Click")
+                //{
+                //    MessageBox.Show("Click " + b.Content.ToString());
+                //}
+                //else if (e.RoutedEvent.Name == "MouseDoubleClick")
+                //{
+                //    MessageBox.Show("Double click " + b.Content.ToString());
+                //}
+                MessageBox.Show(monTexte.Text);
+            }
         }
     }
 }
