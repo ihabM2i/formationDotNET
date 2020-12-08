@@ -33,5 +33,17 @@ namespace Caisse.Classes
             Produits.ForEach(p => { t += p.Prix; });
             total = t;
         }
+
+        public override string ToString()
+        {
+            string retour = "";
+            Produits.ForEach(p =>
+            {
+                retour += p.ToString() + "\n";
+            });
+
+            retour +="---------Total : " + Total + " euros";
+            return retour;
+        }
     }
 }

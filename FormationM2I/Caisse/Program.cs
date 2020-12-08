@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caisse.Classes;
+using System;
 
 namespace Caisse
 {
@@ -6,7 +7,8 @@ namespace Caisse
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            IHM ihm = new IHM();
+
         }
     }
 }

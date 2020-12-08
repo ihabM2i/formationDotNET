@@ -19,7 +19,10 @@ namespace Caisse.Classes
         public decimal Prix { get => prix; set => prix = value; }
         public int Stock { get => stock; set => stock = value; }
 
+        public Produit()
+        {
 
+        }
         public Produit(int id, string titre, decimal prix, int stock) : this(titre, prix, stock)
         {
             Id = id;     
@@ -30,6 +33,11 @@ namespace Caisse.Classes
             Titre = titre;
             Prix = prix;
             Stock = stock;
+        }
+
+        public override string ToString()
+        {
+            return "Titre : "+ Titre + " Prix : "+ prix;
         }
     }
 }

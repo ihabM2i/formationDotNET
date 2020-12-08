@@ -15,6 +15,7 @@ namespace Caisse.Classes
 
         public DataBase()
         {
+            data = new DataSet();
             string request = "SELECT id, titre, prix, stock from produit";
             produitAdapter = new SqlDataAdapter(request, connection);
             string updateRequest = "UPDATE produit set stock = @stock where id=@id";
