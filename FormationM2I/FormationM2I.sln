@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bowling", "Bowling\Bowling.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingTest", "BowlingTest\BowlingTest.csproj", "{02B9ACAC-C209-41B9-A3B1-14F54AF2FFBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursADONET", "CoursADONET\CoursADONET.csproj", "{6AB6C29A-740C-46B0-90DD-4D49075E6222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursADONET", "CoursADONET\CoursADONET.csproj", "{6AB6C29A-740C-46B0-90DD-4D49075E6222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caisse", "Caisse\Caisse.csproj", "{B9CFC111-6755-4D62-97BB-A734696C574A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{6AB6C29A-740C-46B0-90DD-4D49075E6222}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AB6C29A-740C-46B0-90DD-4D49075E6222}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AB6C29A-740C-46B0-90DD-4D49075E6222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9CFC111-6755-4D62-97BB-A734696C574A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9CFC111-6755-4D62-97BB-A734696C574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9CFC111-6755-4D62-97BB-A734696C574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9CFC111-6755-4D62-97BB-A734696C574A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
