@@ -22,20 +22,31 @@ namespace coursWPF
     {
         private int taille = 3;
         private string stringWin = "";
+        private TextBox dField;
 
         private char[] tab;
         public TaquinWindow()
         {
             InitializeComponent();
-            GenerateCharTab();
             MakeRowsAndCols();
-            MakeShuffleButton();
+            MakeDField();
+            GenerateCharTab();            
+            MakeShuffleButton();           
             MakeGrid();
         }
 
         private void GenerateCharTab()
         {
-            tab = new char[taille*taille - 1];
+            int nb;         
+            if(Int32.TryParse(dField.Text, out nb))
+            {
+                taille = nb;
+            }
+            else
+            {
+                taille = 3;
+            }
+            tab = new char[taille * taille - 1];
             char c = 'A';
             for(int i=0; i < tab.Length; i++)
             {
@@ -47,7 +58,6 @@ namespace coursWPF
         }
 
         #region methode rendu
-
         private void MakeRowsAndCols()
         {
             //Création des lignes et des colonnes
@@ -58,6 +68,14 @@ namespace coursWPF
             }
             grid.RowDefinitions.Add(new RowDefinition());
         }
+
+        private void MakeDField()
+        {
+            dField = new TextBox();
+            grid.Children.Add(dField);
+            Grid.SetColumn(dField, 0);
+            Grid.SetRow(dField,0);
+        }
         private void MakeShuffleButton()
         {
             Button b = new Button()
@@ -66,11 +84,9 @@ namespace coursWPF
             };
             b.Click += ShuffleClick;
             grid.Children.Add(b);
-            Grid.SetColumn(b,0);
+            Grid.SetColumn(b,taille-1);
             Grid.SetRow(b,0);
-            Grid.SetColumnSpan(b, 4);
-        }
-        
+        }     
         private void MakeGrid()
         {
             int k = 0;
@@ -98,6 +114,7 @@ namespace coursWPF
         #region methode event
         private void ShuffleClick(object sender, RoutedEventArgs e)
         {
+            GenerateCharTab();
             Random r = new Random();
             for(int i=0; i < tab.Length; i++)
             {
@@ -107,7 +124,11 @@ namespace coursWPF
                 tab[tmpIndex] = tmpChar;
             }
             grid.Children.Clear();
+            grid.RowDefinitions.Clear();
+            grid.ColumnDefinitions.Clear();
+            MakeRowsAndCols();
             MakeShuffleButton();
+            MakeDField();
             MakeGrid();
         }
 
