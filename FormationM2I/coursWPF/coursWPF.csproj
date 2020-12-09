@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Update="PersonneWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ControleWPF.xaml">
       <SubType>Designer</SubType>
     </Page>

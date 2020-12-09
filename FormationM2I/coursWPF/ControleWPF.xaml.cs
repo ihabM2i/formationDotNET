@@ -56,7 +56,7 @@ namespace coursWPF
             textPrenom.Text = "";
         }
 
-        private void DetailClick(object sender, RoutedEventArgs e)
+        private void DetailClick(object sender, RoutedEventArgs e) 
         {
             if(listePersonnes.SelectedItem is Personne p)
             {
@@ -64,6 +64,8 @@ namespace coursWPF
                 textPrenom.Text = p.Prenom;
                 personneToEdit = p;
                 isEdit = true;
+                PersonneWindow window = new PersonneWindow(p);
+                window.Show();
             }
         }
 
