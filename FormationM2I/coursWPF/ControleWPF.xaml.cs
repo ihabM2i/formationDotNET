@@ -23,6 +23,9 @@ namespace coursWPF
     public partial class ControleWPF : Window
     {
         private ObservableCollection<Personne> personnes;
+
+        private bool isEdit = false;
+        private Personne personneToEdit;
         public ControleWPF()
         {
             InitializeComponent();
@@ -30,14 +33,46 @@ namespace coursWPF
             listePersonnes.ItemsSource = personnes;
         }
 
-        private void AddClick(object sender, RoutedEventArgs e)
+        private void ValidClick(object sender, RoutedEventArgs e)
         {
-            Personne p = new Personne()
+            if(!isEdit)
             {
-                Nom = textNom.Text,
-                Prenom = textPrenom.Text
-            };
-            personnes.Add(p);
+                Personne p = new Personne()
+                {
+                    Nom = textNom.Text,
+                    Prenom = textPrenom.Text
+                };
+
+                personnes.Add(p);
+            }
+            else
+            {
+                personneToEdit.Nom = textNom.Text;
+                personneToEdit.Prenom = textPrenom.Text;
+                isEdit = false;
+            }
+            
+            textNom.Text = "";
+            textPrenom.Text = "";
+        }
+
+        private void DetailClick(object sender, RoutedEventArgs e)
+        {
+            if(listePersonnes.SelectedItem is Personne p)
+            {
+                textNom.Text = p.Nom;
+                textPrenom.Text = p.Prenom;
+                personneToEdit = p;
+                isEdit = true;
+            }
+        }
+
+        private void SupprimerClick(object sender, RoutedEventArgs e)
+        {
+            if (listePersonnes.SelectedItem is Personne p)
+            {
+                personnes.Remove(p);
+            }
         }
     }
 }
