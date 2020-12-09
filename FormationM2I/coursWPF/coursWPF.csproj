@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Update="ControleWPF.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CleanWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="TaquinWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
