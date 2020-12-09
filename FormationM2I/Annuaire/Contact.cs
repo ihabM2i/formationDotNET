@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Annuaire
 {
-    class Contact
+    public class Contact
     {
         int id;
         string nom;
@@ -97,6 +97,33 @@ namespace Annuaire
             connection.Close();
             return contact;
         }
+
+        public static List<Contact> GetContacts(string search = null)
+        {
+            List<Contact> contacts = new List<Contact>();
+            string request = "SELECT id, nom, prenom, telephone from contact ";
+            if(search != null)
+            {
+                request += "where telephone like @search OR nom like @search OR prenom like @search";
+            }
+            command = new SqlCommand(request, connection);
+            if (search != null)
+            {
+                command.Parameters.Add(new SqlParameter("@search", search + "%"));
+            }
+            connection.Open();
+            reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                Contact contact = new Contact(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                contacts.Add(contact);
+            }
+            reader.Close();
+            command.Dispose();
+            connection.Close();
+            return contacts;
+        }
+
         public override string ToString()
         {
             return $"Nom : {Nom}, Prénom : {Prenom}, Téléphone : {Telephone}";
