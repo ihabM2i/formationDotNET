@@ -21,6 +21,7 @@ namespace coursWPF
     public partial class TaquinWindow : Window
     {
         private int taille = 3;
+        private string stringWin = "";
 
         private char[] tab;
         public TaquinWindow()
@@ -30,7 +31,6 @@ namespace coursWPF
             MakeRowsAndCols();
             MakeShuffleButton();
             MakeGrid();
-
         }
 
         private void GenerateCharTab()
@@ -40,11 +40,24 @@ namespace coursWPF
             for(int i=0; i < tab.Length; i++)
             {
                 tab[i] = c;
+                stringWin += c;
                 c++;
             }
+            stringWin += '#';
         }
 
         #region methode rendu
+
+        private void MakeRowsAndCols()
+        {
+            //Création des lignes et des colonnes
+            for (int i = 1; i <= taille; i++)
+            {
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            grid.RowDefinitions.Add(new RowDefinition());
+        }
         private void MakeShuffleButton()
         {
             Button b = new Button()
@@ -57,16 +70,7 @@ namespace coursWPF
             Grid.SetRow(b,0);
             Grid.SetColumnSpan(b, 4);
         }
-        private void MakeRowsAndCols()
-        {
-            //Création des lignes et des colonnes
-            for (int i = 1; i <= taille; i++)
-            {
-                grid.RowDefinitions.Add(new RowDefinition());
-                grid.ColumnDefinitions.Add(new ColumnDefinition());
-            }
-            grid.RowDefinitions.Add(new RowDefinition());
-        }
+        
         private void MakeGrid()
         {
             int k = 0;
@@ -129,15 +133,44 @@ namespace coursWPF
                 {
                     Grid.SetRow(b, x - 1);
                 }
+                if(TestWin())
+                {
+                    MessageBox.Show("Bravo ! ");
+                }
             }
         }
-
+        #endregion
         private bool TestMove(int x, int y)
         {
             UIElement element = grid.Children.Cast<UIElement>()
                 .FirstOrDefault(e => Grid.GetColumn(e) == y && Grid.GetRow(e) == x);
             return element == null;
         }
-        #endregion
+
+        private bool TestWin()
+        {
+            string tmpString = "";
+            for(int i=1; i < taille+1; i++)
+            {
+                for(int j = 0; j < taille; j++)
+                {
+                    UIElement element = grid.Children.Cast<UIElement>()
+                    .FirstOrDefault(e => Grid.GetColumn(e) == j && Grid.GetRow(e) == i);
+                    if(element == null)
+                    {
+                        tmpString += "#";
+                    }
+                    else
+                    {
+                        if(element is Button b)
+                        {
+                            tmpString += b.Content.ToString();
+                        }
+                    }
+                }
+            }
+            return stringWin == tmpString;
+        }
+        
     }
 }
