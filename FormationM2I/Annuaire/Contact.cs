@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Text;
 
 namespace Annuaire
 {
-    public class Contact
+    public class Contact : INotifyPropertyChanged
     {
         int id;
         string nom;
@@ -17,23 +18,47 @@ namespace Annuaire
         private static SqlDataReader reader;
 
         public int Id { get => id; set => id = value; }
-        public string Nom { get => nom; set => nom = value; }
-        public string Prenom { get => prenom; set => prenom = value; }
-        public string Telephone { get => telephone; set => telephone = value; }
-       
+        public string Nom
+        {
+            get => nom;
+            set
+            {
+                nom = value;
+                RaisePropertyChanged("Nom");
+            }
+        }
+        public string Prenom
+        {
+            get => prenom;
+            set
+            {
+                prenom = value;
+                RaisePropertyChanged("Prenom");
+            }
+        }
+        public string Telephone
+        {
+            get => telephone;
+            set
+            {
+                telephone = value;
+                RaisePropertyChanged("Telephone");
+            }
+        }
+
         public Contact()
         {
 
         }
         public Contact(string nom, string prenom, string telephone)
-        {           
+        {
             Nom = nom;
             Prenom = prenom;
             Telephone = telephone;
         }
-        public Contact(int id, string nom, string prenom, string telephone) : this(nom,prenom,telephone)
+        public Contact(int id, string nom, string prenom, string telephone) : this(nom, prenom, telephone)
         {
-            Id = id;            
+            Id = id;
         }
         public bool Save()
         {
@@ -88,7 +113,7 @@ namespace Annuaire
             command.Parameters.Add(new SqlParameter("@id", id));
             connection.Open();
             reader = command.ExecuteReader();
-            if(reader.Read())
+            if (reader.Read())
             {
                 contact = new Contact(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
             }
@@ -102,7 +127,7 @@ namespace Annuaire
         {
             List<Contact> contacts = new List<Contact>();
             string request = "SELECT id, nom, prenom, telephone from contact ";
-            if(search != null)
+            if (search != null)
             {
                 request += "where telephone like @search OR nom like @search OR prenom like @search";
             }
@@ -113,7 +138,7 @@ namespace Annuaire
             }
             connection.Open();
             reader = command.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 Contact contact = new Contact(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
                 contacts.Add(contact);
@@ -122,6 +147,16 @@ namespace Annuaire
             command.Dispose();
             connection.Close();
             return contacts;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public override string ToString()

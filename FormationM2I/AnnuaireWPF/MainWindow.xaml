@@ -37,6 +37,8 @@
         </ListView>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="283,36,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Height="19"/>
         <Button Click="SearchClick" Content="Rechercher" HorizontalAlignment="Left" Margin="593,36,0,0" VerticalAlignment="Top" Height="19" Width="84"/>
+        <Button Click="EditClick" Content="Modifier" HorizontalAlignment="Left" Margin="283,307,0,0" VerticalAlignment="Top" Height="28" Width="129"/>
+        <Button Click="DeleteClick" Content="Supprimer" HorizontalAlignment="Left" Margin="417,307,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.076,-0.349" Height="28" Width="138"/>
 
     </Grid>
 </Window>
