@@ -24,11 +24,14 @@ namespace AnnuaireWPF
     {
         private ObservableCollection<Contact> contacts;
         private Contact editContact = null;
+        private ObservableCollection<Email> tmpEmails;
         public MainWindow()
         {
             InitializeComponent();
             contacts = new ObservableCollection<Contact>(Contact.GetContacts());
             listeViewContacts.ItemsSource = contacts;
+            tmpEmails = new ObservableCollection<Email>();
+            listBoxMails.ItemsSource = tmpEmails;
         }
 
 
@@ -37,10 +40,12 @@ namespace AnnuaireWPF
             if(editContact == null)
             {
                 Contact contact = new Contact(boxNom.Text, boxPrenom.Text, boxTelephone.Text);
+                contact.Emails = tmpEmails.Cast<Email>().ToList();
                 if (contact.Save())
                 {
                     result.Text = "Contact ajouté";
                     contacts.Add(contact);
+                    tmpEmails = new ObservableCollection<Email>();
                 }
                 else
                 {
@@ -97,6 +102,22 @@ namespace AnnuaireWPF
                 {
                     result.Text = "Erreur de suppression dans la base de données";
                 }
+            }
+        }
+
+        private void ConfirmMailClick(object sender, RoutedEventArgs e)
+        {
+            Email m = new Email() { Mail = boxMail.Text };
+            boxMail.Text = "";
+            tmpEmails.Add(m);
+        }
+
+        private void DetailClick(object sender, RoutedEventArgs e)
+        {
+            if(listeViewContacts.SelectedItem is Contact c)
+            {
+                DetailContactWindow d = new DetailContactWindow(c);
+                d.Show();
             }
         }
     }

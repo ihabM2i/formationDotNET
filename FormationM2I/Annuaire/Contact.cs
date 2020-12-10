@@ -13,6 +13,8 @@ namespace Annuaire
         string prenom;
         string telephone;
 
+        List<Email> emails;
+
         private static SqlConnection connection = new SqlConnection(@"Data Source=(LocalDb)\coursM2I;Integrated Security=True");
         private static SqlCommand command;
         private static SqlDataReader reader;
@@ -46,11 +48,13 @@ namespace Annuaire
             }
         }
 
+        public List<Email> Emails { get => emails; set => emails = value; }
+
         public Contact()
         {
-
+            Emails = new List<Email>();
         }
-        public Contact(string nom, string prenom, string telephone)
+        public Contact(string nom, string prenom, string telephone) : this()
         {
             Nom = nom;
             Prenom = prenom;
@@ -74,7 +78,10 @@ namespace Annuaire
             Id = (int)command.ExecuteScalar();
             command.Dispose();
             connection.Close();
-
+            if(Id > 0)
+            {
+                Emails.ForEach(e => e.Save(Id));
+            }
             return Id > 0;
         }
 
