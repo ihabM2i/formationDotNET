@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="CaisseWPF.UserControls.ProduitsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CaisseWPF.UserControls"
+             mc:Ignorable="d" d:DesignWidth="800" Height="350">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Formulaire Produit" Grid.Column="0">
+            <StackPanel>
+                <Label Content="Titre : "></Label>
+                <TextBox x:Name="titreBox" ></TextBox>
+                <Label Content="Prix : "></Label>
+                <TextBox x:Name="prixBox" ></TextBox>
+                <Label Content="Stock : "></Label>
+                <TextBox x:Name="stockBox" ></TextBox>
+                <Button Content="Valider" Click="Confirm_Click"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Liste des produits" Grid.Column="1">
+            <StackPanel>
+                <GroupBox Header="Recherche">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="searchBox" MinWidth="447"  />
+                        <Button Content="Rechercher" Click="Search_Click"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <ListView Height="250" x:Name="listViewProduits">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Titre" Width="210" DisplayMemberBinding="{Binding Titre}"/>
+                            <GridViewColumn Header="Prix" Width="150" DisplayMemberBinding="{Binding Prix}"/>
+                            <GridViewColumn Header="Stock" Width="150" DisplayMemberBinding="{Binding Stock}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Modifier" Width="260"></Button>
+                    <Button Content="Supprimer" Width="260"></Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</UserControl>
