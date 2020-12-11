@@ -1,4 +1,5 @@
 ﻿using Caisse.Classes;
+using CaisseWPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +22,15 @@ namespace CaisseWPF.UserControls
     public partial class ProduitsControl : UserControl
     {
         //private DataBase _data;
-        private ObservableCollection<Produit> produits;
+        //private ObservableCollection<Produit> produits;
+        private ProduitsControlViewModel vm;
         public ProduitsControl()
         {
             InitializeComponent();
-            produits = new ObservableCollection<Produit>(DataBase.Instance.GetProduits());
-            listViewProduits.ItemsSource = produits;
+            vm = new ProduitsControlViewModel();
+            DataContext = vm;
+            //produits = new ObservableCollection<Produit>(DataBase.Instance.GetProduits());
+            //listViewProduits.ItemsSource = produits;
         }
 
         //public ProduitsControl(DataBase data)
@@ -34,35 +38,37 @@ namespace CaisseWPF.UserControls
         //    _data = data;
         //}
 
-        private void Confirm_Click(object sender, RoutedEventArgs e)
-        {
-            Produit p = new Produit();
-            p.Titre = titreBox.Text;
-            p.Prix = Convert.ToDecimal(prixBox.Text);
-            p.Stock = Convert.ToInt32(stockBox.Text);
-            if (DataBase.Instance.SaveProduit(p))
-            {
-                MessageBox.Show("produit ajouté");
-                produits.Add(p);
-                ClearForm();
-            }
-            else
-            {
-                MessageBox.Show("erreur serveur");
-            }
-        }
+        //private void Confirm_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //Produit p = new Produit();
+        //    //p.Titre = titreBox.Text;
+        //    //p.Prix = Convert.ToDecimal(prixBox.Text);
+        //    //p.Stock = Convert.ToInt32(stockBox.Text);
+        //    if (DataBase.Instance.SaveProduit(vm.Produit))
+        //    {
+        //        MessageBox.Show("produit ajouté");
+        //        vm.Produits.Add(vm.Produit);
+        //        //ClearForm();
+        //        vm.Produit = new Produit();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("erreur serveur");
+        //    }
+        //}
 
-        private void Search_Click(object sender, RoutedEventArgs e)
-        {
-            produits = new ObservableCollection<Produit>(DataBase.Instance.GetProduits(searchBox.Text));
-            listViewProduits.ItemsSource = produits;
-        }
+        //private void Search_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //produits = new ObservableCollection<Produit>(DataBase.Instance.GetProduits(searchBox.Text));
+        //    //listViewProduits.ItemsSource = produits;
+        //    vm.SearchAction();
+        //}
 
-        private void ClearForm()
-        {
-            titreBox.Text = "";
-            prixBox.Text = "";
-            stockBox.Text = "";
-        }
+        //private void ClearForm()
+        //{
+        //    //titreBox.Text = "";
+        //    //prixBox.Text = "";
+        //    //stockBox.Text = "";
+        //}
     }
 }

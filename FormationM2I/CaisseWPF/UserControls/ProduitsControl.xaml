@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CaisseWPF.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" d:DesignWidth="800" Height="350">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,23 +14,29 @@
         <GroupBox Header="Formulaire Produit" Grid.Column="0">
             <StackPanel>
                 <Label Content="Titre : "></Label>
-                <TextBox x:Name="titreBox" ></TextBox>
+                <TextBox Text="{Binding Titre}" ></TextBox>
                 <Label Content="Prix : "></Label>
-                <TextBox x:Name="prixBox" ></TextBox>
+                <TextBox Text="{Binding Prix}" ></TextBox>
                 <Label Content="Stock : "></Label>
-                <TextBox x:Name="stockBox" ></TextBox>
-                <Button Content="Valider" Click="Confirm_Click"></Button>
+                <TextBox Text="{Binding Stock}" ></TextBox>
+                <Button Content="Valider" Command="{Binding ConfirmCommand}"></Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Liste des produits" Grid.Column="1">
             <StackPanel>
                 <GroupBox Header="Recherche">
                     <StackPanel Orientation="Horizontal">
-                        <TextBox x:Name="searchBox" MinWidth="447"  />
-                        <Button Content="Rechercher" Click="Search_Click"></Button>
+                        <TextBox Text="{Binding Search}" MinWidth="447"  />
+                        <Button Content="Rechercher" x:Name="b1" Command="{Binding SearchCommand}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding MouseOverCommand}"  CommandParameter="{Binding ElementName=b1}"></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
                     </StackPanel>
                 </GroupBox>
-                <ListView Height="250" x:Name="listViewProduits">
+                <ListView Height="250" ItemsSource="{Binding Produits}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding Id}"/>
