@@ -15,14 +15,14 @@
         <GroupBox Header="Produit" Grid.Row="0">
             <StackPanel  Orientation="Horizontal">
                 <Label Content="Code produit : "></Label>
-                <TextBox x:Name="codeBox" Width="200"></TextBox>
-                <Button Content="Ajouter" Click="Add_Click"></Button>
+                <TextBox Text="{Binding Code}" Width="200"></TextBox>
+                <Button Content="Ajouter" Command="{Binding AddCommand}"></Button>
             </StackPanel>
         </GroupBox>
         
         <GroupBox Header="Panier" Grid.Row="1">
             <StackPanel>
-                <ListView Height="325" x:Name="listViewProduits">
+                <ListView Height="325" ItemsSource="{Binding Produits}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Titre" Width="700" DisplayMemberBinding="{Binding Titre}"/>
@@ -40,12 +40,12 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Column="0">
                     <Button Content="Supprimer" Width="150"></Button>
-                    <Button Click="Confirm_Click" Content="Valider panier" Width="150"></Button>
-                    <Button Click="Update_Click" Content="Mettre à jour la base" Width="150"></Button>
+                    <Button Command="{Binding ConfirmCommand}" Content="Valider panier" Width="150"></Button>
+                    <Button Command ="{Binding UpdateCommand}" Content="Mettre à jour la base" Width="150"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Label Content="Total :"></Label>
-                    <Label x:Name="totalBlock"></Label>
+                    <Label Content="{Binding Total}"></Label>
                 </StackPanel>
             </Grid>
         </GroupBox>
