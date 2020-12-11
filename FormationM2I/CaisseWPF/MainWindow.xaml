@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CaisseWPF"
         xmlns:uc="clr-namespace:CaisseWPF.UserControls"
         mc:Ignorable="d"
-        Title="Caisse" Height="456" Width="818">
+        Title="Caisse" Height="500" Width="818">
     <StackPanel>
         <Menu Height="27">
             <MenuItem Header="Vente" Click="Menu_Click"></MenuItem>

@@ -45,6 +45,7 @@ namespace CaisseWPF
                         ResultPanel.Children.Add(venteControl);
                         break;
                     case "Gestion de produits":
+                        produitsControl = new ProduitsControl();
                         ResultPanel.Children.Add(produitsControl);
                         break;
                 }

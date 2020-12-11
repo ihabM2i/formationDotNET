@@ -39,7 +39,7 @@ namespace CaisseWPF.UserControls
             Produit p = new Produit();
             p.Titre = titreBox.Text;
             p.Prix = Convert.ToDecimal(prixBox.Text);
-            p.Stock = Convert.ToInt32(prixBox.Text);
+            p.Stock = Convert.ToInt32(stockBox.Text);
             if (DataBase.Instance.SaveProduit(p))
             {
                 MessageBox.Show("produit ajouté");

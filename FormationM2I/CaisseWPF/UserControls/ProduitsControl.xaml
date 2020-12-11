@@ -32,9 +32,10 @@
                 <ListView Height="250" x:Name="listViewProduits">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Titre" Width="210" DisplayMemberBinding="{Binding Titre}"/>
-                            <GridViewColumn Header="Prix" Width="150" DisplayMemberBinding="{Binding Prix}"/>
-                            <GridViewColumn Header="Stock" Width="150" DisplayMemberBinding="{Binding Stock}"/>
+                            <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                            <GridViewColumn Header="Titre" Width="170" DisplayMemberBinding="{Binding Titre}"/>
+                            <GridViewColumn Header="Prix" Width="100" DisplayMemberBinding="{Binding Prix}"/>
+                            <GridViewColumn Header="Stock" Width="140" DisplayMemberBinding="{Binding Stock}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
