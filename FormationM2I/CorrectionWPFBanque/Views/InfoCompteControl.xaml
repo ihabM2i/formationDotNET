@@ -47,6 +47,18 @@
                     <Button Command="{Binding OperationCommand}" CommandParameter="Depot" Content="Effectuer un dépôt" Width="400"></Button>
                     <Button Command="{Binding OperationCommand}" CommandParameter="Retrait" Content="Effectuer un retrait" Width="400"></Button>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton IsChecked="{Binding Val1}"  Content="Value 1"></RadioButton>
+                    <RadioButton IsChecked="{Binding Val2}" Content="Value 2"></RadioButton>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel Visibility="{Binding Visb1}" Orientation="Horizontal">
+                        <Label Content="Value 1"></Label>
+                    </StackPanel>
+                    <StackPanel Visibility="{Binding Visb2}" Orientation="Horizontal">
+                        <Label Content="Value 2"></Label>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </GroupBox>
     </StackPanel>
