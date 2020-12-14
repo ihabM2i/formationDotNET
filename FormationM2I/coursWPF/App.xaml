@@ -1,9 +1,16 @@
-﻿<Application x:Class="coursWPF.App"
+﻿<Application xmlns:Views="assembly=coursWPF"  x:Class="coursWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:coursWPF"
-             StartupUri="WindowWithContext.xaml">
+             xmlns:extensionUI="clr-namespace:coursWPF.Controls"
+             StartupUri="MultiThreadingWindow.xaml">
     <Application.Resources>
-        
+        <Style x:Key="styleG1" TargetType="{x:Type ContentControl}">
+            <Setter Property="FontSize" Value="24"></Setter>
+        </Style>
+        <Style x:Key="styleButton1" BasedOn="{StaticResource styleG1}" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#cd2127"></Setter>
+            <Setter Property="Foreground" Value="#efefef"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

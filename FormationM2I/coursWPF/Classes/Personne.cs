@@ -9,7 +9,7 @@ namespace coursWPF.Classes
     {
         private string nom;
         private string prenom;
-
+        private string telephone;
         public string Nom
         {
             get => nom;
@@ -28,6 +28,9 @@ namespace coursWPF.Classes
                 RaisePropertyChanged("Prenom");
             }
         }
+
+        public string Telephone { get => telephone; set => telephone = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void RaisePropertyChanged(string propertyName)
