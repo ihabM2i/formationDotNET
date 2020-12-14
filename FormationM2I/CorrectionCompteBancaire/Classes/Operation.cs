@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CorrectionCompteBancaire.Classes
 {
-    class Operation
+    public class Operation
     {
         private static int compteur = 1;
         private int id;

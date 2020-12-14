@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CorrectionCompteBancaire.Classes
 {
-    class Compte
+    public class Compte
     {
         private static int compteur = 1;
 
@@ -22,6 +22,10 @@ namespace CorrectionCompteBancaire.Classes
         public Client Client { get => client; set => client = value; }
         public List<Operation> Operations { get => operations; set => operations = value; }
 
+        public Compte()
+        {
+            Client = new Client();
+        }
         protected Compte(int numero, decimal solde)
         {
             this.numero = numero;

@@ -15,7 +15,7 @@
         <GroupBox Header="Produit" Grid.Row="0">
             <StackPanel  Orientation="Horizontal">
                 <Label Content="Code produit : "></Label>
-                <TextBox Text="{Binding Code}" Width="200"></TextBox>
+                <TextBox  Text="{Binding Code}" Width="200"></TextBox>
                 <Button Content="Ajouter" Command="{Binding AddCommand}"></Button>
             </StackPanel>
         </GroupBox>
