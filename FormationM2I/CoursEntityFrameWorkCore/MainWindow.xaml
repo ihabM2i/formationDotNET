@@ -1,0 +1,30 @@
+﻿<Window x:Class="CoursEntityFrameWorkCore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CoursEntityFrameWorkCore"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Command="{Binding ConfirmCommand}" Content="Enregister" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Height="82" Width="342"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,31,0,0" Text="{Binding FirstName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Nom : " HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="30" Width="45"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,83,0,0" Text="{Binding LastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Prénom : " HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,138,0,0" Text="{Binding Phone}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Téléphone  : " HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <ListView SelectedItem="{Binding SelectedPerson}" Margin="400,31,10,74" ItemsSource="{Binding Persons}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding FirstName}" Width="100"/>
+                    <GridViewColumn Header="Prénom" DisplayMemberBinding="{Binding LastName}" Width="100"/>
+                    <GridViewColumn Header="Téléphone" DisplayMemberBinding="{Binding Phone}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Selectionner" Command="{Binding SelectCommand}" HorizontalAlignment="Left" Margin="400,382,0,0" VerticalAlignment="Top" Height="30" Width="172"/>
+        <Button Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="595,382,0,0" VerticalAlignment="Top" Height="30" Width="195"/>
+
+    </Grid>
+</Window>

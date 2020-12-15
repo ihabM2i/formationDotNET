@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionWPFBanque", "Corr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader", "FileReader\FileReader.csproj", "{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursEntityFrameWorkCore", "CoursEntityFrameWorkCore\CoursEntityFrameWorkCore.csproj", "{B44A0701-4813-4EBA-9FCE-6854EADBE68B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
