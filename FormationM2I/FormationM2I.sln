@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnnuaireWPF", "AnnuaireWPF\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CaisseWPF", "CaisseWPF\CaisseWPF.csproj", "{56B88B14-15CF-4BE0-8182-2564F2D11923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrectionWPFBanque", "CorrectionWPFBanque\CorrectionWPFBanque.csproj", "{0DD2BC92-C3CF-4F18-BB0B-49907ADD02C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorrectionWPFBanque", "CorrectionWPFBanque\CorrectionWPFBanque.csproj", "{0DD2BC92-C3CF-4F18-BB0B-49907ADD02C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader", "FileReader\FileReader.csproj", "{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{0DD2BC92-C3CF-4F18-BB0B-49907ADD02C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DD2BC92-C3CF-4F18-BB0B-49907ADD02C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DD2BC92-C3CF-4F18-BB0B-49907ADD02C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3E581F-BBF3-4F3B-8278-368D3DDD7044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

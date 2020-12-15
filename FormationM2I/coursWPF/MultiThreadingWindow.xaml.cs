@@ -49,6 +49,7 @@ namespace coursWPF
             Thread.Sleep(5000);
             //throw new Exception("Thread Exception");
             //End of task and invoke main thread
+            //Application.Current.Dispatcher
             Dispatcher.Invoke(() =>
             {
                 img.Visibility = Visibility.Hidden;
