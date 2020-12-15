@@ -1,10 +1,12 @@
 ﻿using CoursEntityFrameWorkCore.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
@@ -22,6 +24,43 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public string LastName { get => person.LastName; set { person.LastName = value; RaisePropertyChanged(); } }
         public string Phone { get => person.Phone; set { person.Phone = value; RaisePropertyChanged(); } }
         
+        public string Street
+        {
+            get
+            {
+                return person.Address?.Street;
+            }
+            set
+            {
+                person.Address.Street = value;
+                RaisePropertyChanged();
+            }
+        }
+        public string City
+        {
+            get
+            {
+                return person.Address?.City;
+            }
+            set
+            {
+                person.Address.City = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string PostCode
+        {
+            get
+            {
+                return person.Address?.PostCode;
+            }
+            set
+            {
+                person.Address.PostCode= value;
+                RaisePropertyChanged();
+            }
+        }
         public string Search { get; set; }
 
         public ObservableCollection<Person> Persons { get; set; }
@@ -31,9 +70,10 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public ICommand SearchCommand { get; set; }
         public MainViewModel()
         {
-            person = new Person();
             data = new DataContext();
-            Persons = new ObservableCollection<Person>(data.Persons);
+            Persons = new ObservableCollection<Person>(data.Persons.Include(p => p.Address));
+            person = new Person();
+            person.Address = new Address();
             ConfirmCommand = new RelayCommand(ActionConfirm);
             SelectCommand = new RelayCommand(ActionSelect);
             DeleteCommand = new RelayCommand(ActionDelete);
@@ -55,17 +95,27 @@ namespace CoursEntityFrameWorkCore.ViewModels
             }
             data.SaveChanges();
             person = new Person();
-            RaisePropertyChanged("FirstName");
-            RaisePropertyChanged("LastName");
-            RaisePropertyChanged("Phone");
+            foreach (PropertyInfo p in typeof(MainViewModel).GetProperties())
+            {
+                RaisePropertyChanged(p.Name);
+            }
         }
 
         private void ActionSelect()
-        {
-            FirstName = SelectedPerson.FirstName;
-            LastName = SelectedPerson.LastName;
-            Phone = SelectedPerson.Phone;
+        {           
             person = SelectedPerson;
+            if (person.Address == null)
+                person.Address = new Address();
+            //RaisePropertyChanged("FirstName");
+            //RaisePropertyChanged("LastName");
+            //RaisePropertyChanged("Phone");
+            //RaisePropertyChanged("Street");
+            //RaisePropertyChanged("City");
+            //RaisePropertyChanged("PostCode");
+            foreach(PropertyInfo p in typeof(MainViewModel).GetProperties())
+            {
+                RaisePropertyChanged(p.Name);
+            }
         }
         private void ActionDelete()
         {

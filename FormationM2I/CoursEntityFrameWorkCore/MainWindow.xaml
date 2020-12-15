@@ -27,6 +27,12 @@
         <Button Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="595,382,0,0" VerticalAlignment="Top" Height="30" Width="195"/>
         <TextBox HorizontalAlignment="Left" Margin="400,31,0,0" Text="{Binding Search}" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" Height="30"/>
         <Button Content="Rechercher" Command="{Binding SearchCommand}" HorizontalAlignment="Left" Margin="673,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,-0.626" Height="32" Width="117"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,196,0,0" Text="{Binding Street}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Rue  : " HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,247,0,0" Text="{Binding City}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Ville  : " HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <TextBox HorizontalAlignment="Left" Margin="143,295,0,0" Text="{Binding PostCode}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Code postal  : " HorizontalAlignment="Left" Margin="20,295,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
 
     </Grid>
 </Window>
