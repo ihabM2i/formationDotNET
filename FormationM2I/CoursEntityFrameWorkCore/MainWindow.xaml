@@ -14,7 +14,7 @@
         <Label Content="Prénom : " HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
         <TextBox HorizontalAlignment="Left" Margin="133,138,0,0" Text="{Binding Phone}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
         <Label Content="Téléphone  : " HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
-        <ListView SelectedItem="{Binding SelectedPerson}" Margin="400,31,10,74" ItemsSource="{Binding Persons}">
+        <ListView SelectedItem="{Binding SelectedPerson}" Margin="400,68,10,74" ItemsSource="{Binding Persons}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding FirstName}" Width="100"/>
@@ -25,6 +25,8 @@
         </ListView>
         <Button Content="Selectionner" Command="{Binding SelectCommand}" HorizontalAlignment="Left" Margin="400,382,0,0" VerticalAlignment="Top" Height="30" Width="172"/>
         <Button Content="Supprimer" Command="{Binding DeleteCommand}" HorizontalAlignment="Left" Margin="595,382,0,0" VerticalAlignment="Top" Height="30" Width="195"/>
+        <TextBox HorizontalAlignment="Left" Margin="400,31,0,0" Text="{Binding Search}" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" Height="30"/>
+        <Button Content="Rechercher" Command="{Binding SearchCommand}" HorizontalAlignment="Left" Margin="673,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,-0.626" Height="32" Width="117"/>
 
     </Grid>
 </Window>
