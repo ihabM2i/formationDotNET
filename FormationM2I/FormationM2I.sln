@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReader", "FileReader\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursEntityFrameWorkCore", "CoursEntityFrameWorkCore\CoursEntityFrameWorkCore.csproj", "{B44A0701-4813-4EBA-9FCE-6854EADBE68B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnnuaireMVVMEntityFrameWork", "AnnuaireMVVMEntityFrameWork\AnnuaireMVVMEntityFrameWork.csproj", "{6475B0DD-F1A1-489F-920B-BA00D8719FE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B44A0701-4813-4EBA-9FCE-6854EADBE68B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6475B0DD-F1A1-489F-920B-BA00D8719FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6475B0DD-F1A1-489F-920B-BA00D8719FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6475B0DD-F1A1-489F-920B-BA00D8719FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6475B0DD-F1A1-489F-920B-BA00D8719FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
