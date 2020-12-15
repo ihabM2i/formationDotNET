@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Command="{Binding ConfirmCommand}" Content="Enregister" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Height="82" Width="342"/>
+        <Button Command="{Binding ConfirmCommand}" Content="Enregister" HorizontalAlignment="Left" Margin="10,359,0,0" VerticalAlignment="Top" Height="53" Width="342"/>
         <TextBox HorizontalAlignment="Left" Margin="133,31,0,0" Text="{Binding FirstName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
         <Label Content="Nom : " HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Height="30" Width="45"/>
         <TextBox HorizontalAlignment="Left" Margin="133,83,0,0" Text="{Binding LastName}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
@@ -31,8 +31,9 @@
         <Label Content="Rue  : " HorizontalAlignment="Left" Margin="10,196,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
         <TextBox HorizontalAlignment="Left" Margin="133,247,0,0" Text="{Binding City}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
         <Label Content="Ville  : " HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
-        <TextBox HorizontalAlignment="Left" Margin="143,295,0,0" Text="{Binding PostCode}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
-        <Label Content="Code postal  : " HorizontalAlignment="Left" Margin="20,295,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <TextBox HorizontalAlignment="Left" Margin="133,295,0,0" Text="{Binding PostCode}" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="30"/>
+        <Label Content="Code postal  : " HorizontalAlignment="Left" Margin="10,295,0,0" VerticalAlignment="Top" Height="30" Width="89"/>
+        <Button Content="Ajouter Adresse" Command="{Binding AddAddressCommand}" HorizontalAlignment="Left" Margin="133,330,0,0" VerticalAlignment="Top" Height="24" Width="219"/>
 
     </Grid>
 </Window>

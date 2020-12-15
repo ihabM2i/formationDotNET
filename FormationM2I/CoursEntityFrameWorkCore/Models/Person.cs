@@ -27,11 +27,11 @@ namespace CoursEntityFrameWorkCore.Models
         [MaxLength(10)]
         public string Phone { get => phone; set => phone = value; }
 
-        [Column("adresse_id")]
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
+        //[Column("adresse_id")]
+        //[ForeignKey("Address")]
+        //public int AddressId { get; set; }
 
-        public Address Address { get; set; }
+        public List<Address> Addresses { get; set; }
 
         public Person()
         {

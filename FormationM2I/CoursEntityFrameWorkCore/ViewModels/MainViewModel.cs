@@ -26,40 +26,16 @@ namespace CoursEntityFrameWorkCore.ViewModels
         
         public string Street
         {
-            get
-            {
-                return person.Address?.Street;
-            }
-            set
-            {
-                person.Address.Street = value;
-                RaisePropertyChanged();
-            }
+            get;set;
         }
         public string City
         {
-            get
-            {
-                return person.Address?.City;
-            }
-            set
-            {
-                person.Address.City = value;
-                RaisePropertyChanged();
-            }
+            get;set;
         }
 
         public string PostCode
         {
-            get
-            {
-                return person.Address?.PostCode;
-            }
-            set
-            {
-                person.Address.PostCode= value;
-                RaisePropertyChanged();
-            }
+            get;set;
         }
         public string Search { get; set; }
 
@@ -68,19 +44,25 @@ namespace CoursEntityFrameWorkCore.ViewModels
         public ICommand SelectCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand SearchCommand { get; set; }
+        public ICommand AddAddressCommand { get; set; }
         public MainViewModel()
         {
             data = new DataContext();
-            Persons = new ObservableCollection<Person>(data.Persons.Include(p => p.Address));
+            Persons = new ObservableCollection<Person>(data.Persons.Include(p => p.Addresses));
             person = new Person();
-            person.Address = new Address();
+            person.Addresses = new List<Address>();
             ConfirmCommand = new RelayCommand(ActionConfirm);
             SelectCommand = new RelayCommand(ActionSelect);
             DeleteCommand = new RelayCommand(ActionDelete);
             SearchCommand = new RelayCommand(ActionSearch);
+            AddAddressCommand = new RelayCommand(ActionAddAddress);
             SelectedPerson = null;
         }
 
+        private void ActionAddAddress()
+        {
+            person.Addresses.Add(new Address() { Street = Street, City = City, PostCode = PostCode });
+        }
         private void ActionConfirm()
         {
             if(SelectedPerson == null)
@@ -104,8 +86,8 @@ namespace CoursEntityFrameWorkCore.ViewModels
         private void ActionSelect()
         {           
             person = SelectedPerson;
-            if (person.Address == null)
-                person.Address = new Address();
+            if (person.Addresses == null)
+                person.Addresses = new List<Address>();
             //RaisePropertyChanged("FirstName");
             //RaisePropertyChanged("LastName");
             //RaisePropertyChanged("Phone");
