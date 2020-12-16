@@ -25,5 +25,12 @@ namespace CoursEntityFrameWorkCore.Models
         
         [Column("code_postal")]
         public string PostCode { get => postCode; set => postCode = value; }
+
+        public List<AddressPerson> Persons { get; set; }
+
+        public override string ToString()
+        {
+            return Street +" "+ City +" "+ PostCode;
+        }
     }
 }

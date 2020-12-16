@@ -3,20 +3,37 @@ using CoursEntityFrameWorkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoursEntityFrameWorkCore.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20201216080847_ManyToManyMigration")]
+    partial class ManyToManyMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
+
+            modelBuilder.Entity("AddressPerson", b =>
+                {
+                    b.Property<int>("AddressesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AddressesId", "PersonsId");
+
+                    b.HasIndex("PersonsId");
+
+                    b.ToTable("AddressPerson");
+                });
 
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Address", b =>
                 {
@@ -40,28 +57,6 @@ namespace CoursEntityFrameWorkCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("adresses");
-                });
-
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.AddressPerson", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
-
-                    b.HasIndex("PersonId");
-
-                    b.ToTable("AddressPerson");
                 });
 
             modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Person", b =>
@@ -89,33 +84,19 @@ namespace CoursEntityFrameWorkCore.Migrations
                     b.ToTable("personnes");
                 });
 
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.AddressPerson", b =>
+            modelBuilder.Entity("AddressPerson", b =>
                 {
-                    b.HasOne("CoursEntityFrameWorkCore.Models.Address", "Address")
-                        .WithMany("Persons")
-                        .HasForeignKey("AddressId")
+                    b.HasOne("CoursEntityFrameWorkCore.Models.Address", null)
+                        .WithMany()
+                        .HasForeignKey("AddressesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CoursEntityFrameWorkCore.Models.Person", "Person")
-                        .WithMany("Addresses")
-                        .HasForeignKey("PersonId")
+                    b.HasOne("CoursEntityFrameWorkCore.Models.Person", null)
+                        .WithMany()
+                        .HasForeignKey("PersonsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Address");
-
-                    b.Navigation("Person");
-                });
-
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Address", b =>
-                {
-                    b.Navigation("Persons");
-                });
-
-            modelBuilder.Entity("CoursEntityFrameWorkCore.Models.Person", b =>
-                {
-                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

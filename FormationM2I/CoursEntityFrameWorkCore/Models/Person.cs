@@ -31,7 +31,7 @@ namespace CoursEntityFrameWorkCore.Models
         //[ForeignKey("Address")]
         //public int AddressId { get; set; }
 
-        public List<Address> Addresses { get; set; }
+        public List<AddressPerson> Addresses { get; set; }
 
         public Person()
         {
