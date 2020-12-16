@@ -30,7 +30,13 @@ namespace CoursEntityFrameWorkCore.SpecialControl
             }
         }
 
+        private static void OnItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            SpecialListBox s = d as SpecialListBox;
+            s.SpecialSelectedItems = (IList)e.NewValue;
+        }
+
         public static readonly DependencyProperty SpecialSelectedItemsProperty =
-            DependencyProperty.Register(nameof(SpecialSelectedItems), typeof(IList), typeof(SpecialListBox));
+            DependencyProperty.Register(nameof(SpecialSelectedItems), typeof(IList), typeof(SpecialListBox), new PropertyMetadata(default(IList), OnItemsPropertyChanged));
     }
 }

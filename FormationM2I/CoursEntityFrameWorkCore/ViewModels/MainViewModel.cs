@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace CoursEntityFrameWorkCore.ViewModels
 
         public ObservableCollection<Address> Addresses { get; set; }
 
-        public List<Address> PersonAddresses
+        public IList PersonAddresses
         {
             get;set;
         }

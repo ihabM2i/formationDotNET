@@ -34,7 +34,7 @@
         <TextBox HorizontalAlignment="Left" Margin="400,31,0,0" Text="{Binding Search}" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" Height="30"/>
         <Button Content="Rechercher" Command="{Binding SearchCommand}" HorizontalAlignment="Left" Margin="673,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.165,-0.626" Height="32" Width="117"/>
         <Button Content="Ajouter une nouvelle Adresse" Command="{Binding AddAddressCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="219" Margin="10,2,0,0"/>
-        <sp:SpecialListBox x:Name="listAddress" SpecialSelectedItems="{Binding PersonAddresses, Mode=TwoWay}"  SelectionMode="Multiple" ItemsSource="{Binding Addresses}" Margin="10,10,448,105" Grid.Row="1">
+        <sp:SpecialListBox x:Name="listAddress" SpecialSelectedItems="{Binding PersonAddresses}"  SelectionMode="Multiple" ItemsSource="{Binding Addresses}" Margin="10,10,448,105" Grid.Row="1">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction Command="{Binding SelectedAddressCommand}" CommandParameter="{Binding ElementName=listAddress, Path=SelectedItem}"></i:InvokeCommandAction>
