@@ -39,7 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursEntityFrameWorkCore", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnnuaireMVVMEntityFrameWork", "AnnuaireMVVMEntityFrameWork\AnnuaireMVVMEntityFrameWork.csproj", "{6475B0DD-F1A1-489F-920B-BA00D8719FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentCours", "StudentCours\StudentCours.csproj", "{F7995E6C-D316-45C5-BF9F-E6A4AE07B523}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCours", "StudentCours\StudentCours.csproj", "{F7995E6C-D316-45C5-BF9F-E6A4AE07B523}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWPFMVVM", "HotelWPFMVVM\HotelWPFMVVM.csproj", "{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,6 +125,10 @@ Global
 		{F7995E6C-D316-45C5-BF9F-E6A4AE07B523}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7995E6C-D316-45C5-BF9F-E6A4AE07B523}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7995E6C-D316-45C5-BF9F-E6A4AE07B523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
