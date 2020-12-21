@@ -4,4 +4,25 @@
 }
 
 <h1>Accueil Contact</h1>
+@*@foreach (Contact c in ViewData["contacts"] as List<Contact>)*@
+@foreach (Contact c in ViewBag.Contacts)
+{
+    <div class="row">
+        <div class="col">
+            @c.FirstName
+        </div>
+        <div class="col">
+            @c.LastName
+        </div>
+        <div class="col">
+            @c.Phone
+        </div>
+        <div class="col">
+            @foreach (Email e in c.Mails)
+            {
+                <div class="row"><div class="col">@e.Mail</div></div>
+            }
+        </div>
+    </div>
+}
 

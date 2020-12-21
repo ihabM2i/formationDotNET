@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoursAspNETCORE.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNETCORE.Controllers
@@ -10,6 +11,8 @@ namespace CoursAspNETCORE.Controllers
     {
         public IActionResult Index()
         {
+            //ViewData["contacts"] = Contact.GetContacts();
+            ViewBag.Contacts = Contact.GetContacts();
             return View();
         }
 
