@@ -53,5 +53,23 @@ namespace CoursAspNETCORE.Models
             contact.Mails.Add(email);
             return data.SaveChanges() > 0;
         }
+
+        public static bool RemoveMail(int emailId, int contactId)
+        {
+            DataContext data = new DataContext();
+            Contact contact = data.Contacts.Include(c => c.Mails).FirstOrDefault(c => c.Id == contactId);
+            contact.Mails.Remove(contact.Mails.Find(e => e.Id == emailId));
+            return data.SaveChanges() > 0;
+        }
+
+        public static bool UpdateContact(Contact tmpContact)
+        {
+            DataContext data = new DataContext();
+            Contact contact = data.Contacts.FirstOrDefault(c => c.Id == tmpContact.Id);
+            contact.FirstName = tmpContact.FirstName;
+            contact.LastName = tmpContact.LastName;
+            contact.Phone = tmpContact.Phone;
+            return data.SaveChanges() > 0;
+        }
     }
 }

@@ -16,21 +16,35 @@ namespace CoursAspNETCORE.Controllers
             return View(Contact.GetContacts());
         }
 
-        public IActionResult Form()
+        public IActionResult Form(int? id)
         {
-            return View();
+            Contact contact = null;
+            if (id != null)
+            {
+               contact = Contact.GetContactById((int)id);
+            }
+            return View(contact);
         }
 
         public IActionResult SubmitForm(Contact contact)
         {
-            if(contact.Save())
+            if(contact.Id == 0)
             {
-                return RedirectToAction("Index");
+                if (contact.Save())
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Form");
+                }
             }
             else
             {
-                return RedirectToAction("Form");
+                Contact.UpdateContact(contact);
+                return RedirectToAction("Index");
             }
+            
         }
 
         public IActionResult Search()
@@ -64,6 +78,12 @@ namespace CoursAspNETCORE.Controllers
         {
             Contact.AddMail(email, contactId);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteEmail(int emailId, int contactId)
+        {
+            Contact.RemoveMail(emailId, contactId);
+            return RedirectToAction("Detail", new { id = contactId });
         }
     }
 }

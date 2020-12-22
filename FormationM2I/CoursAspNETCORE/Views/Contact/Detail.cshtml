@@ -20,10 +20,13 @@ else
     </div>
     <div class="row">
         <div class="col">
-        <div class="row"><div class="col">Emails : </div></div>
-            @foreach(Email e in Model.Mails)
+            <div class="row"><div class="col">Emails : </div></div>
+            @foreach (Email e in Model.Mails)
             {
-                <div class="row"><div>@e.Mail</div></div>
+                <div class="row">
+                    <div class="col">@e.Mail</div>
+                    <div class="col"><a asp-controller="Contact" asp-action="DeleteEmail" asp-route-emailId="@e.Id" asp-route-contactId="@Model.Id">Supprimer</a></div>
+                </div>
             }
         </div>
     </div>
