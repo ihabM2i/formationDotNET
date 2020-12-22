@@ -42,5 +42,28 @@ namespace CoursAspNETCORE.Controllers
         {
             return View(Contact.GetContactById(id));
         }
+
+        public IActionResult Delete(int id)
+        {
+            Contact contact = Contact.GetContactById(id);
+            if (contact != null)
+                contact.Delete();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult FormEmail(int id)
+        {
+            Contact contact = Contact.GetContactById(id);
+            if(contact != null)
+                return View(contact);
+            else
+                return RedirectToAction("Index");
+        }
+
+        public IActionResult SubmitEmail(Email email, int contactId)
+        {
+            Contact.AddMail(email, contactId);
+            return RedirectToAction("Index");
+        }
     }
 }

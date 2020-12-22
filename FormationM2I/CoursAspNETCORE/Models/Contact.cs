@@ -38,5 +38,20 @@ namespace CoursAspNETCORE.Models
             data.Contacts.Add(this);
             return data.SaveChanges() > 0;
         }
+
+        public bool Delete()
+        {
+            DataContext data = new DataContext();
+            data.Contacts.Remove(this);
+            return data.SaveChanges() > 0;
+        }
+
+        public static bool AddMail(Email email, int contactId)
+        {
+            DataContext data = new DataContext();
+            Contact contact = data.Contacts.Include(c => c.Mails).FirstOrDefault(c => c.Id == contactId);
+            contact.Mails.Add(email);
+            return data.SaveChanges() > 0;
+        }
     }
 }

@@ -27,8 +27,8 @@
         <div class="col">
             <a asp-action="Detail" asp-controller="Contact" asp-route-id="@c.Id">Detail</a>
             <a asp-action="Detail" asp-controller="Contact" asp-route-id="@c.Id">Modifier</a>
-            <a asp-action="Detail" asp-controller="Contact" asp-route-id="@c.Id">Supprimer</a>
-            <a asp-action="Detail" asp-controller="Contact" asp-route-id="@c.Id">Ajouter email</a>
+            <a asp-action="Delete" asp-controller="Contact" asp-route-id="@c.Id">Supprimer</a>
+            <a asp-action="FormEmail" asp-controller="Contact" asp-route-id="@c.Id">Ajouter email</a>
         </div>
     </div>
 }
