@@ -85,5 +85,10 @@ namespace CoursAspNETCORE.Controllers
             Contact.RemoveMail(emailId, contactId);
             return RedirectToAction("Detail", new { id = contactId });
         }
+
+        public IActionResult SubmitSearch(string search)
+        {
+            return View("Index", Contact.SearchContacts(search));
+        }
     }
 }

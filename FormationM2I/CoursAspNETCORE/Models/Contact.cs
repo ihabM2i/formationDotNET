@@ -71,5 +71,15 @@ namespace CoursAspNETCORE.Models
             contact.Phone = tmpContact.Phone;
             return data.SaveChanges() > 0;
         }
+
+        public static List<Contact> SearchContacts(string search)
+        {
+            DataContext data = new DataContext();
+            return new List<Contact>(
+                data.Contacts.Include(c => c.Mails).Where(
+                    c => c.Phone.Contains(search) ||c.FirstName.Contains(search) || c.LastName.Contains(search)
+                    )
+                );
+        }
     }
 }
