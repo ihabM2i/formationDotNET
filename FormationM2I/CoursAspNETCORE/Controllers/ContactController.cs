@@ -12,8 +12,8 @@ namespace CoursAspNETCORE.Controllers
         public IActionResult Index()
         {
             //ViewData["contacts"] = Contact.GetContacts();
-            ViewBag.Contacts = Contact.GetContacts();
-            return View();
+            //ViewBag.Contacts = Contact.GetContacts();
+            return View(Contact.GetContacts());
         }
 
         public IActionResult Form()

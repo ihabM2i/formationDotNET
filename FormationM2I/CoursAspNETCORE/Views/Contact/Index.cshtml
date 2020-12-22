@@ -1,11 +1,12 @@
-﻿
+﻿@model List<Contact>
 @{
     Layout = "_LayoutContact";
 }
 
 <h1>Accueil Contact</h1>
 @*@foreach (Contact c in ViewData["contacts"] as List<Contact>)*@
-@foreach (Contact c in ViewBag.Contacts)
+@*@foreach (Contact c in ViewBag.Contacts)*@
+@foreach (Contact c in Model)
 {
     <div class="row">
         <div class="col">
