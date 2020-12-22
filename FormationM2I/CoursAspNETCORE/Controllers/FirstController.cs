@@ -80,5 +80,26 @@ namespace CoursAspNETCORE.Controllers
             ViewBag.Nom = nom;
             return View("DataFromGet");
         }
+
+        public IActionResult ActionForm(string? message)
+        {
+            if(message != null)
+            {
+                ViewBag.Message = message;
+            }
+            return View("Form");
+        }
+
+        //public IActionResult SubmitForm(string nom, string prenom)
+        public IActionResult SubmitForm(Personne p)
+        {
+            //Récupérer les paramètres envoyés par le formulaire
+            //Action avec les paramètres 
+            //Personne p = new Personne() { Nom = nom, Prenom = prenom };
+            //Renvoyer une view
+            //return View("Form");
+            //Ou faire une redirection
+            return RedirectToAction("ActionForm", "First", new { message = "personne ajouté" });
+        }
     }
 }
