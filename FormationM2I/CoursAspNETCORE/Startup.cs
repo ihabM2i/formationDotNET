@@ -55,6 +55,9 @@ namespace CoursAspNETCORE
                 endpoints.MapControllerRoute("HomeContact", "Accueil-contact",
                     new { controller = "Contact", action = "Index" });
 
+                endpoints.MapControllerRoute("DetailContact", "Detail-contact/{id}",
+                    new { controller = "Contact", action = "Detail" });
+
                 endpoints.MapControllerRoute("FormContact", "formulaire-contact",
                     new { controller = "Contact", action = "Form" });
 

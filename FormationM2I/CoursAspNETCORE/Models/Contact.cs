@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CoursAspNETCORE.Models
@@ -23,6 +24,12 @@ namespace CoursAspNETCORE.Models
         {
             DataContext data = new DataContext();
             return new List<Contact>(data.Contacts.Include(c => c.Mails));
+        }
+
+        public static Contact GetContactById(int id)
+        {
+            DataContext data = new DataContext();
+            return data.Contacts.Include(c => c.Mails).FirstOrDefault(c => c.Id == id);
         }
     }
 }
