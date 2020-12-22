@@ -17,6 +17,9 @@
     <div class="col">
         @p.Prenom
     </div>
+    <div class="col">
+        <a asp-controller="First" asp-action="ActionGetDataFromGet" asp-route-nom="@p.Nom" asp-route-prenom="@p.Prenom">Detail</a>
+    </div>
 </div>
 }
 

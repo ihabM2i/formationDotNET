@@ -73,5 +73,12 @@ namespace CoursAspNETCORE.Controllers
             v.ListePersonnes = liste;
             return View("Model", v);
         }
+
+        public IActionResult ActionGetDataFromGet(string nom, string prenom)
+        {
+            ViewBag.Prenom = prenom;
+            ViewBag.Nom = nom;
+            return View("DataFromGet");
+        }
     }
 }

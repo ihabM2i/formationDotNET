@@ -60,7 +60,11 @@ namespace CoursAspNETCORE
 
                 endpoints.MapControllerRoute("SearchContact", "Recherche-contact",
                     new { controller = "Contact", action = "Search" });
-                endpoints.MapControllerRoute("default", "{controller}/{action}",
+                
+                endpoints.MapControllerRoute("getdataFromGet", "personne/{nom}/{prenom}",
+                   new { controller = "First", action = "ActionGetDataFromGet" });
+
+                endpoints.MapControllerRoute("default", "{controller}/{action}/{id?}",
                    new { controller = "Home", action = "Index" });
             });
         }
