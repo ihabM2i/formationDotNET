@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNETCORE.Models;
+using CoursAspNETCORE.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNETCORE.Controllers
@@ -56,6 +57,21 @@ namespace CoursAspNETCORE.Controllers
                 new Personne() {Nom = "titi", Prenom = "minet"},
             };
             return View("ViewBag");
+        }
+
+
+        public IActionResult ActionWithViewModel()
+        {
+            Personne p = new Personne() { Nom = "abadi", Prenom = "ihab" };
+            List<Personne> liste = new List<Personne>()
+            {
+                new Personne() {Nom = "tata", Prenom = "toto"},
+                new Personne() {Nom = "titi", Prenom = "minet"},
+            };
+            ViewModelActionWithViewModel v = new ViewModelActionWithViewModel();
+            v.Personne = p;
+            v.ListePersonnes = liste;
+            return View("Model", v);
         }
     }
 }
