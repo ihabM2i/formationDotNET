@@ -31,5 +31,12 @@ namespace CoursAspNETCORE.Models
             DataContext data = new DataContext();
             return data.Contacts.Include(c => c.Mails).FirstOrDefault(c => c.Id == id);
         }
+
+        public bool Save()
+        {
+            DataContext data = new DataContext();
+            data.Contacts.Add(this);
+            return data.SaveChanges() > 0;
+        }
     }
 }

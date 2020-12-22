@@ -3,3 +3,18 @@
 }
 <h1>Formulaire contact</h1>
 
+<form asp-controller="Contact" asp-action="SubmitForm" method="post">
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" name="firstName" placeholder="Votre nom" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" name="lastName" placeholder="Votre prénom" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="text" name="phone" placeholder="Votre téléphone" class="col-6 form-control" />
+    </div>
+    <div class="row m-1 justify-content-center align-items-center">
+        <button type="submit" class="col-6 btn btn-success"> Valider</button>
+    </div>
+</form>
+

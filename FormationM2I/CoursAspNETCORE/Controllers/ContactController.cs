@@ -21,6 +21,18 @@ namespace CoursAspNETCORE.Controllers
             return View();
         }
 
+        public IActionResult SubmitForm(Contact contact)
+        {
+            if(contact.Save())
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Form");
+            }
+        }
+
         public IActionResult Search()
         {
             return View();
