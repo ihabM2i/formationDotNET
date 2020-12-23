@@ -7,7 +7,10 @@
         </div>
     </div>
 }
-<form asp-controller="First" asp-action="SubmitForm" method="post">
+<form enctype="multipart/form-data" asp-controller="First" asp-action="SubmitForm" method="post">
+    <div class="row m-1 justify-content-center align-items-center">
+        <input type="file" name="images" multiple />
+    </div>
     <div class="row m-1 justify-content-center align-items-center">
         <input type="text" name="nom" placeholder="Votre nom" class="col-6 form-control" />
     </div>

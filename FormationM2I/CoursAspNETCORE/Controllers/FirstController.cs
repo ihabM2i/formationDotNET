@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNETCORE.Models;
 using CoursAspNETCORE.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNETCORE.Controllers
 {
     public class FirstController : Controller
     {
+        //Service pour récupérer les informations du Hosting
+        private IWebHostEnvironment _env;
+
+        public FirstController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
         public IActionResult Index()
         {
             return new ContentResult() { Content= "<h1>Bonjour tout le monde</h1>", ContentType="text/html" };
@@ -91,13 +101,28 @@ namespace CoursAspNETCORE.Controllers
         }
 
         //public IActionResult SubmitForm(string nom, string prenom)
-        public IActionResult SubmitForm(Personne p)
+        public IActionResult SubmitForm(Personne p,IFormFile[] images)
         {
             //Récupérer les paramètres envoyés par le formulaire
             //Action avec les paramètres 
             //Personne p = new Personne() { Nom = nom, Prenom = prenom };
             //Renvoyer une view
             //return View("Form");
+
+            //Récuperer le ou les fichiers envoyés par le formulaire
+            //string filePath = Path.Combine(_env.WebRootPath,"img",image.FileName);
+            //Stream stream = System.IO.File.Create(filePath);
+            //image.CopyTo(stream);
+            foreach(IFormFile image in images)
+            {
+                if(image.ContentType == "image/png" && image.Length < 10000)
+                {
+                    string filePath = Path.Combine(_env.WebRootPath, "img", image.FileName);
+                    Stream stream = System.IO.File.Create(filePath);
+                    image.CopyTo(stream);
+                }
+                
+            }
             //Ou faire une redirection
             return RedirectToAction("ActionForm", "First", new { message = "personne ajouté" });
         }
