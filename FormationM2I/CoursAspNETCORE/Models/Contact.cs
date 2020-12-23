@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 
 namespace CoursAspNETCORE.Models
@@ -37,6 +38,7 @@ namespace CoursAspNETCORE.Models
             DataContext data = new DataContext();
             data.Contacts.Add(this);
             return data.SaveChanges() > 0;
+
         }
 
         public bool Delete()

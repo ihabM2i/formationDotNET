@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentCours", "StudentCour
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelWPFMVVM", "HotelWPFMVVM\HotelWPFMVVM.csproj", "{1C3EE09A-1267-4A28-8CCE-293C46A5C64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursAspNETCORE", "CoursAspNETCORE\CoursAspNETCORE.csproj", "{085EE426-0ACD-49EE-B530-2778A02BA20B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursAspNETCORE", "CoursAspNETCORE\CoursAspNETCORE.csproj", "{085EE426-0ACD-49EE-B530-2778A02BA20B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAspNetCore", "BankAspNetCore\BankAspNetCore.csproj", "{95A30337-287D-41A7-B6D6-0C07B92C567C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{085EE426-0ACD-49EE-B530-2778A02BA20B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A30337-287D-41A7-B6D6-0C07B92C567C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

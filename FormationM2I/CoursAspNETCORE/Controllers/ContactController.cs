@@ -16,6 +16,7 @@ namespace CoursAspNETCORE.Controllers
             return View(Contact.GetContacts());
         }
 
+        [HttpGet]
         public IActionResult Form(int? id)
         {
             Contact contact = null;
@@ -26,6 +27,8 @@ namespace CoursAspNETCORE.Controllers
             return View(contact);
         }
 
+
+        [HttpPost]
         public IActionResult SubmitForm(Contact contact)
         {
             if(contact.Id == 0)
@@ -43,10 +46,10 @@ namespace CoursAspNETCORE.Controllers
             {
                 Contact.UpdateContact(contact);
                 return RedirectToAction("Index");
-            }
-            
+            } 
         }
 
+        [HttpGet]
         public IActionResult Search()
         {
             return View();
