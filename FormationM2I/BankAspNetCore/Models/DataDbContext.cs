@@ -9,6 +9,8 @@ namespace BankAspNetCore.Models
     public class DataDbContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
+
+        private static object _lock = new object();
         public DbSet<Compte> Comptes { get; set; }
         public DbSet<Operation> Operations { get; set; }
 
@@ -23,13 +25,17 @@ namespace BankAspNetCore.Models
         {
             get
             {
-                if (_instance == null)
-                    _instance = new DataDbContext();
-                return _instance;
+                lock(_lock)
+                {
+                    if (_instance == null)
+                        _instance = new DataDbContext();
+                    return _instance;
+                }
+                
             }
         }
 
-        public DataDbContext()
+        private DataDbContext()
         {
 
         }
