@@ -13,6 +13,7 @@ namespace CoursAspNETCORE.Models
         private string firstName;
         private string lastName;
         private string phone;
+        private string avatar;
         List<Email> mails;
 
         public int Id { get => id; set => id = value; }
@@ -20,6 +21,7 @@ namespace CoursAspNETCORE.Models
         public string LastName { get => lastName; set => lastName = value; }
         public string Phone { get => phone; set => phone = value; }
         public List<Email> Mails { get => mails; set => mails = value; }
+        public string Avatar { get => avatar; set => avatar = value; }
 
         public static List<Contact> GetContacts()
         {

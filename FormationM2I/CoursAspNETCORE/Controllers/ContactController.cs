@@ -1,14 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNETCORE.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNETCORE.Controllers
 {
     public class ContactController : Controller
     {
+        //Service pour récupérer les informations du Hosting
+        private IWebHostEnvironment _env;
+        public ContactController(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
         public IActionResult Index()
         {
             //ViewData["contacts"] = Contact.GetContacts();
@@ -27,12 +36,21 @@ namespace CoursAspNETCORE.Controllers
             return View(contact);
         }
 
-
+        private string Upload(IFormFile avatar)
+        {
+            string filePath = Path.Combine(_env.WebRootPath, "avatar", avatar.FileName);
+            Stream stream = System.IO.File.Create(filePath);
+            avatar.CopyTo(stream);
+            stream.Close();
+            //return Path.Combine("avatar", avatar.FileName);
+            return "avatar/" + avatar.FileName;
+        }
         [HttpPost]
-        public IActionResult SubmitForm(Contact contact)
+        public IActionResult SubmitForm(Contact contact, IFormFile avatar)
         {
             if(contact.Id == 0)
             {
+                contact.Avatar = Upload(avatar);
                 if (contact.Save())
                 {
                     return RedirectToAction("Index");
