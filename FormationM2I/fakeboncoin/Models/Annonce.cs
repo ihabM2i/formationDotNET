@@ -21,6 +21,10 @@ namespace fakeboncoin.Models
         public List<Image> Images { get; set; }
         public DateTime DateCreation { get => dateCreation; set => dateCreation = value; }
 
+        public Annonce()
+        {
+            Images = new List<Image>();
+        }
         public static List<Annonce> Search(string search)
         {
             return new List<Annonce>(

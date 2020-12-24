@@ -28,6 +28,7 @@ namespace fakeboncoin.Controllers
 
         public IActionResult DetailAnnonce(int id)
         {
+            ViewBag.BaseUrl = "https://localhost:44301/";
             return View(Annonce.GetAnnonce(id));
         }
 

@@ -69,3 +69,14 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+.bloc-image img {
+    width:100%
+}
+.bloc-annonce {
+    text-decoration:none;
+    color:#000;
+}
+.bloc-annonce:hover {
+    text-decoration: none;
+    color: #000;
+}

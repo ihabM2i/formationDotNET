@@ -8,10 +8,10 @@ namespace fakeboncoin.Models
 {
     public class DataContext : DbContext
     {
-        private static DataContext _instance;
+        private static DataContext _instance = null;
         
         public DbSet<Annonce> Annonces { get; set; }
-        public DataContext()
+        private DataContext()
         {
 
         }
@@ -20,7 +20,7 @@ namespace fakeboncoin.Models
         {
             get
             {
-                if (_instance != null)
+                if (_instance == null)
                     _instance = new DataContext();
                 return _instance;
             }
