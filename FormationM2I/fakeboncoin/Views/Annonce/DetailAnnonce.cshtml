@@ -24,7 +24,7 @@
                 @foreach (Image i in Model.Images)
                 {
                     <div class="col-3 bloc-image">
-                        <img src="@ViewBag.BaseUrl@i.Url" />
+                        <img src="~/@i.Url" />
                     </div>
                 }
             </div>
