@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CoursAspNETCORE.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace CoursAspNETCORE.Controllers
 {
@@ -21,6 +23,30 @@ namespace CoursAspNETCORE.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult CreateSession()
+        {
+            List<Personne> liste = new List<Personne>()
+            {
+                new Personne() { Nom = "tata", Prenom = "toto"},
+                new Personne() { Nom = "titi", Prenom = "minet"},
+            };
+            HttpContext.Session.SetString("liste", JsonConvert.SerializeObject(liste));            
+            return View();
+        }
+
+        public IActionResult ReadSession()
+        {
+            //ViewBag.Nom = HttpContext.Session.GetString("nom");
+            ViewBag.Liste = JsonConvert.DeserializeObject<List<Personne>>(HttpContext.Session.GetString("liste"));
+            return View();
+        }
+
+        public IActionResult ClearSession()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("ReadSession");
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "ReadSession";
+}
+
+<h1>Lire les données du Session</h1>
+
+@*<p>@ViewBag.Nom</p>*@
+@foreach(Personne p in ViewBag.Liste)
+{
+    <div>
+        @p.Nom @p.Prenom
+    </div>
+}

@@ -56,5 +56,10 @@ namespace fakeboncoin.Controllers
             stream.Close();
             return "images/" + file.FileName;
         }
+
+        public IActionResult GetUrl()
+        {
+            return View();
+        }
     }
 }
