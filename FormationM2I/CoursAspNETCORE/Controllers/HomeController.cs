@@ -49,6 +49,23 @@ namespace CoursAspNETCORE.Controllers
             return RedirectToAction("ReadSession");
         }
 
+        public IActionResult CreateCookie()
+        {
+            CookieOptions option = new CookieOptions()
+            {
+                Expires = DateTime.Now.AddDays(2)
+            };
+            HttpContext.Response.Cookies.Append("nom", "abadi", option);
+            return View();
+        }
+
+        public IActionResult ReadCookie()
+        {
+            
+            ViewBag.Nom = HttpContext.Request.Cookies["nom"];
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
