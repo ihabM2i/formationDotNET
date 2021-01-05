@@ -31,6 +31,7 @@ namespace fakeboncoin.Controllers
         }
         public IActionResult Index(string search)
         {
+            //ViewBag.Email = _login.GetEmail();
             List<Annonce> annonces = null;
             if (search != null)
                 annonces = Annonce.Search(search);

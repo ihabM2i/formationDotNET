@@ -31,8 +31,13 @@ namespace fakeboncoin.Controllers
             else
             {
                 return RedirectToAction("Login", "Authentication", new { message = "Erreur d'authentification"});
-            }
-            
+            }            
+        }
+
+        public IActionResult LogOut()
+        {
+            _login.LogOut();
+            return RedirectToAction("Index", "Annonce");
         }
     }
 }

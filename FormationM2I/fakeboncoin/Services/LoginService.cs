@@ -21,6 +21,7 @@ namespace fakeboncoin.Services
             if(us != null)
             {
                 _accessor.HttpContext.Session.SetString("login", "ok");
+                _accessor.HttpContext.Session.SetString("email", utilisateur.Email);
                 return true;
             }
             return false;
@@ -30,6 +31,17 @@ namespace fakeboncoin.Services
         {
             string logged = _accessor.HttpContext.Session.GetString("login");
             return logged == "ok";
+        }
+
+        public bool LogOut()
+        {
+            _accessor.HttpContext.Session.Clear();
+            return true;
+        }
+
+        public string GetEmail()
+        {
+            return _accessor.HttpContext.Session.GetString("email");
         }
     }
 }

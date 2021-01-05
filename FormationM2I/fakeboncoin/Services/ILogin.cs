@@ -11,5 +11,9 @@ namespace fakeboncoin.Services
         bool Login(Utilisateur utilisateur);
 
         bool IsLogged();
+
+        bool LogOut();
+
+        string GetEmail();
     }
 }
