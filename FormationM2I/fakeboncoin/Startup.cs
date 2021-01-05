@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using fakeboncoin.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +40,21 @@ namespace fakeboncoin
                     options.AccessDeniedPath = new PathString("/authentication/denied");
                     options.ExpireTimeSpan = TimeSpan.FromDays(1);
                 });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("connect", policy =>
+                {
+                    //policy.RequireClaim(ClaimTypes.Email);
+                    policy.Requirements.Add(new ConnectRequirement());
+                });
+                options.AddPolicy("connectAdmin", policy =>
+                {
+                    //policy.RequireClaim(ClaimTypes.Email);
+                    policy.Requirements.Add(new ConnectRequirement("admin"));
+                });
+            });
+            services.AddScoped<IAuthorizationHandler, CustomAuthorizationHandler>();
 
             //services.AddAll();
             //services.AddSingleton<IFavoris, FavorisSessionService>();

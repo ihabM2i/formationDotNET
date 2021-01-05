@@ -26,7 +26,8 @@ namespace fakeboncoin.Services
                 //_accessor.HttpContext.Session.SetString("login", "ok");
                 //_accessor.HttpContext.Session.SetString("email", utilisateur.Email);
                 List<Claim> claims = new List<Claim>() {
-                 new Claim(ClaimTypes.Email, us.Email)
+                 new Claim(ClaimTypes.Email, us.Email),
+                 new Claim(ClaimTypes.Role, us.Role)
                 };
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
