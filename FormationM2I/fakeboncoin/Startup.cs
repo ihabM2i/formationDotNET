@@ -27,6 +27,8 @@ namespace fakeboncoin
             services.AddSession();
             services.AddHttpContextAccessor();
             services.AddTransient<IFavoris, FavorisCookieService>();
+            services.AddTransient<IUpload, UploadService>();
+            //services.AddAll();
             //services.AddSingleton<IFavoris, FavorisSessionService>();
             //services.AddScoped<IFavoris, FavorisSessionService>();
             services.AddControllersWithViews();

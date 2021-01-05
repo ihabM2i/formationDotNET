@@ -18,10 +18,13 @@ namespace fakeboncoin.Controllers
 
         private IFavoris _favorisService;
 
-        public AnnonceController(IWebHostEnvironment env, IFavoris favoris)
+        private IUpload _uploadService;
+
+        public AnnonceController(IWebHostEnvironment env, IFavoris favoris, IUpload uploadService)
         {
             _env = env;
             _favorisService = favoris;
+            _uploadService = uploadService;
         }
         public IActionResult Index(string search)
         {
@@ -50,20 +53,20 @@ namespace fakeboncoin.Controllers
         {
             foreach(IFormFile image in images)
             {
-                annonce.Images.Add(new Image() { Url = Upload(image) });
+                annonce.Images.Add(new Image() { Url = _uploadService.Upload(image) });
             }
             annonce.Save();
             return RedirectToAction("Index");
         }
 
-        private string Upload(IFormFile file)
-        {
-            string pathFile = Path.Combine(_env.WebRootPath, "images", file.FileName);
-            Stream stream = System.IO.File.Create(pathFile);
-            file.CopyTo(stream);
-            stream.Close();
-            return "images/" + file.FileName;
-        }
+        //private string Upload(IFormFile file)
+        //{
+        //    string pathFile = Path.Combine(_env.WebRootPath, "images", file.FileName);
+        //    Stream stream = System.IO.File.Create(pathFile);
+        //    file.CopyTo(stream);
+        //    stream.Close();
+        //    return "images/" + file.FileName;
+        //}
 
 
         public IActionResult Favoris()
