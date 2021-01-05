@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fakeboncoin.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,14 @@ namespace fakeboncoin
             services.AddTransient<IFavoris, FavorisSessionService>();
             services.AddTransient<IUpload, UploadService>();
             services.AddTransient<ILogin, LoginService>();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => {
+                    options.LoginPath = new PathString("/authentication/login");
+                    options.AccessDeniedPath = new PathString("/authentication/denied");
+                    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                });
+
             //services.AddAll();
             //services.AddSingleton<IFavoris, FavorisSessionService>();
             //services.AddScoped<IFavoris, FavorisSessionService>();
@@ -51,6 +61,7 @@ namespace fakeboncoin
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
