@@ -20,11 +20,14 @@ namespace fakeboncoin.Controllers
 
         private IUpload _uploadService;
 
-        public AnnonceController(IWebHostEnvironment env, IFavoris favoris, IUpload uploadService)
+        private ILogin _login;
+
+        public AnnonceController(IWebHostEnvironment env, IFavoris favoris, IUpload uploadService, ILogin login)
         {
             _env = env;
             _favorisService = favoris;
             _uploadService = uploadService;
+            _login = login;
         }
         public IActionResult Index(string search)
         {
@@ -45,6 +48,10 @@ namespace fakeboncoin.Controllers
 
         public IActionResult FormAnnonce()
         {
+            if (!_login.IsLogged())
+            {
+                return RedirectToAction("Login", "Authentication");
+            }
             return View();
         }
 
