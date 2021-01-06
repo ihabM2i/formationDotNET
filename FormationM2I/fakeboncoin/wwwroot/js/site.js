@@ -22,10 +22,21 @@ if (formUpload != null && formUpload != undefined) {
     formUpload.addEventListener('submit', function (e) {
         e.preventDefault()
         const data = new FormData()
-        data.append("titre", document.querySelector('input[name="titre"]').value)
-        data.append("prix", document.querySelector('input[name="prix"]').value)
-        data.append("description", document.querySelector('textarea[name="description"]').value)
-        data.append("images", document.querySelector('input[name="images"]').files[0])
+        for (let element of document.querySelectorAll(".field")) {
+            if (element.getAttribute("type") != "file") {
+                const name = element.getAttribute("name")
+                const val = element.value
+                data.append(name, val)
+            }     
+        }
+        const files = document.querySelector('input[type="file"]').files
+        for (let i = 0; i < files.length; i++) {
+            data.append("image" + i, files[i])
+        }
+        //data.append("titre", document.querySelector('input[name="titre"]').value)
+        //data.append("prix", document.querySelector('input[name="prix"]').value)
+        //data.append("description", document.querySelector('textarea[name="description"]').value)
+        //data.append("images", document.querySelector('input[name="images"]').files[0])
         axios.post(e.target.getAttribute("action"), data).then(res => {
             if (res.data.error == false) {
                 window.location = homeLink

@@ -74,7 +74,11 @@ namespace fakeboncoin.Controllers
         [HttpPost]
         public IActionResult SubmitFromAnnonce(Annonce annonce, IFormFile[] images)
         {
-            foreach(IFormFile image in images)
+            //foreach(IFormFile image in images)
+            //{
+            //    annonce.Images.Add(new Image() { Url = _uploadService.Upload(image) });
+            //}
+            foreach (IFormFile image in Request.Form.Files)
             {
                 annonce.Images.Add(new Image() { Url = _uploadService.Upload(image) });
             }
