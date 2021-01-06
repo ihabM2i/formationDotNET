@@ -11,10 +11,21 @@
 
 const menu = document.querySelector(".menu")
 const result = document.querySelector(".result")
+const form = new FormData()
+form.append("nom", "abadi")
+const data = {
+    'firstName' : 'abadi',
+}
 menu.addEventListener("click", function (e) {
     e.preventDefault();
     //alert(e.target.getAttribute("href"))
-    fetch(e.target.getAttribute("href")).then(res => {
+    fetch(e.target.getAttribute("href"),
+        {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {"Content-type" : "application/json"}
+        }
+    ).then(res => {
         return res.text()
     }).then(response => {
         result.innerHTML = response
