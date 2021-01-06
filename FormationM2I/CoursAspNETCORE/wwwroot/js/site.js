@@ -8,3 +8,15 @@
 //        url
 //    })
 //})
+
+const menu = document.querySelector(".menu")
+const result = document.querySelector(".result")
+menu.addEventListener("click", function (e) {
+    e.preventDefault();
+    //alert(e.target.getAttribute("href"))
+    fetch(e.target.getAttribute("href")).then(res => {
+        return res.text()
+    }).then(response => {
+        result.innerHTML = response
+    })
+})
