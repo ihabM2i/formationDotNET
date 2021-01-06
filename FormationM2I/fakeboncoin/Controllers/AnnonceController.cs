@@ -38,13 +38,17 @@ namespace fakeboncoin.Controllers
         }
 
         [Authorize(Policy = "connect")]
-        public IActionResult SearchAjax(string search)
+        public IActionResult SearchAjax(string search, bool ajax)
         {
             //ViewBag.Email = _login.GetEmail();
             List<Annonce> annonces = null;
             if (search != null)
                 annonces = Annonce.Search(search);
-            return PartialView(annonces);
+            if(ajax)
+            {
+                return PartialView(annonces);
+            }
+            return View(annonces);
         }
 
         public IActionResult DetailAnnonce(int id)

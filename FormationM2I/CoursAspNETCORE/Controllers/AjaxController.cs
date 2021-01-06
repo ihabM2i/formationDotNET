@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoursAspNETCORE.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursAspNETCORE.Controllers
@@ -19,6 +20,12 @@ namespace CoursAspNETCORE.Controllers
         {
             return PartialView();
 
+        }
+
+        public IActionResult Upload(IFormFile image, string titre)
+        {
+            //upload
+            return new ContentResult() { Content = "Ok" };
         }
     }
 }

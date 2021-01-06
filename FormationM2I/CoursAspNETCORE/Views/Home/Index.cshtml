@@ -3,19 +3,37 @@
 }
 
 
-<div class="container">
-    <div class="row menu">
-        <div class="col">
-            <a asp-controller="Ajax" asp-action="First">Lien 1</a>
+    <div class="container">
+        <div class="row menu">
+            <div class="col">
+                <a asp-controller="Ajax" asp-action="First">Lien 1</a>
+            </div>
+            <div class="col">
+                <a asp-controller="Ajax" asp-action="Second">Lien 2</a>
+            </div>
         </div>
-        <div class="col">
-            <a asp-controller="Ajax" asp-action="Second">Lien 2</a>
+        <div class="row">
+            <div class="col result">
+
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col result">
+        <div class="row">
+            <form class="col" id="upload" asp-action="Upload" asp-controller="Ajax" enctype="multipart/form-data">
+                <div class="row">
+                    <input type="file" multiple name="image" />
+                </div>
+                <div class="row">
+                    <button class="col btn btn-secondary" type="submit">Valider</button>
+                </div>
+            </form>
 
         </div>
+        <div class="row">
+            <div class="progress" style="width:100%; height:30px">
+                <div id="progress" class="progress-bar" aria-valuemin="0" aria-valuemax="100">
+
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 

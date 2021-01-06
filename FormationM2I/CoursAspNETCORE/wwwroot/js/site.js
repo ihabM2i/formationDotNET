@@ -31,3 +31,35 @@ menu.addEventListener("click", function (e) {
         result.innerHTML = response
     })
 })
+
+const formUpload = document.querySelector("#upload")
+const progress = document.querySelector("#progress")
+const config = {
+    onUploadProgress : (progressEvent) => {
+        let completed = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+        progress.style.width = completed + "%"
+    }
+}
+formUpload.addEventListener('submit', function (e) {
+    e.preventDefault()
+    const dataUpload = new FormData()
+    //for (let image of document.querySelector("input[type='file']").files) {
+    //    dataUpload.append("image", image)
+    //}
+    dataUpload.append("image", document.querySelector("input[type='file']").files[0])
+    dataUpload.append("titre" ,"titre 1")
+    //fetch(e.target.getAttribute("action"),
+    //    {
+    //        method: "POST",
+    //        body: dataUpload,
+    //    }
+    //).then(res => {
+    //    return res.text()
+    //}).then(response => {
+    //    console.log(response)
+    //})
+
+    axios.post(e.target.getAttribute("action"), dataUpload, config).then(res => {
+        console.log(res)
+    })
+})

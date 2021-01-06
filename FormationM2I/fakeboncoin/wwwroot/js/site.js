@@ -8,7 +8,7 @@ form.addEventListener('submit', function (e) {
     e.preventDefault()
     result.innerHTML = "recherche en cours..."
     const searchValue = document.querySelector("input[name='search']").value
-    fetch(e.target.getAttribute("action") + "?search=" + searchValue).then(res => res.text()).then((response) => {
+    fetch(e.target.getAttribute("action") + "?ajax=true&search=" + searchValue).then(res => res.text()).then((response) => {
         result.innerHTML = response
     })
 })
