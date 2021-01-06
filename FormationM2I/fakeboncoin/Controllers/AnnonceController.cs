@@ -79,7 +79,8 @@ namespace fakeboncoin.Controllers
                 annonce.Images.Add(new Image() { Url = _uploadService.Upload(image) });
             }
             annonce.Save();
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return new JsonResult(new { error = false });
         }
 
         //private string Upload(IFormFile file)
