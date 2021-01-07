@@ -41,7 +41,7 @@ namespace coursApiRest.Controllers
         }
 
         [HttpPost]
-        public Personne Post([FromBody]Personne personne)
+        public Personne Post([FromForm]Personne personne, [FromForm] IFormFile image)
         {
             //Ajout de ressources
             personne.Id = 1;
