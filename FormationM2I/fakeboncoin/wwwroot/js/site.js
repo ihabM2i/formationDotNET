@@ -17,6 +17,13 @@ if (form != null && form != undefined) {
 }
 
 const formUpload = document.querySelector("#formAnnonce")
+const progress = document.querySelector(".progress-bar")
+const config = {
+    onUploadProgress: (progressEvent) => {
+        let completed = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+        progress.style.width = completed + "%"
+    }
+}
 
 if (formUpload != null && formUpload != undefined) {
     formUpload.addEventListener('submit', function (e) {
@@ -37,8 +44,9 @@ if (formUpload != null && formUpload != undefined) {
         //data.append("prix", document.querySelector('input[name="prix"]').value)
         //data.append("description", document.querySelector('textarea[name="description"]').value)
         //data.append("images", document.querySelector('input[name="images"]').files[0])
-        axios.post(e.target.getAttribute("action"), data).then(res => {
+        axios.post(e.target.getAttribute("action"), data, config).then(res => {
             if (res.data.error == false) {
+                alert("Ok")
                 window.location = homeLink
             }
         })
