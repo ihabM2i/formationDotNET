@@ -44,12 +44,28 @@ namespace coursApiRest.Controllers
             Contact contactExist = Contact.GetContactById(id);
             if(contactExist != null)
             {
-                contactExist.Nom = contact.Nom;
-                contactExist.Prenom = contact.Prenom;
-                contactExist.Telephone = contact.Telephone;
+                contactExist.Nom = contact.Nom != null ? contact.Nom : contactExist.Nom;
+                contactExist.Prenom = contact.Prenom != null ? contact.Prenom : contactExist.Prenom;
+                contactExist.Telephone = contact.Telephone != null ? contact.Telephone: contactExist.Telephone;
+                if(contact.Mails != null && contact.Mails.Count > 0)
+                {
+                    contactExist.Mails = contact.Mails;
+                }
                 contactExist.Update();
             }
             return contactExist;
+        }
+
+        [HttpPut("{id}/mails")]
+        public Email Put(int id, [FromBody]Email mail)
+        {
+            Contact contactExist = Contact.GetContactById(id);
+            if (contactExist != null)
+            {
+                contactExist.Mails.Add(mail);
+                contactExist.Update();
+            }
+            return mail;
         }
 
         [HttpDelete("{id}")]

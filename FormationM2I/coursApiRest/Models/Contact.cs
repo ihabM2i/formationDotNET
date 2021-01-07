@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,6 +22,8 @@ namespace coursApiRest.Models
         public string Prenom { get => prenom; set => prenom = value; }
         public string Telephone { get => telephone; set => telephone = value; }
 
+        public List<Email> Mails { get; set; }
+
         public bool Save()
         {
             DataDbContext.Instance.Contacts.Add(this);
@@ -39,17 +42,17 @@ namespace coursApiRest.Models
 
         public static List<Contact> GetContacts()
         {
-            return DataDbContext.Instance.Contacts.ToList();
+            return DataDbContext.Instance.Contacts.Include(c => c.Mails).ToList();
         }
 
         public static Contact GetContactById(int id)
         {
-            return DataDbContext.Instance.Contacts.Find(id);
+            return DataDbContext.Instance.Contacts.Include(c => c.Mails).FirstOrDefault(c => c.Id == id);
         }
 
         public static List<Contact> SearchContacts(string search)
         {
-            return DataDbContext.Instance.Contacts
+            return DataDbContext.Instance.Contacts.Include(c => c.Mails)
                 .Where(c => c.Nom.Contains(search) || c.Prenom.Contains(search) || c.Telephone.Contains(search))
                 .ToList();
         }
