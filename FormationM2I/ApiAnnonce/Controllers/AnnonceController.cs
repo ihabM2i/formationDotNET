@@ -26,6 +26,12 @@ namespace ApiAnnonce.Controllers
             return Annonce.Search(search);
         }
 
+        [HttpGet("{id}")]
+        public Annonce Get(int id)
+        {
+            return Annonce.GetAnnonce(id);
+        }
+
         [HttpPost]
         public Annonce Post([FromForm]Annonce annonce, [FromForm] IFormFile image)
         {
