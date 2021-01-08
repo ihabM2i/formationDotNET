@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using coursApiRest.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace coursApiRest.Controllers
 {
@@ -12,6 +13,19 @@ namespace coursApiRest.Controllers
     [ApiController]
     public class ContactController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+
+        public ContactController(IConfiguration conf)
+        {
+            _configuration = conf;
+        }
+
+        [HttpGet("testConfig")]
+        public string GetConfig()
+        {
+            return _configuration.GetValue<string>("Logging:LogLevel:Microsoft");
+        }
+
 
         [HttpGet]
         public List<Contact> Get()
