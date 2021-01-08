@@ -8,8 +8,9 @@ class Product extends Component {
     render() { 
         return ( 
             <div className="row m-1 justify-content-center align-items-center">
+
                 <div className="col-2">
-                    <img className="imgProduct" src={this.props.product.image} />
+                    <img className="imgProduct" src={this.props.product.images[0].url} />
                 </div>
                 <div className="col">
                     {this.props.product.title}

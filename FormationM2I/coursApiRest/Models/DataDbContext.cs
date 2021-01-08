@@ -10,6 +10,8 @@ namespace coursApiRest.Models
     {
         public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
         private static DataDbContext instance = null;
 
         public static DataDbContext Instance

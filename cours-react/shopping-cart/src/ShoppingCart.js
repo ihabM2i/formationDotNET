@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import CartItems from './CartItems';
 import ListProducts from './ListProducts';
 import Search from './Search';
-import "./ShoppingCart.css"
+import "./ShoppingCart.css";
+import axios from "axios"
 
 class ShoppingCart extends Component {
     constructor(props) {
         super(props);
         this.products = [
-            { id: 1, title: 'product 1', price: 10, image: 'https://picsum.photos/200' },
-            { id: 2, title: 'product 3', price: 30, image: 'https://picsum.photos/200' },
-            { id: 3, title: 'product 2', price: 45, image: 'https://picsum.photos/200' },
+            
         ]
 
         this.state = {
@@ -18,6 +17,14 @@ class ShoppingCart extends Component {
             carts: [],
             total: 0
         }
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:53751/api/v1/products").then(res => {
+            this.setState({
+                products: res.data
+            })
+        })
     }
 
     //Méthode pour modifier la qty d'un produit
@@ -70,9 +77,10 @@ class ShoppingCart extends Component {
         })
     }
     search = (text) => {
-        const tmpProducts = this.products.filter(p => p.title.includes(text))
-        this.setState({
-            products : tmpProducts
+        axios.get("http://localhost:53751/api/v1/products/filter/"+text).then(res => {
+            this.setState({
+                products: res.data
+            })
         })
     }
     render() {
