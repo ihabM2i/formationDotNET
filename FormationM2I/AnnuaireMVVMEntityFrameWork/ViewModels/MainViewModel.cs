@@ -1,4 +1,5 @@
 ﻿using AnnuaireMVVMEntityFrameWork.Models;
+using AnnuaireMVVMEntityFrameWork.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ namespace AnnuaireMVVMEntityFrameWork.ViewModels
     {
         private Contact contact;
         private DataContext data;
+        private ApiService apiService;
 
         public string FirstName
         {
@@ -59,11 +61,19 @@ namespace AnnuaireMVVMEntityFrameWork.ViewModels
             data = new DataContext();
             contact = new Contact();
             Mails = new ObservableCollection<Email>();
-            Contacts = new ObservableCollection<Contact>(data.Contacts.Include(c => c.Mails));
+            apiService = new ApiService();
+            //Contacts = new ObservableCollection<Contact>(data.Contacts.Include(c => c.Mails));
+            Start();
             AddMailCommand = new RelayCommand(ActionAddMail);
             ConfirmCommand = new RelayCommand(ActionConfirm);
             DeleteCommand = new RelayCommand(ActionDelete);
             SearchCommand = new RelayCommand(ActionSearch);
+        }
+
+        private async void Start()
+        {
+            Contacts = new ObservableCollection<Contact>(await apiService.GetContacts());
+            RaisePropertyChanged("Contacts");
         }
 
         private void ActionAddMail()
@@ -88,8 +98,9 @@ namespace AnnuaireMVVMEntityFrameWork.ViewModels
         private void ActionConfirm()
         {
             contact.Mails = Mails.Cast<Email>().ToList();
-            data.Contacts.Add(contact);
-            data.SaveChanges();
+            //data.Contacts.Add(contact);
+            //data.SaveChanges();
+            apiService.PostContact(contact);
             Contacts.Add(contact);
             contact = new Contact();
             Mails = new ObservableCollection<Email>();
