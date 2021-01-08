@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using coursApiRest.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 namespace coursApiRest.Controllers
 {
     [Route("api/v1/contacts")]
+    [EnableCors("AllowAll")]
     [ApiController]
     public class ContactController : ControllerBase
     {
@@ -26,7 +28,7 @@ namespace coursApiRest.Controllers
             return _configuration.GetValue<string>("Logging:LogLevel:Microsoft");
         }
 
-
+       
         [HttpGet]
         public List<Contact> Get()
         {
@@ -44,7 +46,7 @@ namespace coursApiRest.Controllers
         {
             return Contact.SearchContacts(search);
         }
-
+        
         [HttpPost]
         public Contact Post([FromBody]Contact contact)
         {

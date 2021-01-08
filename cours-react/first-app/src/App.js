@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <button onClick={this.hide}>Hide HelloWorld</button>
+        {/* <button onClick={this.hide}>Hide HelloWorld</button>
         <div>
           <select onChange={this.changeColor}>
             <option>red</option>
@@ -56,7 +56,8 @@ class App extends Component {
           {this.state.hidden ? null : <HelloWorld></HelloWorld>}
         </ColorContext.Provider>
         {/* <Countries ></Countries>
-        <ContainerBook></ContainerBook> */}
+        <ContainerBook></ContainerBook> */} 
+        <ListeContacts></ListeContacts>
       </div>
     );
   }

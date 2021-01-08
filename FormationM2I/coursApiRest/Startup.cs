@@ -24,6 +24,28 @@ namespace coursApiRest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                        //builder.WithOrigins("ip1", "ip2").WithMethods("GET", "POST");
+                    }
+                    );
+
+                options.AddPolicy(
+                    "Admin",
+                    builder =>
+                    {
+                        //builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                        builder.WithOrigins("ip1", "ip2").AllowAnyMethod();
+                    }
+                    );
+
+            });
+
             services.AddControllers();
         }
 
@@ -36,7 +58,7 @@ namespace coursApiRest
             }
             app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
