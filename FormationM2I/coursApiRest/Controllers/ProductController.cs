@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using coursApiRest.Models;
 using coursApiRest.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace coursApiRest.Controllers
 {
     [Route("api/v1/products")]
     [EnableCors("AllowAll")]
+    [Authorize("connect")]
     [ApiController]
     public class ProductController : ControllerBase
     {
