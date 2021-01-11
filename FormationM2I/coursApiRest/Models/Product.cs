@@ -20,18 +20,18 @@ namespace coursApiRest.Models
 
         public List<Image> Images { get; set; }
 
-        public static List<Product> GetProducts()
-        {
-            return DataDbContext.Instance.Products.Include(p => p.Images).ToList();
-        }
+        //public static List<Product> GetProducts()
+        //{
+        //    return DataDbContext.Instance.Products.Include(p => p.Images).ToList();
+        //}
 
-        public static List<Product> SearchProducts(string filter)
-        {
-            return DataDbContext.Instance.Products.Include(p => p.Images).Where(p => p.Title.Contains(filter) || p.Description.Contains(filter)).ToList();
-        }
-        public static Product GetProduct(int id)
-        {
-            return DataDbContext.Instance.Products.Include(p => p.Images).FirstOrDefault(p => p.Id == id);
-        }
+        //public static List<Product> SearchProducts(string filter)
+        //{
+        //    return DataDbContext.Instance.Products.Include(p => p.Images).Where(p => p.Title.Contains(filter) || p.Description.Contains(filter)).ToList();
+        //}
+        //public static Product GetProduct(int id)
+        //{
+        //    return DataDbContext.Instance.Products.Include(p => p.Images).FirstOrDefault(p => p.Id == id);
+        //}
     }
 }
