@@ -4,6 +4,7 @@ import ListProducts from './ListProducts';
 import Search from './Search';
 import "./ShoppingCart.css";
 import axios from "axios"
+import FormProduct from './FormProduct';
 
 class ShoppingCart extends Component {
     constructor(props) {
@@ -86,6 +87,7 @@ class ShoppingCart extends Component {
     render() {
         return (
             <div className="container">
+                <FormProduct></FormProduct>
                 <Search search={this.search}></Search>
                 <div className="row">
                     {/* On affiche les produits */}
