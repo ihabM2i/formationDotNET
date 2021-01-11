@@ -10,5 +10,8 @@ namespace coursApiRest.Services
         List<T> GetAll();
         List<T> Search(string filter);
         T Get(int id);
+        bool Save(T element);
+
+        bool Update();
     }
 }

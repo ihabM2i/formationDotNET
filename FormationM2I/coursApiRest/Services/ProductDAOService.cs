@@ -29,5 +29,16 @@ namespace coursApiRest.Services
         {
             return _data.Products.Include(p => p.Images).Where(p => p.Title.Contains(filter) || p.Description.Contains(filter)).ToList();
         }
+
+       public bool Save(Product product)
+       {
+            _data.Products.Add(product);
+            return _data.SaveChanges() > 0;
+       }
+
+        public bool Update()
+        {
+            return _data.SaveChanges() > 0;
+        }
     }
 }

@@ -53,6 +53,7 @@ namespace coursApiRest
             });
             services.AddTransient<IProduct, ProductService>();
             services.AddTransient<IDAO<Product>, ProductDAOService>();
+            services.AddTransient<IUpload, UploadService>();
             services.AddControllers();
         }
 

@@ -17,7 +17,6 @@ namespace coursApiRest.Models
         public string Title { get => title; set => title = value; }
         public string Description { get => description; set => description = value; }
         public decimal Price { get => price; set => price = value; }
-
         public List<Image> Images { get; set; }
 
         //public static List<Product> GetProducts()

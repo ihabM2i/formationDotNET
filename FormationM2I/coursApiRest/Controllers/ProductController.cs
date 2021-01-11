@@ -31,10 +31,28 @@ namespace coursApiRest.Controllers
         {
             return _productService.GetProduct(id);
         }
+
         [HttpGet("filter/{filter}")]
         public List<Product> GetWithFilter(string filter)
         {
             return _productService.SearchProducts(filter);
+        }
+
+        [HttpPost]
+        public Product Post([FromBody]Product product)
+        {
+            if (_productService.SaveProduct(product))
+            {
+                return product;
+            }
+            return null;
+        }
+
+        [HttpPut("{id}/images")]
+
+        public Product Put(int id, [FromForm] IFormFile image)
+        {
+            return _productService.SaveProductImage(id, image);
         }
     }
 }
