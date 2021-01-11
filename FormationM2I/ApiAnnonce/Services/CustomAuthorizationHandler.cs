@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace coursApiRest.Services
+namespace ApiAnnonce.Services
 {
     public class CustomAuthorizationHandler : AuthorizationHandler<ConnectRequirement>
     {

@@ -17,6 +17,7 @@ namespace AnnuaireMVVMEntityFrameWork.Services
         public ApiService()
         {
             client.BaseAddress = new Uri("http://localhost:53751/");
+            client.DefaultRequestHeaders.Add("Autorization", "Bearer jwt");
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 

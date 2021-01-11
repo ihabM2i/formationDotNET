@@ -21,7 +21,10 @@ class ShoppingCart extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:53751/api/v1/products").then(res => {
+        axios.get("http://localhost:53751/api/v1/products", {
+            headers : {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWJhZGkgaWhhYiAiLCJleHAiOjE2MTA0NDk1NzYsImlzcyI6Im0yaSIsImF1ZCI6ImFsbCJ9.Mh7xRy0DFM35uoxSitPT2Oh_QEvVmyZKt-l8_TwyYAw'
+            }}).then(res => {
             this.setState({
                 products: res.data
             })
@@ -78,7 +81,11 @@ class ShoppingCart extends Component {
         })
     }
     search = (text) => {
-        axios.get("http://localhost:53751/api/v1/products/filter/"+text).then(res => {
+        axios.get("http://localhost:53751/api/v1/products/filter/"+text, {
+            headers : {
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWJhZGkgaWhhYiAiLCJleHAiOjE2MTA0NDk1NzYsImlzcyI6Im0yaSIsImF1ZCI6ImFsbCJ9.Mh7xRy0DFM35uoxSitPT2Oh_QEvVmyZKt-l8_TwyYAw'
+            }
+        }).then(res => {
             this.setState({
                 products: res.data
             })
