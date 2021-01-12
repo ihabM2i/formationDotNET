@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using ApiAnnonce.Models;
 using ApiAnnonce.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiAnnonce.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/v1/annonces")]
+    [EnableCors("all")]
     [ApiController]
     public class AnnonceController : ControllerBase
     {
@@ -26,6 +28,13 @@ namespace ApiAnnonce.Controllers
         public List<Annonce> Get(string search)
         {
             return Annonce.Search(search);
+        }
+
+        [HttpGet]
+        [Authorize("connect")]
+        public List<Annonce> Get()
+        {
+            return Annonce.Search(null);
         }
 
         [HttpGet("{id}")]

@@ -46,7 +46,7 @@ const Annonce = (props) => {
     return (
         <div style={{ color: valueContext.color, backgroundColor: valueContext.bgColor }} className="row m-1 justify-content-center align-items-center">
             <div className="col-3">
-                <img src={annonce.images[0]} />
+                <img src={annonce.images[0].url} />
             </div>
             <div className="col-7">
                 <div className="row m-1">

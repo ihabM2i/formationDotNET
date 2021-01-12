@@ -1,13 +1,16 @@
 import axios from "axios"
 export const annonces = []
-const urlBase = "http://localhost:3020"
+const urlBase = "http://localhost:60413/api/v1"
+const headers = {
+    headers : {'Authorization' : 'Bearer '+localStorage.getItem('token')}
+}
 export const getAnnonces = () => {
     // return new Promise((resolve, reject) => {
     //     setTimeout(() => {
     //         resolve(annonces)
     //     },3000)
     // })
-    return axios.get(`${urlBase}/annonces`, {headers : {'Authorization' : 'Bearer a6c6890b-4841-391a-9868-eaee68711678'}})
+    return axios.get(`${urlBase}/annonces`, {...headers})
 
 }
 let compteurAnnonce = 1
@@ -21,7 +24,7 @@ export const ajouterAnnonce = (annonce) => {
     // }
     // annonces.push(tmpAnnonce)
     // compteurAnnonce++
-    return axios.post(`${urlBase}/annonce`, {...annonce})
+    return axios.post(`${urlBase}/annonces`, annonce, {...headers})
 }
 
 export const search = (filter) => {
@@ -32,12 +35,12 @@ export const search = (filter) => {
     //     }, 3000)
     // })
 
-    return axios.get(`${urlBase}/annonces/${filter}`)
+    return axios.get(`${urlBase}/annonces/filter/${filter}`, {...headers})
 }
 
 export const getAnnonceById = (id) => {
     //return annonces.find(a => a.id == id)
-    return axios.get(`${urlBase}/annonce/${id}`)
+    return axios.get(`${urlBase}/annonces/${id}`,  {...headers})
 }
 
 
@@ -63,13 +66,16 @@ const users = [
 ]
 export let isLogged = false
 export const login = (login, password) => {
-    const u = users.find(l => l.login == login && l.password == password)
-    // if(u == undefined) {
-    //     return false
-    // } else {
-    //     return false
-    // }
-    return u != undefined
+
+    // const u = users.find(l => l.login == login && l.password == password)
+    // // if(u == undefined) {
+    // //     return false
+    // // } else {
+    // //     return false
+    // // }
+    // return u != undefined
+    return axios.post(`${urlBase}/Authentification`, {email : login, motPasse : password})
+
 }
 export const changeIsLogged = (log) => {
     isLogged = log

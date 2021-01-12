@@ -19,7 +19,7 @@ class Home extends Component {
         getAnnonces().then((result) => {
             this.setState({
                 loading : false,
-                annonces : result.data.annonces
+                annonces : result.data
             })
         }).catch(err => {
             console.log(err)
@@ -40,7 +40,7 @@ class Home extends Component {
         })
         search(text).then((result) => {
             this.setState({
-                annonces : result.data.annonces,
+                annonces : result.data,
                 loading : false
             })
         }).catch(err=> {

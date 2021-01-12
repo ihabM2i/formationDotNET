@@ -27,10 +27,22 @@ namespace ApiAnnonce.Models
         }
         public static List<Annonce> Search(string search)
         {
-            return new List<Annonce>(
+            List<Annonce> annonces = new List<Annonce>(
+                search != null ?
                 DataContext.Instance.Annonces.Include(a => a.Images)
                 .Where(a => a.Titre.Contains(search) || a.Description.Contains(search))
-                );
+                 : DataContext.Instance.Annonces.Include(a => a.Images));
+            annonces.ForEach(a =>
+            {
+                a.Images.ForEach(i =>
+                {
+                    if (!i.Url.Contains("http://localhost:60413/"))
+                    {
+                        i.Url = "http://localhost:60413/" + i.Url;
+                    }
+                });
+            });
+            return annonces;
         }
 
         public static Annonce GetAnnonce(int id)

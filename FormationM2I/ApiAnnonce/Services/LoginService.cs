@@ -23,6 +23,7 @@ namespace ApiAnnonce.Services
         public string Login(Utilisateur utilisateur)
         {
             Utilisateur u = _data.Utilisateurs.FirstOrDefault(x => x.Email == utilisateur.Email && x.MotPasse == utilisateur.MotPasse);
+            
             if(u != null)
             {
                 return GenerateToken(u.Email, u.Role);

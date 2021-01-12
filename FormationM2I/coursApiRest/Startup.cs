@@ -58,7 +58,7 @@ namespace coursApiRest
             services.AddTransient<IProduct, ProductService>();
             services.AddTransient<IDAO<Product>, ProductDAOService>();
             services.AddTransient<IUpload, UploadService>();
-          
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters()
@@ -93,8 +93,9 @@ namespace coursApiRest
             app.UseStaticFiles();
             
             app.UseRouting();
-            app.UseAuthentication();
             app.UseCors();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

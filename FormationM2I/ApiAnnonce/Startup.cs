@@ -56,6 +56,13 @@ namespace ApiAnnonce
                     builder.Requirements.Add(new ConnectRequirement("admin"));
                 });
             });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("all", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
             services.AddTransient<IAuthorizationHandler, CustomAuthorizationHandler>();
             services.AddTransient<ILogin, LoginService>();
             services.AddControllers();
@@ -72,6 +79,7 @@ namespace ApiAnnonce
 
             app.UseRouting();
             app.UseAuthentication();
+            app.UseCors();
             app.UseStaticFiles();
             app.UseAuthorization();
 

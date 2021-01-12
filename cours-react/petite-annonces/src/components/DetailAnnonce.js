@@ -24,7 +24,7 @@ class DetailAnnonce extends Component {
         getAnnonceById(this.props.match.params.id).then(res => {
             if(!res.data.error) {
                 this.setState({
-                    annonce : res.data.annonce
+                    annonce : res.data
                 })
             }
             else {

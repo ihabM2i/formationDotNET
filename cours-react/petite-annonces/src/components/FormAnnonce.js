@@ -4,55 +4,72 @@ import { ajouterAnnonce, isLogged } from '../services/DataService';
 class FormAnnonce extends Component {
     constructor(props) {
         super(props);
-        if(!isLogged) {
+        if (!isLogged) {
             this.props.history.push("/login/addAnnonce")
         }
-        this.state = { 
-            nombreImages : 1,
-            annonce : {
-                titre : '',
-                prix : 0,
-                description : '',
-                images : []
-            } 
+        this.state = {
+            nombreImages: 1,
+            annonce: {
+                titre: '',
+                prix: 0,
+                description: '',
+                images: []
+            }
         }
     }
 
     changeField = (e) => {
-        let tmpAnnonce = {...this.state.annonce}
+        let tmpAnnonce = { ...this.state.annonce }
         tmpAnnonce[e.target.getAttribute("name")] = e.target.value
         this.setState({
-            annonce : {...tmpAnnonce}
+            annonce: { ...tmpAnnonce }
         })
     }
     changeImage = (e, index) => {
-        let tmpAnnonce = {...this.state.annonce}
+        let tmpAnnonce = { ...this.state.annonce }
         tmpAnnonce.images[index] = e.target.value
         this.setState({
-            annonce : tmpAnnonce
+            annonce: tmpAnnonce
         })
     }
-    renderImagesField = () => {
-        const imagesField = []
-        for(let i= 1 ; i <= this.state.nombreImages; i++) {
-            imagesField.push(<input key={i} onChange={(e) => {this.changeImage(e,i-1)}} className="col-12 m-1 form-control" placeholder="Url image" />)
-        }
-        return imagesField
+    // renderImagesField = () => {
+    //     const imagesField = []
+    //     for(let i= 1 ; i <= this.state.nombreImages; i++) {
+    //         imagesField.push(<input key={i} onChange={(e) => {this.changeImage(e,i-1)}} className="col-12 m-1 form-control" placeholder="Url image" />)
+    //     }
+    //     return imagesField
+    // }
+    changeImage = (e) => {
+        const tmpAnnonce = {...this.state.annonce}
+        tmpAnnonce['images'] = e.target.files
+        this.setState({ annonce:  tmpAnnonce});
     }
-
-    ajouterImage = () => {
-        const tmpNombreImages = this.state.nombreImages + 1
-        this.setState({
-            nombreImages : tmpNombreImages
-        })
-    }
+    // ajouterImage = () => {
+    //     const tmpNombreImages = this.state.nombreImages + 1
+    //     this.setState({
+    //         nombreImages: tmpNombreImages
+    //     })
+    // }
     validForm = (e) => {
         e.preventDefault()
-        ajouterAnnonce(this.state.annonce)
-        this.props.history.push('/')
+        const formData = new FormData()
+        formData.append('titre', this.state.annonce.titre)
+        formData.append('description', this.state.annonce.description)
+        formData.append('prix', this.state.annonce.prix)
+        if(this.state.annonce.images.length > 0) {
+            formData.append('image', this.state.annonce.images[0])
+            ajouterAnnonce(formData).then(res => {
+                if(res.data != undefined && res.data.id > 0) {
+                    alert('annonce ajoutée avec id '+ res.data.id)
+                    //Envoyer les autres images en utilisant le put
+                    this.props.history.push('/')
+                }
+            })
+        }
+        
     }
-    render() { 
-        return ( 
+    render() {
+        return (
             <form className="container" onSubmit={this.validForm}>
                 <div className="row m-1">
                     <input type="text" onChange={this.changeField} name="titre" className="form-control col" placeholder="Titre de l'annonce" />
@@ -66,12 +83,9 @@ class FormAnnonce extends Component {
                     </textarea>
                 </div>
                 <div className="row m-1">
-                    <div className="col">
-                        <div className="row m-1">
-                            {this.renderImagesField()}
-                        </div>
-                    </div>
-                    <a className="btn col-2 btn-info" onClick={this.ajouterImage}>Ajouter une image</a>
+                    <input type="file" multiple name="files" onChange={this.changeImage} className="form-control col" placeholder="Images de l'annonce" />
+
+                    {/* <a className="btn col-2 btn-info" onClick={this.ajouterImage}>Ajouter une image</a> */}
                 </div>
                 <div className="row m-1">
                     <button type="submit" className="btn col btn-success">Valider</button>
@@ -121,7 +135,7 @@ class FormAnnonce extends Component {
 //                 props.history.push('/detail/'+res.data.id)
 //             }
 //         })
-         
+
 //     }
 //     return(
 //         <form className="container" onSubmit={validForm}>
