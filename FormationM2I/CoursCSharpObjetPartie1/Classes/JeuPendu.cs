@@ -6,11 +6,11 @@ namespace CoursCSharpObjetPartie1.Classes
 {
     public class JeuPendu
     {
-        private IGenerateur generateur;
+        private GenerateurMot generateur;
         private string motATrouve;
         private int nbreEssai;
         private string masque;
-        public JeuPendu(IGenerateur g)
+        public JeuPendu(GenerateurMot g)
         {
             generateur = g;
             motATrouve = g.Generer();

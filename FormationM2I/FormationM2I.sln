@@ -51,7 +51,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fakeboncoin", "fakeboncoin\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coursApiRest", "coursApiRest\coursApiRest.csproj", "{149ACB79-18FA-4653-B208-BC14C4B6E4D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAnnonce", "ApiAnnonce\ApiAnnonce.csproj", "{9C743213-3139-43F0-B97A-C9982FC77860}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAnnonce", "ApiAnnonce\ApiAnnonce.csproj", "{9C743213-3139-43F0-B97A-C9982FC77860}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{B3038340-9072-4CA3-A4EF-3AE29F3A632C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +161,10 @@ Global
 		{9C743213-3139-43F0-B97A-C9982FC77860}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C743213-3139-43F0-B97A-C9982FC77860}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C743213-3139-43F0-B97A-C9982FC77860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3038340-9072-4CA3-A4EF-3AE29F3A632C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3038340-9072-4CA3-A4EF-3AE29F3A632C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3038340-9072-4CA3-A4EF-3AE29F3A632C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3038340-9072-4CA3-A4EF-3AE29F3A632C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

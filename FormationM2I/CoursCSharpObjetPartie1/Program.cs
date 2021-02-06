@@ -67,7 +67,7 @@ namespace CoursCSharpObjetPartie1
             #endregion
 
             #region coursPOO héritage
-            /*Etudiant e = new Etudiant();
+            Etudiant e = new Etudiant();
             e.Nom = "nom e1";
             e.Prenom = "prenom e1";
             e.Age = 20;
@@ -79,12 +79,15 @@ namespace CoursCSharpObjetPartie1
             Personne s1 = new Salarie();
             Personne[] personnes = new Personne[] { e2, s1 };
 
-            foreach(Personne p in personnes)
+            foreach (Personne p in personnes)
             {
                 Console.WriteLine(p.GetType());
+                p.Afficher()
             }
             //Console.WriteLine(e2.GetType());
-            //e2.AfficherEtudiant();*/
+            //e2.AfficherEtudiant();
+
+
             #endregion
 
             #region Correction tp 1 héritage
